@@ -2,13 +2,13 @@
   <div class="control-group">
     <%= f.label :system_a_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :system_a_id, :class => 'text_field' %>
+      <%= f.select :system_a_id, System.all.collect{|x| [x.name, x.id]} %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :system_b_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :system_b_id, :class => 'text_field' %>
+      <%= f.select :system_b_id, System.all.collect{|x| [x.name, x.id]} %>
     </div>
   </div>
   <div class="control-group">
@@ -32,7 +32,7 @@
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :description, :class => 'text_field' %>
+      <%= f.text_area :description, :class => 'text_field' %>
     </div>
   </div>
 

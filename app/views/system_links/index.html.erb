@@ -6,8 +6,7 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:system_a_id) %></th>
-      <th><%= model_class.human_attribute_name(:system_b_id) %></th>
+      <th>Systems</th>
       <th><%= model_class.human_attribute_name(:status) %></th>
       <th><%= model_class.human_attribute_name(:envelope) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
@@ -20,8 +19,7 @@
     <% @system_links.each do |system_link| %>
       <tr>
         <td><%= link_to system_link.id, system_link_path(system_link) %></td>
-        <td><%= system_link.system_a_id %></td>
-        <td><%= system_link.system_b_id %></td>
+        <td><%= system_link.system_a.name %> - <%= system_link.system_b.name %></td>
         <td><%= system_link.status %></td>
         <td><%= system_link.envelope %></td>
         <td><%= system_link.name %></td>
