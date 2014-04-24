@@ -1,4 +1,6 @@
 Archipelago::Application.routes.draw do
+  resources :stories
+
   resources :people
 
   resources :system_links
