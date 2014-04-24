@@ -1,41 +1,44 @@
-<%= form_for(@system_link) do |f| %>
-  <% if @system_link.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@system_link.errors.count, "error") %> prohibited this system_link from being saved:</h2>
-
-      <ul>
-      <% @system_link.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @system_link, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :system_a_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :system_a_id, :class => 'text_field' %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label :system_b_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :system_b_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :status, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :status, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :envelope, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :envelope, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :description, :class => 'text_field' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :system_a_id %><br>
-    <%= f.text_field :system_a_id %>
-  </div>
-  <div class="field">
-    <%= f.label :system_b_id %><br>
-    <%= f.text_field :system_b_id %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
-  </div>
-  <div class="field">
-    <%= f.label :envelope %><br>
-    <%= f.text_field :envelope %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                system_links_path, :class => 'btn' %>
   </div>
 <% end %>

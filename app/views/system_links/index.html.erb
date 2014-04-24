@@ -1,37 +1,46 @@
-<h1>Listing system_links</h1>
-
-<table>
+<%- model_class = SystemLink -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>System a</th>
-      <th>System b</th>
-      <th>Status</th>
-      <th>Envelope</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:system_a_id) %></th>
+      <th><%= model_class.human_attribute_name(:system_b_id) %></th>
+      <th><%= model_class.human_attribute_name(:status) %></th>
+      <th><%= model_class.human_attribute_name(:envelope) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @system_links.each do |system_link| %>
       <tr>
-        <td><%= system_link.system_a %></td>
-        <td><%= system_link.system_b %></td>
+        <td><%= link_to system_link.id, system_link_path(system_link) %></td>
+        <td><%= system_link.system_a_id %></td>
+        <td><%= system_link.system_b_id %></td>
         <td><%= system_link.status %></td>
         <td><%= system_link.envelope %></td>
         <td><%= system_link.name %></td>
         <td><%= system_link.description %></td>
-        <td><%= link_to 'Show', system_link %></td>
-        <td><%= link_to 'Edit', edit_system_link_path(system_link) %></td>
-        <td><%= link_to 'Destroy', system_link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l system_link.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_system_link_path(system_link), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      system_link_path(system_link),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New System link', new_system_link_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_system_link_path,
+            :class => 'btn btn-primary' %>

@@ -1,34 +1,31 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = System -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Owner:</strong>
-  <%= @system.owner %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:owner) %>:</strong></dt>
+  <dd><%= @system.owner %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:supplier) %>:</strong></dt>
+  <dd><%= @system.supplier %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:technology) %>:</strong></dt>
+  <dd><%= @system.technology %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
+  <dd><%= @system.status %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:hosting) %>:</strong></dt>
+  <dd><%= @system.hosting %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:impact_level) %>:</strong></dt>
+  <dd><%= @system.impact_level %></dd>
+</dl>
 
-<p>
-  <strong>Supplier:</strong>
-  <%= @system.supplier %>
-</p>
-
-<p>
-  <strong>Technology:</strong>
-  <%= @system.technology %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @system.status %>
-</p>
-
-<p>
-  <strong>Hosting:</strong>
-  <%= @system.hosting %>
-</p>
-
-<p>
-  <strong>Impact level:</strong>
-  <%= @system.impact_level %>
-</p>
-
-<%= link_to 'Edit', edit_system_path(@system) %> |
-<%= link_to 'Back', systems_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              systems_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_system_path(@system), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              system_path(@system),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
