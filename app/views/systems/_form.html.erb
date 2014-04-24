@@ -1,5 +1,11 @@
 <%= form_for @system, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
     <%= f.label :owner, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :owner, :class => 'text_field' %>
@@ -33,6 +39,12 @@
     <%= f.label :impact_level, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :impact_level, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, :class => 'text_field' %>
     </div>
   </div>
 
