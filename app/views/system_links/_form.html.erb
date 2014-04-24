@@ -1,0 +1,41 @@
+<%= form_for(@system_link) do |f| %>
+  <% if @system_link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@system_link.errors.count, "error") %> prohibited this system_link from being saved:</h2>
+
+      <ul>
+      <% @system_link.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :system_a_id %><br>
+    <%= f.text_field :system_a_id %>
+  </div>
+  <div class="field">
+    <%= f.label :system_b_id %><br>
+    <%= f.text_field :system_b_id %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :envelope %><br>
+    <%= f.text_field :envelope %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

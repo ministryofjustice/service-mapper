@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140424090934) do
+ActiveRecord::Schema.define(version: 20140424093406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "system_links", force: true do |t|
+    t.integer  "system_a_id"
+    t.integer  "system_b_id"
+    t.string   "status"
+    t.string   "envelope"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "system_links", ["system_a_id"], name: "index_system_links_on_system_a_id", using: :btree
+  add_index "system_links", ["system_b_id"], name: "index_system_links_on_system_b_id", using: :btree
 
   create_table "systems", force: true do |t|
     t.string   "owner"

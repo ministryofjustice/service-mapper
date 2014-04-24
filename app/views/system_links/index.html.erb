@@ -1,0 +1,37 @@
+<h1>Listing system_links</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>System a</th>
+      <th>System b</th>
+      <th>Status</th>
+      <th>Envelope</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @system_links.each do |system_link| %>
+      <tr>
+        <td><%= system_link.system_a %></td>
+        <td><%= system_link.system_b %></td>
+        <td><%= system_link.status %></td>
+        <td><%= system_link.envelope %></td>
+        <td><%= system_link.name %></td>
+        <td><%= system_link.description %></td>
+        <td><%= link_to 'Show', system_link %></td>
+        <td><%= link_to 'Edit', edit_system_link_path(system_link) %></td>
+        <td><%= link_to 'Destroy', system_link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New System link', new_system_link_path %>

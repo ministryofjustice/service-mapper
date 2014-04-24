@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>System a:</strong>
+  <%= @system_link.system_a %>
+</p>
+
+<p>
+  <strong>System b:</strong>
+  <%= @system_link.system_b %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @system_link.status %>
+</p>
+
+<p>
+  <strong>Envelope:</strong>
+  <%= @system_link.envelope %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @system_link.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @system_link.description %>
+</p>
+
+<%= link_to 'Edit', edit_system_link_path(@system_link) %> |
+<%= link_to 'Back', system_links_path %>
