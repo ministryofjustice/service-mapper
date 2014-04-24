@@ -11,7 +11,6 @@
       <th><%= model_class.human_attribute_name(:status) %></th>
       <th><%= model_class.human_attribute_name(:owner) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -24,7 +23,6 @@
         <td><%= story.status %></td>
         <td><%= story.owner %></td>
         <td><%= story.description %></td>
-        <td><%=l story.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_story_path(story), :class => 'btn btn-mini' %>
