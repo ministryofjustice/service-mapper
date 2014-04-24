@@ -1,4 +1,6 @@
 Archipelago::Application.routes.draw do
+  resources :people
+
   resources :system_links
 
   resources :systems
