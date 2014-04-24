@@ -6,21 +6,15 @@
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :from_id, :class => 'control-label' %>
+    <%= f.label :from_str, :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :from_id, System.all.collect {|x| [x.name, x.id]} + Person.all.collect {|x| [x.role, x.id]} %>
+      <%= f.select :from_str, System.all.collect {|x| [x.name, "#{x.class.name}_#{x.id}"]} + Person.all.collect {|x| [x.role, "#{x.class.name}_#{x.id}"]} %>
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :from_type, :class => 'control-label' %>
+    <%= f.label :to_str, :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :from_type, ['Person', 'System'] %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :to_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select :to_id, System.all.collect {|x| [x.name, x.id]} + Person.all.collect {|x| [x.role, x.id]} %>
+      <%= f.select :to_str, System.all.collect {|x| [x.name, "#{x.class.name}_#{x.id}"]} + Person.all.collect {|x| [x.role, "#{x.class.name}_#{x.id}"]} %>
     </div>
   </div>
   <div class="control-group">

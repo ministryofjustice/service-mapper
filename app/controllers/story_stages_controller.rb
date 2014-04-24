@@ -69,6 +69,6 @@ class StoryStagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def story_stage_params
-      params.require(:story_stage).permit(:story_id, :from_id, :from_type, :to_id, :to_type, :payload, :description)
+      params.require(:story_stage).permit(:story_id, :from_str, :to_str, :payload, :description)
     end
 end
