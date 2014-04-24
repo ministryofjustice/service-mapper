@@ -1,0 +1,37 @@
+<h1>Listing systems</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Owner</th>
+      <th>Supplier</th>
+      <th>Technology</th>
+      <th>Status</th>
+      <th>Hosting</th>
+      <th>Impact level</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @systems.each do |system| %>
+      <tr>
+        <td><%= system.owner %></td>
+        <td><%= system.supplier %></td>
+        <td><%= system.technology %></td>
+        <td><%= system.status %></td>
+        <td><%= system.hosting %></td>
+        <td><%= system.impact_level %></td>
+        <td><%= link_to 'Show', system %></td>
+        <td><%= link_to 'Edit', edit_system_path(system) %></td>
+        <td><%= link_to 'Destroy', system, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New System', new_system_path %>

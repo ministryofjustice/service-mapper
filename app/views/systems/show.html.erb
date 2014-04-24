@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @system.owner %>
+</p>
+
+<p>
+  <strong>Supplier:</strong>
+  <%= @system.supplier %>
+</p>
+
+<p>
+  <strong>Technology:</strong>
+  <%= @system.technology %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @system.status %>
+</p>
+
+<p>
+  <strong>Hosting:</strong>
+  <%= @system.hosting %>
+</p>
+
+<p>
+  <strong>Impact level:</strong>
+  <%= @system.impact_level %>
+</p>
+
+<%= link_to 'Edit', edit_system_path(@system) %> |
+<%= link_to 'Back', systems_path %>
