@@ -1,0 +1,50 @@
+<%= form_for @story_stage, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :story_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :story_id, Story.all.collect {|x| [x.name, x.id]} %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :from_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :from_id, System.all.collect {|x| [x.name, x.id]} + Person.all.collect {|x| [x.role, x.id]} %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :from_type, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :from_type, ['Person', 'System'] %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :to_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :to_id, System.all.collect {|x| [x.name, x.id]} + Person.all.collect {|x| [x.role, x.id]} %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :to_type, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :to_type, ['Person', 'System'] %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :payload, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :payload, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :description, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                story_stages_path, :class => 'btn' %>
+  </div>
+<% end %>

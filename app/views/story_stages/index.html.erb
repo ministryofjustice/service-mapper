@@ -1,0 +1,44 @@
+<%- model_class = StoryStage -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:story_id) %></th>
+      <th><%= model_class.human_attribute_name(:from_id) %></th>
+      <th><%= model_class.human_attribute_name(:to_id) %></th>
+      <th><%= model_class.human_attribute_name(:payload) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @story_stages.each do |story_stage| %>
+      <tr>
+        <td><%= link_to story_stage.id, story_stage_path(story_stage) %></td>
+        <td><%= story_stage.story_id %></td>
+        <td><%= story_stage.from.name %></td>
+        <td><%= story_stage.to.name %></td>
+        <td><%= story_stage.payload %></td>
+        <td><%= story_stage.description %></td>
+        <td><%=l story_stage.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_story_stage_path(story_stage), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      story_stage_path(story_stage),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_story_stage_path,
+            :class => 'btn btn-primary' %>

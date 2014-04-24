@@ -1,4 +1,6 @@
 Archipelago::Application.routes.draw do
+  resources :story_stages
+
   resources :services
 
   resources :stories
