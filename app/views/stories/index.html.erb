@@ -7,6 +7,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:service) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
       <th><%= model_class.human_attribute_name(:owner) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
@@ -19,6 +20,7 @@
       <tr>
         <td><%= link_to story.id, story_path(story) %></td>
         <td><%= story.name %></td>
+        <td><%= story.service.name %></td>
         <td><%= story.status %></td>
         <td><%= story.owner %></td>
         <td><%= story.description %></td>
