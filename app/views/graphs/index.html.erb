@@ -8,12 +8,26 @@ var color = d3.scale.category20();
 
 var force = d3.layout.force()
     .charge(-120)
-    .linkDistance(30)
+    .linkDistance(100)
     .size([width, height]);
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height);
+
+svg.append("defs").selectAll("marker")
+    .data(["story_stage"])
+  .enter().append("marker")
+    .attr("id", function(d) { return d; })
+    .attr("viewBox", "0 -5 10 10")
+    .attr("refX", 15)
+    .attr("refY", -1.5)
+    .attr("markerWidth", 6)
+    .attr("markerHeight", 6)
+    .attr("orient", "auto")
+  .append("path")
+    .attr("d", "M0,-5L10,0L0,5");
+
 
 d3.json("/graphs/index.json", function(error, graph) {
   var edges = [];
@@ -24,7 +38,7 @@ d3.json("/graphs/index.json", function(error, graph) {
           targetNode = graph.nodes.filter(function(n) { return n.id === e.target; })[0];
 
       // Add the edge to the array
-      edges.push({source: sourceNode, target: targetNode});
+      edges.push({source: sourceNode, target: targetNode, type: e.type});
   });
 
   force
@@ -36,8 +50,9 @@ d3.json("/graphs/index.json", function(error, graph) {
       .data(edges)
     .enter().append("line")
       .attr("class", "link")
-      .style("stroke-width", 2)
-      .style("stroke", "green");
+      .style("stroke-width", function(d) { if(d.type == 'system_link') { return 10 } else { return 2 }; })
+      .style("stroke", function(d) { if(d.type == 'system_link') { return 'green' } else { return 'black' }; })
+      .attr("marker-end", function(d) { return "url(#" + d.type + ")"; });
 
   var node = svg.selectAll(".node")
       .data(graph.nodes)
@@ -47,7 +62,7 @@ d3.json("/graphs/index.json", function(error, graph) {
 
   node.append("circle")
       .style("fill", function(d) { if(d.type == 'system') { return 'blue' } else { return 'black' }; })
-      .attr("r", 5)
+      .attr("r", 10)
 
 
   node.append("text")
