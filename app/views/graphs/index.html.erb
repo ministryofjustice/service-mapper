@@ -46,10 +46,10 @@ d3.json("/graphs/index.json", function(error, graph) {
       .call(force.drag);
 
   node.append("circle")
-      .style("fill", function(d) { return color(d.group); })
+      .style("fill", function(d) { if(d.type == 'system') { return 'blue' } else { return 'black' }; })
       .attr("r", 5)
 
-  
+
   node.append("text")
       .attr("dx", 12)
       .attr("dy", ".35em")
