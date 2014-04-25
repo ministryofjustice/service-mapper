@@ -65,7 +65,7 @@ class StoryStagesController < ApplicationController
 
   def sort
     params[:story_stage].each_with_index do |story_stage_id, i|
-      @story.story_stages.find(story_stage_id).update_attribute(:position, i)
+      @story.story_stages.find(story_stage_id).update_attribute(:position, i+1)
     end
     render :nothing => true
   end
