@@ -8,13 +8,20 @@
   <div class="control-group">
     <%= f.label :from_str, :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :from_str, System.all.collect {|x| [x.name, "#{x.class.name}_#{x.id}"]} + Person.all.collect {|x| [x.role, "#{x.class.name}_#{x.id}"]} %>
+      <%= f.select :from_str, 
+        grouped_options_for_select(
+          "Systems" => System.alphabetical.all.collect {|x| [x.name, x.polymorphic_id]}, 
+          "People" => Person.alphabetical.all.collect {|x| [x.role, x.polymorphic_id]}
+        ) %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :to_str, :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :to_str, System.all.collect {|x| [x.name, "#{x.class.name}_#{x.id}"]} + Person.all.collect {|x| [x.role, "#{x.class.name}_#{x.id}"]} %>
+      <%= f.select :to_str, grouped_options_for_select(
+          "Systems" => System.alphabetical.all.collect {|x| [x.name, x.polymorphic_id]}, 
+          "People" => Person.alphabetical.all.collect {|x| [x.role, x.polymorphic_id]}
+        ) %>
     </div>
   </div>
   <div class="control-group">
