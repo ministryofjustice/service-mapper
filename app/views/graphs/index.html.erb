@@ -1,3 +1,9 @@
+<style type="text/css">
+.node.fixed circle{
+  stroke: red;
+}
+</style>
+
 <div class="row">
   <div class="span9">
     <div id="graph" style="border:1px solid grey"></div>
@@ -16,8 +22,8 @@ var width = 870,
 var color = d3.scale.category20();
 
 var force = d3.layout.force()
-    .charge(0)
-    .gravity(0)
+    .charge(-250)
+    .gravity(0.06)
     .linkDistance(100)
     .size([width, height]);
 
@@ -56,6 +62,9 @@ d3.json("/graphs/index.json", function(error, graph) {
       .links(edges)
       .start();
 
+  var drag = force.drag()
+      .on("dragstart", dragstart);
+
   var link = svg.selectAll(".link")
       .data(edges)
     .enter().append("line")
@@ -70,7 +79,8 @@ d3.json("/graphs/index.json", function(error, graph) {
       .data(graph.nodes)
     .enter().append("g")
       .attr("class", "node")
-      .call(force.drag);
+      .call(drag)
+      .on("dblclick", dblclick)
 
   node.append("circle")
       .style("fill", function(d) { if(d.type == 'system') { return 'blue' } else { return 'black' }; })
@@ -102,6 +112,14 @@ var update_info_panel_for_link = function(e) {
 
 var within_bounds = function(i) {
   return Math.max(circle_radius, Math.min(width - circle_radius, i))
+}
+
+function dblclick(d) {
+  d3.select(this).classed("fixed", d.fixed = false);
+}
+
+function dragstart(d) {
+  d3.select(this).classed("fixed", d.fixed = true);
 }
 
 </script>
