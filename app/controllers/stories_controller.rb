@@ -1,10 +1,11 @@
 class StoriesController < ApplicationController
+  before_action :set_service
   before_action :set_story, only: [:show, :edit, :update, :destroy]
 
   # GET /stories
   # GET /stories.json
   def index
-    @stories = Story.all
+    @stories = @service.stories.all
   end
 
   # GET /stories/1
@@ -14,7 +15,7 @@ class StoriesController < ApplicationController
 
   # GET /stories/new
   def new
-    @story = Story.new
+    @story = @service.stories.build
   end
 
   # GET /stories/1/edit
@@ -24,12 +25,12 @@ class StoriesController < ApplicationController
   # POST /stories
   # POST /stories.json
   def create
-    @story = Story.new(story_params)
+    @story = @service.stories.build(story_params)
 
     respond_to do |format|
       if @story.save
-        format.html { redirect_to @story, notice: 'Story was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @story }
+        format.html { redirect_to [@service, @story], notice: 'Story was successfully created.' }
+        format.json { render action: 'show', status: :created, location: [@service, @story] }
       else
         format.html { render action: 'new' }
         format.json { render json: @story.errors, status: :unprocessable_entity }
@@ -42,7 +43,7 @@ class StoriesController < ApplicationController
   def update
     respond_to do |format|
       if @story.update(story_params)
-        format.html { redirect_to @story, notice: 'Story was successfully updated.' }
+        format.html { redirect_to [@service, @story], notice: 'Story was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,7 +57,7 @@ class StoriesController < ApplicationController
   def destroy
     @story.destroy
     respond_to do |format|
-      format.html { redirect_to stories_url }
+      format.html { redirect_to service_stories_url(@service) }
       format.json { head :no_content }
     end
   end
@@ -64,7 +65,11 @@ class StoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_story
-      @story = Story.find(params[:id])
+      @story = @service.stories.find(params[:id])
+    end
+
+    def set_service
+      @service = Service.find(params[:service_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

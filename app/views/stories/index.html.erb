@@ -17,7 +17,7 @@
   <tbody>
     <% @stories.each do |story| %>
       <tr>
-        <td><%= link_to story.id, story_path(story) %></td>
+        <td><%= link_to story.id, service_story_path(@service, story) %></td>
         <td><%= story.name %></td>
         <td><%= story.service.name %></td>
         <td><%= story.status %></td>
@@ -25,9 +25,9 @@
         <td><%= story.description %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_story_path(story), :class => 'btn btn-mini' %>
+                      edit_service_story_path(@service, story), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      story_path(story),
+                      service_story_path(@service, story),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
@@ -38,5 +38,5 @@
 </table>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_story_path,
+            new_service_story_path(@service),
             :class => 'btn btn-primary' %>
