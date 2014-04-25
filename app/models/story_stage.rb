@@ -3,6 +3,7 @@ class StoryStage < ActiveRecord::Base
   belongs_to :from, polymorphic: true
   belongs_to :to, polymorphic: true
   acts_as_list scope: :story
+  scope :ordered, -> { order("position ASC") }
   def to_str
     "#{to_type}_#{to_id}"
   end

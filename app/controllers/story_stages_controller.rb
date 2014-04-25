@@ -6,7 +6,7 @@ class StoryStagesController < ApplicationController
   # GET /story_stages
   # GET /story_stages.json
   def index
-    @story_stages = @story.story_stages.all
+    @story_stages = @story.story_stages.ordered.all
   end
 
   # GET /story_stages/1
@@ -61,6 +61,13 @@ class StoryStagesController < ApplicationController
       format.html { redirect_to service_story_story_stages_url(@service, @story) }
       format.json { head :no_content }
     end
+  end
+
+  def sort
+    params[:story_stage].each_with_index do |story_stage_id, i|
+      @story.story_stages.find(story_stage_id).update_attribute(:position, i)
+    end
+    render :nothing => true
   end
 
   private
