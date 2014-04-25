@@ -31,6 +31,7 @@
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
+          <%= link_to "Story Stages", service_story_story_stages_path(@service, story) %>
         </td>
       </tr>
     <% end %>
