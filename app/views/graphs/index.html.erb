@@ -38,7 +38,7 @@ d3.json("/graphs/index.json", function(error, graph) {
           targetNode = graph.nodes.filter(function(n) { return n.id === e.target; })[0];
 
       // Add the edge to the array
-      edges.push({source: sourceNode, target: targetNode, type: e.type});
+      edges.push({source: sourceNode, target: targetNode, type: e.type, id: e.id});
   });
 
   force
@@ -49,10 +49,11 @@ d3.json("/graphs/index.json", function(error, graph) {
   var link = svg.selectAll(".link")
       .data(edges)
     .enter().append("line")
-      .attr("class", "link")
       .style("stroke-width", function(d) { if(d.type == 'system_link') { return 10 } else { return 2 }; })
       .style("stroke", function(d) { if(d.type == 'system_link') { return 'green' } else { return 'black' }; })
-      .attr("marker-end", function(d) { return "url(#" + d.type + ")"; });
+      .attr("marker-end", function(d) { return "url(#" + d.type + ")"; })
+      .attr("class", function(d) { return d.type })
+      .attr("id", function(d) { return d.type + "_" + d.id });
 
   var node = svg.selectAll(".node")
       .data(graph.nodes)
