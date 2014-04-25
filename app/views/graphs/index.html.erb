@@ -1,6 +1,6 @@
 <div class="row">
   <div class="span9">
-    <div id="graph"></div>
+    <div id="graph" style="border:1px solid grey"></div>
   </div>
   <div class="span3">
     <div id="info_panel"></div>
@@ -10,7 +10,8 @@
 <script>
 
 var width = 870,
-    height = 500;
+    height = 870,
+    circle_radius = 10;
 
 var color = d3.scale.category20();
 
@@ -52,6 +53,7 @@ d3.json("/graphs/index.json", function(error, graph) {
   force
       .nodes(graph.nodes)
       .links(edges)
+      .gravity(0)
       .start();
 
   var link = svg.selectAll(".link")
@@ -72,7 +74,7 @@ d3.json("/graphs/index.json", function(error, graph) {
 
   node.append("circle")
       .style("fill", function(d) { if(d.type == 'system') { return 'blue' } else { return 'black' }; })
-      .attr("r", 10)
+      .attr("r", circle_radius)
       .on("click", update_info_panel_for_node)
 
   node.append("text")
@@ -81,12 +83,12 @@ d3.json("/graphs/index.json", function(error, graph) {
       .text(function(d) { return d.name; });
 
   force.on("tick", function() {
-    link.attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
+    link.attr("x1", function(d) { return within_bounds(d.source.x); })
+        .attr("y1", function(d) { return within_bounds(d.source.y); })
+        .attr("x2", function(d) { return within_bounds(d.target.x); })
+        .attr("y2", function(d) { return within_bounds(d.target.y); });
 
-    node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+    node.attr("transform", function(d) { return "translate(" + within_bounds(d.x) + "," + within_bounds(d.y) + ")"; });
   });
 });
 
@@ -96,6 +98,10 @@ var update_info_panel_for_node = function(e) {
 
 var update_info_panel_for_link = function(e) {
   $("#info_panel").html(e.type);
+}
+
+var within_bounds = function(i) {
+  return Math.max(circle_radius, Math.min(width - circle_radius, i))
 }
 
 </script>
