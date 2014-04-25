@@ -9,19 +9,19 @@
     <%= f.label :from_str, :class => 'control-label' %>
     <div class="controls">
       <%= f.select :from_str, 
-        grouped_options_for_select(
+        grouped_options_for_select({
           "Systems" => System.alphabetical.all.collect {|x| [x.name, x.polymorphic_id]}, 
           "People" => Person.alphabetical.all.collect {|x| [x.role, x.polymorphic_id]}
-        ) %>
+        }, @story_stage.from_str) %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :to_str, :class => 'control-label' %>
     <div class="controls">
-      <%= f.select :to_str, grouped_options_for_select(
+      <%= f.select :to_str, grouped_options_for_select({
           "Systems" => System.alphabetical.all.collect {|x| [x.name, x.polymorphic_id]}, 
           "People" => Person.alphabetical.all.collect {|x| [x.role, x.polymorphic_id]}
-        ) %>
+        }, @story_stage.to_str) %>
     </div>
   </div>
   <div class="control-group">
