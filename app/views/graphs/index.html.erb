@@ -1,7 +1,15 @@
+<div class="row">
+  <div class="span9">
+    <div id="graph"></div>
+  </div>
+  <div class="span3">
+    <div id="info_panel"></div>
+  </div>
+</div>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
-var width = 960,
+var width = 870,
     height = 500;
 
 var color = d3.scale.category20();
@@ -11,7 +19,7 @@ var force = d3.layout.force()
     .linkDistance(100)
     .size([width, height]);
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#graph").append("svg")
     .attr("width", width)
     .attr("height", height);
 
@@ -38,7 +46,7 @@ d3.json("/graphs/index.json", function(error, graph) {
           targetNode = graph.nodes.filter(function(n) { return n.id === e.target; })[0];
 
       // Add the edge to the array
-      edges.push({source: sourceNode, target: targetNode, type: e.type, id: e.id});
+      edges.push({source: sourceNode, target: targetNode, type: e.type, id: e.id, url: e.url});
   });
 
   force
@@ -53,7 +61,8 @@ d3.json("/graphs/index.json", function(error, graph) {
       .style("stroke", function(d) { if(d.type == 'system_link') { return 'green' } else { return 'black' }; })
       .attr("marker-end", function(d) { return "url(#" + d.type + ")"; })
       .attr("class", function(d) { return d.type })
-      .attr("id", function(d) { return d.type + "_" + d.id });
+      .attr("id", function(d) { return d.type + "_" + d.id })
+      .on("click", update_info_panel_for_link)
 
   var node = svg.selectAll(".node")
       .data(graph.nodes)
@@ -64,7 +73,7 @@ d3.json("/graphs/index.json", function(error, graph) {
   node.append("circle")
       .style("fill", function(d) { if(d.type == 'system') { return 'blue' } else { return 'black' }; })
       .attr("r", 10)
-
+      .on("click", update_info_panel_for_node)
 
   node.append("text")
       .attr("dx", 12)
@@ -80,5 +89,13 @@ d3.json("/graphs/index.json", function(error, graph) {
     node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
   });
 });
+
+var update_info_panel_for_node = function(e) {
+  $("#info_panel").html('<a href="' + e.url + '">' + e.name + '</a>');
+}
+
+var update_info_panel_for_link = function(e) {
+  $("#info_panel").html(e.type);
+}
 
 </script>
