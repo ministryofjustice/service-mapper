@@ -2,9 +2,9 @@ Archipelago::Application.routes.draw do
 
   resources :services do
     resources :stories do
+      resources :story_stages
     end
   end
-  resources :story_stages
 
   resources :people
 

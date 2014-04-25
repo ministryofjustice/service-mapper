@@ -22,11 +22,11 @@
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              story_stages_path, :class => 'btn'  %>
+              service_story_story_stages_path(@service, @story), :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_story_stage_path(@story_stage), :class => 'btn' %>
+              edit_service_story_story_stage_path(@service, @story, @story_stage), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              story_stage_path(@story_stage),
+              service_story_story_stage_path(@service, @story, @story_stage),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
