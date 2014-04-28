@@ -16,4 +16,7 @@ class StoryStage < ActiveRecord::Base
   def from_str=(val)
     self.from_type, self.from_id = val.split("_")
   end
+  def graph_json
+    {:source => "#{self.from_type}_#{self.from_id}", :target => "#{self.to_type}_#{self.to_id}", :type => 'story_stage', :id => self.id}
+  end
 end

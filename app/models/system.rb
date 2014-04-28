@@ -8,4 +8,8 @@ class System < ActiveRecord::Base
   def polymorphic_id
     "#{self.class.name}_#{self.id}"
   end
+
+  def graph_json
+    {:id => "System_#{self.id}", :name => self.name, :type => 'system', :url => Rails.application.routes.url_helpers.system_path(self)}
+  end
 end

@@ -3,15 +3,26 @@ class GraphsController < ApplicationController
     respond_to do |format|
       format.html
       format.json do 
-        render :json => {
-          :nodes => 
-            System.all.collect {|x| {:id => "System_#{x.id}", :name => x.name, :type => 'system', :url => system_path(x)}} +
-            Person.all.collect {|x| {:id => "Person_#{x.id}", :name => x.role, :type => 'person', :url => person_path(x)}},
-          :links => 
-            SystemLink.all.collect {|x| {:source => "System_#{x.system_a.id}", :target => "System_#{x.system_b.id}", :type => 'system_link', :id => x.id}} +
-            StoryStage.all.collect {|x| {:source => "#{x.from_type}_#{x.from_id}", :target => "#{x.to_type}_#{x.to_id}", :type => 'story_stage', :id => x.id}}
-        }
+        render :json => { :nodes => nodes.collect(&:graph_json), :links => links.collect(&:graph_json) }
       end
+    end
+  end
+
+  private
+
+  def nodes
+    if params[:story_id]
+      Story.find(params[:story_id]).nodes
+    else
+      System.all + Person.all
+    end
+  end
+
+  def links
+    if params[:story_id]
+      Story.find(params[:story_id]).story_stages.all
+    else
+      SystemLink.all + StoryStage.all
     end
   end
 end
