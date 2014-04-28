@@ -9,6 +9,14 @@ class System < ActiveRecord::Base
     "#{self.class.name}_#{self.id}"
   end
 
+  def story_stages
+    (story_stage_entries + story_stage_exits).uniq
+  end
+
+  def stories
+    story_stages.collect(&:story).uniq
+  end
+
   def graph_json
     {:id => "System_#{self.id}", :name => self.name, :type => 'system', :url => Rails.application.routes.url_helpers.system_path(self)}
   end

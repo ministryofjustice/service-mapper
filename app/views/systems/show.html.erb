@@ -18,6 +18,14 @@
   <dd><%= @system.impact_level %></dd>
 </dl>
 
+<p>Involved in these stories:</p>
+
+<ul>
+  <% @system.stories.each do |story| %>
+    <li><%= link_to story.name, root_path(:story_id => story.id) %></li>
+  <% end %>
+</ul>
+
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               systems_path, :class => 'btn'  %>
