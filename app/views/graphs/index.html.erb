@@ -26,7 +26,7 @@
 <script>
 
 var width = 870,
-    height = 870,
+    height = 600,
     circle_radius = 10;
 
 var color = d3.scale.category20();
@@ -104,12 +104,12 @@ d3.json("/graphs/index.json" + window.location.search, function(error, graph) {
       .text(function(d) { return d.name; });
 
   force.on("tick", function() {
-    link.attr("x1", function(d) { return within_bounds(d.source.x); })
-        .attr("y1", function(d) { return within_bounds(d.source.y); })
-        .attr("x2", function(d) { return within_bounds(d.target.x); })
-        .attr("y2", function(d) { return within_bounds(d.target.y); });
+    link.attr("x1", function(d) { return within_bounds(d.source.x, width); })
+        .attr("y1", function(d) { return within_bounds(d.source.y, height); })
+        .attr("x2", function(d) { return within_bounds(d.target.x, width); })
+        .attr("y2", function(d) { return within_bounds(d.target.y, height); });
 
-    node.attr("transform", function(d) { return "translate(" + within_bounds(d.x) + "," + within_bounds(d.y) + ")"; });
+    node.attr("transform", function(d) { return "translate(" + within_bounds(d.x, width) + "," + within_bounds(d.y, height) + ")"; });
   });
 });
 
@@ -129,8 +129,8 @@ var update_info_panel_for_link = function(e) {
   $("#info_panel").html(e.type);
 }
 
-var within_bounds = function(i) {
-  return Math.max(circle_radius, Math.min(width - circle_radius, i))
+var within_bounds = function(i, within) {
+  return Math.max(circle_radius, Math.min(within - circle_radius, i))
 }
 
 function dblclick(d) {
