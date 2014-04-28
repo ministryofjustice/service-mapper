@@ -12,6 +12,7 @@
     <p><input type="checkbox" id="hide_stories" /> Hide story stages</p>
     <% if @story %>
       <div id="story_panel">
+        <p><%= @story.name %></p>
         <ol>
           <% @story.story_stages.ordered.each do |story_stage| %>
             <li id="story_stage_<%= story_stage.id %>_desc" class="story_stage_desc"><%= story_stage.description %></li>
