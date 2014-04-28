@@ -9,6 +9,15 @@
     <div id="graph" style="border:1px solid grey"></div>
   </div>
   <div class="span3">
+    <% if @story %>
+      <div id="story_panel">
+        <ol>
+          <% @story.story_stages.ordered.each do |story_stage| %>
+            <li id="story_stage_<%= story_stage.id %>_desc" class="story_stage_desc"><%= story_stage.description %></li>
+          <% end %>
+        </ol>
+      </div>
+    <% end %>
     <div id="info_panel"></div>
   </div>
 </div>
@@ -32,7 +41,7 @@ var svg = d3.select("#graph").append("svg")
     .attr("height", height);
 
 svg.append("defs").selectAll("marker")
-    .data(["story_stage"])
+    .data(["story_stage", "story_stage_hilighted"])
   .enter().append("marker")
     .attr("id", function(d) { return d; })
     .attr("viewBox", "0 -5 10 10")
@@ -42,7 +51,8 @@ svg.append("defs").selectAll("marker")
     .attr("markerHeight", 6)
     .attr("orient", "auto")
   .append("path")
-    .attr("d", "M0,-5L10,0L0,5");
+    .attr("d", "M0,-5L10,0L0,5")
+    .style("fill", function(d) { if(d == 'story_stage') { return "black" } else { return "red" }; });
 
 
 d3.json("/graphs/index.json" + window.location.search, function(error, graph) {
@@ -122,4 +132,17 @@ function dragstart(d) {
   d3.select(this).classed("fixed", d.fixed = true);
 }
 
+$(".story_stage_desc").hover(function(e) {
+  var arrow_id = $(e.target).attr("id").replace("_desc", "")
+  var el = $("#" + arrow_id)
+  if(e.type == "mouseleave") {
+    el.css("stroke", "black")
+    el.attr("marker-end", "url(#story_stage)")
+  } else {
+    var last_line = el.parent().find("line:last")
+    el.insertAfter(last_line)
+    el.css("stroke", "red")
+    el.attr("marker-end", "url(#story_stage_hilighted)")
+  }
+})
 </script>

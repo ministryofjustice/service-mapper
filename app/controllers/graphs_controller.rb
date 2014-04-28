@@ -1,5 +1,6 @@
 class GraphsController < ApplicationController
   def index
+    @story = Story.find(params[:story_id]) if params[:story_id]
     respond_to do |format|
       format.html
       format.json do 
