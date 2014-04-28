@@ -10,6 +10,7 @@ class PeopleController < ApplicationController
   # GET /people/1
   # GET /people/1.json
   def show
+    render :layout => !request.xhr?
   end
 
   # GET /people/new

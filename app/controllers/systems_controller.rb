@@ -10,7 +10,8 @@ class SystemsController < ApplicationController
   # GET /systems/1
   # GET /systems/1.json
   def show
-  end
+    render :layout => !request.xhr?
+ end
 
   # GET /systems/new
   def new

@@ -113,7 +113,15 @@ d3.json("/graphs/index.json" + window.location.search, function(error, graph) {
 });
 
 var update_info_panel_for_node = function(e) {
-  $("#info_panel").html('<a href="' + e.url + '">' + e.name + '</a>');
+  $.ajax({
+    url: e.url,
+    error: function(xhr_data) {
+      $("#info_panel").html("ERROR")
+    },
+    success: function(response) {
+      $("#info_panel").html(response);
+    }
+  });
 }
 
 var update_info_panel_for_link = function(e) {
