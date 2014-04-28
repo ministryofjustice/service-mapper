@@ -9,6 +9,7 @@
     <div id="graph" style="border:1px solid grey"></div>
   </div>
   <div class="span3">
+    <p><input type="checkbox" id="hide_stories" /> Hide story stages</p>
     <% if @story %>
       <div id="story_panel">
         <ol>
@@ -146,11 +147,25 @@ $(".story_stage_desc").hover(function(e) {
   if(e.type == "mouseleave") {
     el.css("stroke", "black")
     el.attr("marker-end", "url(#story_stage)")
+    if($("#hide_stories").is(':checked')) {
+      el.hide()
+    }
   } else {
     var last_line = el.parent().find("line:last")
     el.insertAfter(last_line)
     el.css("stroke", "red")
     el.attr("marker-end", "url(#story_stage_hilighted)")
+    if($("#hide_stories").is(':checked')) {
+      el.show()
+    }
+  }
+})
+
+$("#hide_stories").on("change", function(e) {
+  if($("#hide_stories").is(':checked')) {
+    $(".story_stage").hide();
+  } else {
+    $(".story_stage").show();
   }
 })
 </script>
