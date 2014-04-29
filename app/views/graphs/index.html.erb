@@ -1,15 +1,59 @@
 <style type="text/css">
+#graph {
+  border:1px solid #777;
+}
+
+#story_panel li {
+  padding:1px 0;
+}
+
+#story_panel li:hover {
+  padding:0 0;
+  background-color:#eee;
+  border:1px solid #f77;
+  border-left: none;
+  border-right:none;
+  cursor: default;
+}
+
 .node.fixed circle{
   stroke: red;
+}
+
+marker#story_stage {
+  fill: black;
+}
+
+marker#story_stage_hilighted {
+  fill: red;
+}
+
+line.story_stage {
+  stroke-width: 2px;
+  stroke: black;
+}
+
+line.system_link {
+  stroke-width: 10px;
+  stroke: green;
+}
+
+.system circle {
+  fill: blue;
+}
+
+.person circle {
+  fill: black;
 }
 </style>
 
 <div class="row">
   <div class="span9">
-    <div id="graph" style="border:1px solid grey"></div>
+    <div id="graph"></div>
   </div>
-  <div class="span3">
+  <div class="span3" id="sidebar">
     <p><input type="checkbox" id="hide_stories" /> Hide story stages</p>
+    <hr />
     <% if @story %>
       <div id="story_panel">
         <p><%= @story.name %></p>
@@ -19,6 +63,7 @@
           <% end %>
         </ol>
       </div>
+      <hr />
     <% end %>
     <div id="info_panel"></div>
   </div>
@@ -54,7 +99,6 @@ svg.append("defs").selectAll("marker")
     .attr("orient", "auto")
   .append("path")
     .attr("d", "M0,-5L10,0L0,5")
-    .style("fill", function(d) { if(d == 'story_stage') { return "black" } else { return "red" }; });
 
 
 d3.json("/graphs/index.json" + window.location.search, function(error, graph) {
@@ -80,8 +124,6 @@ d3.json("/graphs/index.json" + window.location.search, function(error, graph) {
   var link = svg.selectAll(".link")
       .data(edges)
     .enter().append("line")
-      .style("stroke-width", function(d) { if(d.type == 'system_link') { return 10 } else { return 2 }; })
-      .style("stroke", function(d) { if(d.type == 'system_link') { return 'green' } else { return 'black' }; })
       .attr("marker-end", function(d) { return "url(#" + d.type + ")"; })
       .attr("class", function(d) { return d.type })
       .attr("id", function(d) { return d.type + "_" + d.id })
@@ -90,12 +132,11 @@ d3.json("/graphs/index.json" + window.location.search, function(error, graph) {
   var node = svg.selectAll(".node")
       .data(graph.nodes)
     .enter().append("g")
-      .attr("class", "node")
+      .attr("class", function(d) { return d.type + " node" })
       .call(drag)
       .on("dblclick", dblclick)
 
   node.append("circle")
-      .style("fill", function(d) { if(d.type == 'system') { return 'blue' } else { return 'black' }; })
       .attr("r", circle_radius)
       .on("click", update_info_panel_for_node)
 
