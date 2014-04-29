@@ -53,18 +53,24 @@ line.system_link {
   </div>
   <div class="span3" id="sidebar">
     <p><input type="checkbox" id="hide_stories" /> Hide story stages</p>
-    <hr />
+    <p>Currently showing story: <select id="story_select"><%= 
+        grouped_options_for_select(
+          [["All", ["All"]]] + Service.all.collect { |service|
+            [service.name, service.stories.collect { |story| [story.name, story.id] } ]
+          }, params[:story_id]
+        ) %>
+      </select>
+    </p>
     <% if @story %>
       <div id="story_panel">
-        <p><%= @story.name %></p>
         <ol>
           <% @story.story_stages.ordered.each do |story_stage| %>
             <li id="story_stage_<%= story_stage.id %>_desc" class="story_stage_desc"><%= story_stage.description %></li>
           <% end %>
         </ol>
       </div>
-      <hr />
     <% end %>
+    <hr />
     <div id="info_panel"></div>
   </div>
 </div>
@@ -209,5 +215,13 @@ $("#hide_stories").on("change", function(e) {
   } else {
     $(".story_stage").show();
   }
+})
+
+$("#story_select").on("change", function(e) {
+  new_location = window.location.origin
+  if($("#story_select").val() != "All") {
+    new_location = new_location + "?story_id=" + $("#story_select").val()
+  }
+  window.location = new_location
 })
 </script>
