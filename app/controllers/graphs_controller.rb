@@ -21,7 +21,7 @@ class GraphsController < ApplicationController
 
   def links
     if params[:story_id]
-      Story.find(params[:story_id]).story_stages.all
+      Story.find(params[:story_id]).system_links + Story.find(params[:story_id]).story_stages.all
     else
       SystemLink.all + StoryStage.all
     end
