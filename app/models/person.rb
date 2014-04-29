@@ -1,5 +1,6 @@
 class Person < ActiveRecord::Base
   include GraphNode
+  scope :alphabetical, order("role ASC")
   def name
     role
   end
