@@ -159,7 +159,7 @@ d3.json("/graphs/index.json" + window.location.search, function(error, graph) {
       .attr("marker-end", function(d) { return "url(#" + d.type + ")"; })
       .attr("class", function(d) { return d.type })
       .attr("id", function(d) { return d.type + "_" + d.id })
-      .on("click", update_info_panel_for_link)
+      .on("click", update_info_panel)
 
   var node = svg.selectAll(".node")
       .data(graph.nodes)
@@ -170,7 +170,7 @@ d3.json("/graphs/index.json" + window.location.search, function(error, graph) {
 
   node.append("circle")
       .attr("r", circle_radius)
-      .on("click", update_info_panel_for_node)
+      .on("click", update_info_panel)
 
   node.append("text")
       .attr("dx", 12)
@@ -187,7 +187,7 @@ d3.json("/graphs/index.json" + window.location.search, function(error, graph) {
   });
 });
 
-var update_info_panel_for_node = function(e) {
+var update_info_panel = function(e) {
   $.ajax({
     url: e.url,
     error: function(xhr_data) {
@@ -197,10 +197,6 @@ var update_info_panel_for_node = function(e) {
       $("#info_panel").html(response);
     }
   });
-}
-
-var update_info_panel_for_link = function(e) {
-  $("#info_panel").html(e.type);
 }
 
 var within_bounds = function(i, within) {

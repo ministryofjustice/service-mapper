@@ -10,6 +10,9 @@ class SystemLinksController < ApplicationController
   # GET /system_links/1
   # GET /system_links/1.json
   def show
+    if request.xhr?
+      render :layout => false, :template => 'system_links/info_panel'
+    end
   end
 
   # GET /system_links/new

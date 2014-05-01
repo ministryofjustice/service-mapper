@@ -1,0 +1,31 @@
+<h2>
+  <%= link_to @system_link.name, system_link_path(@system_link) %>
+</h2>
+
+<div class="info_panel_contents">
+  <div class="attributes">
+    <% [:status, :envelope, :description].each do |attribute| %>
+      <% if @system_link.send(attribute).present? %>
+        <p><strong><%= system_link.human_attribute_name(attribute) %>:</strong> <%= @system_link.send(attribute) %></p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <p><strong>Involved in these stories:</strong></p>
+
+  <ul>
+    <% @system_link.story_stages.group_by(&:story).each do |story, story_stages| %>
+      <li><%= link_to story.name, service_story_path(story.service, story) %></li>
+      <ul>
+        <% story_stages.each do |story_stage| %>
+          <li><%= link_to story_stage.description, service_story_story_stage_path(story_stage.story.service, story_stage.story, story_stage) %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </ul>
+</div>
+
+<div class="actions">
+  <%= link_to "Show more", system_link_path(@system_link) %> |
+  <%= link_to "Edit", edit_system_link_path(@system_link) %>
+</div>
