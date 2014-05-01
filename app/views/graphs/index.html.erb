@@ -164,7 +164,13 @@ d3.json("/graphs/index.json" + window.location.search, function(error, graph) {
   var node = svg.selectAll(".node")
       .data(graph.nodes)
     .enter().append("g")
-      .attr("class", function(d) { return d.type + " node" })
+      .attr("class", function(d) { 
+        var class_name = d.type + " node"
+        if(d.type == "person") {
+          class_name += " " + d.role
+        }
+        return class_name 
+      })
       .call(drag)
       .on("dblclick", dblclick)
 
