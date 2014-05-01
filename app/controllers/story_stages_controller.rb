@@ -12,6 +12,9 @@ class StoryStagesController < ApplicationController
   # GET /story_stages/1
   # GET /story_stages/1.json
   def show
+    if request.xhr?
+      render :layout => false, :template => 'story_stages/info_panel'
+    end
   end
 
   # GET /story_stages/new
