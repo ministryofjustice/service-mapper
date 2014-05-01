@@ -4,7 +4,7 @@
 
 <div class="info_panel_contents">
   <div class="attributes">
-    <% [:role, :name, :description].each do |attribute| %>
+    <% [:role, :name, :description, :location].each do |attribute| %>
       <% if @person.send(attribute).present? %>
         <p><strong><%= Person.human_attribute_name(attribute) %>:</strong> <%= @person.send(attribute) %></p>
       <% end %>
