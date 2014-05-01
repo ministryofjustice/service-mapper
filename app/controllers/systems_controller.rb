@@ -72,6 +72,6 @@ class SystemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def system_params
-      params.require(:system).permit(:owner, :supplier, :technology, :status, :hosting, :impact_level, :name, :description, :contract_id)
+      params.require(:system).permit(:owner, :owner_email, :supplier, :technology, :status, :hosting, :impact_level, :name, :description, :contract_id)
     end
 end
