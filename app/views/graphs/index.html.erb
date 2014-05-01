@@ -16,6 +16,33 @@
   cursor: default;
 }
 
+#info_panel {
+  border:1px solid #777;
+  margin-bottom: 1em;
+}
+
+#info_panel h2, #info_panel .actions {
+  background-color: #777;
+  margin:0 0 10px;
+  padding: 5px;
+  font-size:1.2em;
+  line-height: normal;
+}
+
+#info_panel .actions {
+  margin: 0;
+  font-size:1em;
+  text-align:right;
+}
+
+#info_panel h2 a, #info_panel .actions a {
+  color:#fff;  
+}
+
+.info_panel_contents {
+  margin: 5px;
+}
+
 .node.fixed circle{
   stroke: red;
 }
@@ -52,6 +79,7 @@ line.system_link {
     <div id="graph"></div>
   </div>
   <div class="span3" id="sidebar">
+    <div id="info_panel"></div>
     <p><input type="checkbox" id="hide_stories" /> Hide story stages</p>
     <p>Currently showing story: <select id="story_select"><%= 
         grouped_options_for_select(
@@ -70,8 +98,6 @@ line.system_link {
         </ol>
       </div>
     <% end %>
-    <hr />
-    <div id="info_panel"></div>
   </div>
 </div>
 <script src="/assets/d3.min.js"></script>

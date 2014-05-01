@@ -10,7 +10,9 @@ class SystemsController < ApplicationController
   # GET /systems/1
   # GET /systems/1.json
   def show
-    render :layout => !request.xhr?
+    if request.xhr?
+      render :layout => false, :template => 'systems/info_panel'
+    end
  end
 
   # GET /systems/new
