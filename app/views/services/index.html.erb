@@ -11,6 +11,7 @@
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
       <th><%= model_class.human_attribute_name(:owner) %></th>
+      <th><%= model_class.human_attribute_name(:owner_email) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -22,6 +23,7 @@
         <td><%= service.name %></td>
         <td><%= service.status %></td>
         <td><%= service.owner %></td>
+        <td><%= service.owner_email %></td>
         <td><%= service.description %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
