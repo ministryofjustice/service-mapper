@@ -1,0 +1,37 @@
+<%- model_class = Contract -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:annual_cost) %>:</strong></dt>
+  <dd><%= @contract.annual_cost %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @contract.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:start_date) %>:</strong></dt>
+  <dd><%= @contract.start_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:expiry_date) %>:</strong></dt>
+  <dd><%= @contract.expiry_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:renewable) %>:</strong></dt>
+  <dd><%= @contract.renewable %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:supplier) %>:</strong></dt>
+  <dd><%= @contract.supplier %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:owner) %>:</strong></dt>
+  <dd><%= @contract.owner %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:owner_email) %>:</strong></dt>
+  <dd><%= @contract.owner_email %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:desc) %>:</strong></dt>
+  <dd><%= @contract.desc %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              contracts_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_contract_path(@contract), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              contract_path(@contract),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
