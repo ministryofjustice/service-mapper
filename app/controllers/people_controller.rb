@@ -10,7 +10,9 @@ class PeopleController < ApplicationController
   # GET /people/1
   # GET /people/1.json
   def show
-    render :layout => !request.xhr?
+    if request.xhr?
+      render :layout => false, :template => 'people/info_panel'
+    end
   end
 
   # GET /people/new

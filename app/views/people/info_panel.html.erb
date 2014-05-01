@@ -1,0 +1,26 @@
+<h2>
+  <%= link_to @person.name, person_path(@person) %>
+</h2>
+
+<div class="info_panel_contents">
+  <div class="attributes">
+    <% [:role, :description].each do |attribute| %>
+      <% if @person.send(attribute).present? %>
+        <p><strong><%= Person.human_attribute_name(attribute) %>:</strong> <%= @person.send(attribute) %></p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <p><strong>Involved in these stories:</strong></p>
+
+  <ul>
+    <% @person.stories.each do |story| %>
+      <li><%= link_to story.name, root_path(:story_id => story.id) %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="actions">
+  <%= link_to "Show more", person_path(@person) %> |
+  <%= link_to "Edit", edit_person_path(@person) %>
+</div>
