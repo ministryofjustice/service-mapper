@@ -1,6 +1,7 @@
 class System < ActiveRecord::Base
   include GraphNode
   has_many :system_links
+  belongs_to :contract
   scope :alphabetical, order("name ASC")
 
   def graph_json

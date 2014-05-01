@@ -16,6 +16,14 @@
   <dd><%= @system.hosting %></dd>
   <dt><strong><%= model_class.human_attribute_name(:impact_level) %>:</strong></dt>
   <dd><%= @system.impact_level %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:contract) %>:</strong></dt>
+  <dd>
+    <% if @system.contract %>
+      <%= link_to @system.contract.name, contract_path(@system.contract) %>
+    <% else %>
+      None
+    <% end %>
+  </dd>
 </dl>
 
 <p>Involved in these stories:</p>

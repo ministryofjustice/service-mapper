@@ -47,6 +47,12 @@
       <%= f.text_area :description, :class => 'text_field' %>
     </div>
   </div>
+  <div class="control-group">
+    <%= f.label :contract_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :contract_id, Contract.all.collect {|x| [x.name, x.id]}, :include_blank => "None", :class => 'text_field' %>
+    </div>
+  </div>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

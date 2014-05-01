@@ -9,6 +9,9 @@
         <p><strong><%= System.human_attribute_name(attribute) %>:</strong> <%= @system.send(attribute) %></p>
       <% end %>
     <% end %>
+    <% if @system.contract %>
+      <p><strong>Contract:</strong> <%= link_to @system.contract.name, contract_path(@system.contract) %></p>
+    <% end %>
   </div>
 
   <p><strong>Involved in these stories:</strong></p>
