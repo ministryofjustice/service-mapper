@@ -42,7 +42,7 @@
   margin: 5px;
 }
 
-.node.fixed circle{
+.node.fixed circle.node_circle{
   stroke: red;
 }
 
@@ -78,4 +78,8 @@ line.system_link {
 
 .Profesional circle {
   fill: yellow;
+}
+
+circle.current_node {
+  fill: gray;
 }

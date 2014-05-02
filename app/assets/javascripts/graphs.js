@@ -67,12 +67,19 @@ $(function() {
           }
           return class_name 
         })
+        .attr("id", function(d) { return d.id })
         .call(drag)
         .on("dblclick", dblclick)
 
     node.append("circle")
         .attr("r", circle_radius)
         .on("click", update_info_panel)
+        .attr("class", "node_circle")
+
+    node.append("circle")
+        .attr("r", circle_radius/2)
+        .attr("class", "current_node")
+        .style("display", "none")
 
     node.append("text")
         .attr("dx", 12)
@@ -90,6 +97,8 @@ $(function() {
   });
 
   var update_info_panel = function(e) {
+    $(".current_node").hide();
+    $("#" + e.id + " .current_node").show();
     $.ajax({
       url: e.url,
       error: function(xhr_data) {
