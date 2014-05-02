@@ -6,7 +6,7 @@
   <div class="attributes">
     <% [:status, :envelope, :description].each do |attribute| %>
       <% if @system_link.send(attribute).present? %>
-        <p><strong><%= system_link.human_attribute_name(attribute) %>:</strong> <%= @system_link.send(attribute) %></p>
+        <p><strong><%= SystemLink.human_attribute_name(attribute) %>:</strong> <%= @system_link.send(attribute) %></p>
       <% end %>
     <% end %>
   </div>
