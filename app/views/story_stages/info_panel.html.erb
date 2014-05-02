@@ -4,7 +4,7 @@
 
 <div class="info_panel_contents">
   <div class="attributes">
-    <% [:payload].each do |attribute| %>
+    <% [:payload, :average_time].each do |attribute| %>
       <% if @story_stage.send(attribute).present? %>
         <p><strong><%= StoryStage.human_attribute_name(attribute) %>:</strong> <%= @story_stage.send(attribute) %></p>
       <% end %>
