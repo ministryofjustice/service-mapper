@@ -4,4 +4,22 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :authenticate_user!
+  before_action :authenticate_verified_user!
+  before_action :authenticate_admin!, except: [:show, :index]
+
+  private
+
+  def authenticate_verified_user!
+    unless ["editor", "verified"].include?(current_user.role)
+      render :text => "Your account has not been verified yet"
+      return false
+    end
+  end
+
+  def authenticate_admin!
+    unless current_user.role == "editor"
+      render :text => "You can only access this page if you are an admin"
+      return false
+    end
+  end
 end
