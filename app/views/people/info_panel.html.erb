@@ -18,6 +18,7 @@
       <li><%= link_to story.name, root_path(:story_id => story.id) %></li>
     <% end %>
   </ul>
+  <%= render :partial => '/comments/comments', :locals => {:item => @person} %>
 </div>
 
 <div class="actions">
