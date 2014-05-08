@@ -12,6 +12,7 @@
       <th><%= model_class.human_attribute_name(:status) %></th>
       <th><%= model_class.human_attribute_name(:owner) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:replaces_story) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -24,6 +25,11 @@
         <td><%= story.status %></td>
         <td><%= story.owner %></td>
         <td><%= story.description %></td>
+        <td>
+          <% if story.replaces_story %>
+            <%= link_to story.replaces_story.name, service_story_path(story.replaces_story.service, story.replaces_story) %>
+          <% end %>
+        </td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_service_story_path(@service, story), :class => 'btn btn-mini' %>

@@ -13,6 +13,12 @@
   <dd><%= @story.owner %></dd>
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @story.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:replaces_story) %>:</strong></dt>
+  <dd>
+    <% if @story.replaces_story %>
+      <%= link_to @story.replaces_story.name, service_story_path(@story.replaces_story.service, @story.replaces_story) %>
+    <% end %>
+  </dd>
 </dl>
 
 <div class="form-actions">

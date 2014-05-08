@@ -23,6 +23,12 @@
       <%= f.text_field :description, :class => 'text_field' %>
     </div>
   </div>
+  <div class="control-group">
+    <%= f.label :replaces_story_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :replaces_story_id, Story.all.collect{|x| [x.name, x.id]}, :include_blank => "None", :class => 'text_field' %>
+    </div>
+  </div>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
