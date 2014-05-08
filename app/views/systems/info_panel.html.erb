@@ -4,7 +4,7 @@
 
 <div class="info_panel_contents">
   <div class="attributes">
-    <% [:owner, :owner_email, :supplier, :technology, :status, :hosting, :impact_level].each do |attribute| %>
+    <% [:owner, :owner_email, :supplier, :technology, :status, :hosting, :impact_level, :network].each do |attribute| %>
       <% if @system.send(attribute).present? %>
         <p><strong><%= System.human_attribute_name(attribute) %>:</strong> <%= @system.send(attribute) %></p>
       <% end %>

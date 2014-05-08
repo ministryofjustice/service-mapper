@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140508105341) do
+ActiveRecord::Schema.define(version: 20140508110437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 20140508105341) do
     t.text     "description"
     t.integer  "contract_id"
     t.string   "owner_email"
+    t.string   "network"
   end
 
   add_index "systems", ["contract_id"], name: "index_systems_on_contract_id", using: :btree
