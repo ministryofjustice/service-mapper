@@ -5,25 +5,39 @@
   <div class="span3" id="sidebar">
     <div id="info_panel"></div>
     <p><input type="checkbox" id="hide_stories" /> Hide story stages</p>
-    <p>Currently showing story: <select id="story_select"><%= 
-        grouped_options_for_select(
-          [["All", ["All"]]] + Service.all.collect { |service|
-            [service.name, service.stories.collect { |story| [story.name, story.id] } ]
-          }, params[:story_id]
-        ) %>
-      </select>
-    </p>
-    <% if @story %>
-      <div id="story_panel">
-        <% if @story.replaces_story %>
-          <p>Replaces <%= link_to @story.replaces_story.name, service_story_path(@story.replaces_story.service, @story.replaces_story) %></p>
+    <div class="story_select">
+      <p>
+        <strong>Currently showing stories</strong>:
+        <% if @stories.blank? %>
+          All.
+        <% else %>
+          <%= @stories.collect(&:name).to_sentence %>.
         <% end %>
-       <ol>
-          <% @story.story_stages.ordered.each do |story_stage| %>
-            <li id="story_stage_<%= story_stage.id %>_desc" class="story_stage_desc"><%= story_stage.description %></li>
+        <a href="#" class="change_stories">Change</a>
+      </p>
+      <%= form_tag root_path, :method => :get do %>
+        <% Service.all.each do |service| %>
+          <p><%= service.name %></p>
+          <% service.stories.each do |story| %>
+            <p><%= check_box_tag 'story_ids[]', story.id, (@stories && @stories.include?(story)) %><%= story.name %></p>
           <% end %>
-        </ol>
-      </div>
+        <% end %>
+        <%= submit_tag "Update graph", :name => nil %>
+      <% end %>
+    </div>
+    <% if @stories %>
+      <% @stories.each do |story| %>
+        <div id="story_panel">
+          <% if story.replaces_story %>
+            <p>Replaces <%= link_to story.replaces_story.name, service_story_path(story.replaces_story.service, story.replaces_story) %></p>
+          <% end %>
+         <ol>
+            <% story.story_stages.ordered.each do |story_stage| %>
+              <li id="story_stage_<%= story_stage.id %>_desc" class="story_stage_desc"><%= story_stage.description %></li>
+            <% end %>
+          </ol>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

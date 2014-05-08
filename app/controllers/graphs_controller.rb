@@ -1,6 +1,6 @@
 class GraphsController < ApplicationController  
   def index
-    @story = Story.find(params[:story_id]) if params[:story_id]
+    @stories = Story.find(params[:story_ids]) if params[:story_ids]
     respond_to do |format|
       format.html
       format.json do 
@@ -12,16 +12,25 @@ class GraphsController < ApplicationController
   private
 
   def nodes
-    if params[:story_id]
-      Story.find(params[:story_id]).nodes
+    if @stories
+      nodes = []
+      @stories.each do |story|
+        nodes += story.nodes
+      end
+      nodes.uniq
     else
       System.all + Person.all
     end
   end
 
   def links
-    if params[:story_id]
-      Story.find(params[:story_id]).system_links + Story.find(params[:story_id]).story_stages.all
+    if @stories
+      links = []
+      @stories.each do |story|
+        links += story.system_links
+        links += story.story_stages.all
+      end
+      links.uniq
     else
       SystemLink.all + StoryStage.all
     end

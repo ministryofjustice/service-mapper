@@ -150,11 +150,9 @@ $(function() {
     }
   })
 
-  $("#story_select").on("change", function(e) {
-    new_location = window.location.origin
-    if($("#story_select").val() != "All") {
-      new_location = new_location + "?story_id=" + $("#story_select").val()
-    }
-    window.location = new_location
+  $(".story_select form").hide();
+  $(".story_select a.change_stories").on("click", function() {
+    $(".story_select form").toggle();
   })
+
 });
