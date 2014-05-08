@@ -19,4 +19,8 @@ class Story < ActiveRecord::Base
     end
     system_links.collect {|sl| sl if self.nodes.include?(sl.system_a) && self.nodes.include?(sl.system_b)}.compact.uniq
   end
+
+  def average_time
+    story_stages.collect(&:average_time).compact.inject{|sum,x| sum + x }
+  end
 end
