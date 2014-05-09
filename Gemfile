@@ -48,9 +48,10 @@ end
 
 group :test, :development do
   gem 'rspec-rails'
-  gem 'warden-rspec-rails'
+  gem 'guard-rspec', require: false
   gem 'debugger'
   gem 'database_cleaner'
+  gem 'factory_girl_rails'
 end
 
 # Use ActiveModel has_secure_password
