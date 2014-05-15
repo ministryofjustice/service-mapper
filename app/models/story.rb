@@ -1,7 +1,7 @@
 class Story < ActiveRecord::Base
   belongs_to :service
   belongs_to :replaces_story, :class_name => "Story"
-  has_many :story_stages
+  has_many :story_stages, :dependent => :destroy
 
   def nodes
     nodes = []
