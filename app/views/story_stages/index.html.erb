@@ -25,7 +25,7 @@
         <td><%= story_stage.to.name %></td>
         <td><%= story_stage.payload %></td>
         <td><%= story_stage.description %></td>
-        <td><%= story_stage.average_time %></td>
+        <td><%= story_stage.chronic_duration_average_time %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_service_story_story_stage_path(@service, @story, story_stage), :class => 'btn btn-mini' %>
