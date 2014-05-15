@@ -4,7 +4,7 @@ class SystemLinksController < ApplicationController
   # GET /system_links
   # GET /system_links.json
   def index
-    @system_links = SystemLink.all
+    @system_links = SystemLink.order("created_at ASC").all
   end
 
   # GET /system_links/1
