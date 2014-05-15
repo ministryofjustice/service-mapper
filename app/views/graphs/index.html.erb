@@ -26,20 +26,22 @@
       <% end %>
     </div>
     <% if @stories %>
-      <% @stories.each do |story| %>
-        <div id="story_panel">
-          <h2><%= story.name %></h2>
-          <p><strong>Average time</strong>: <%= story.average_time %>
-          <% if story.replaces_story %>
-            <p>Replaces <%= link_to story.replaces_story.name, service_story_path(story.replaces_story.service, story.replaces_story) %></p>
-          <% end %>
-         <ol>
-            <% story.story_stages.ordered.each do |story_stage| %>
-              <li id="story_stage_<%= story_stage.id %>_desc" class="story_stage_desc"><%= story_stage.description %></li>
+      <div id="story_panels">
+        <% @stories.each do |story| %>
+          <div class="story_panel">
+            <h2><%= story.name %></h2>
+            <p><strong>Average time</strong>: <%= story.average_time %>
+            <% if story.replaces_story %>
+              <p>Replaces <%= link_to story.replaces_story.name, service_story_path(story.replaces_story.service, story.replaces_story) %></p>
             <% end %>
-          </ol>
-        </div>
-      <% end %>
+           <ol>
+              <% story.story_stages.ordered.each do |story_stage| %>
+                <li id="story_stage_<%= story_stage.id %>_desc" class="story_stage_desc"><%= story_stage.description %></li>
+              <% end %>
+            </ol>
+          </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

@@ -13,17 +13,23 @@
   }
 }
 
-#story_panel li {
-  padding:1px 0;
-}
+#story_panels {
+  max-height:450px;
+  overflow: scroll;
+  .story_panel {
+    li {
+      padding:1px 0;
+    }
 
-#story_panel li:hover {
-  padding:0 0;
-  background-color:#eee;
-  border:1px solid #f77;
-  border-left: none;
-  border-right:none;
-  cursor: default;
+    li:hover {
+      padding:0 0;
+      background-color:#eee;
+      border:1px solid #f77;
+      border-left: none;
+      border-right:none;
+      cursor: default;
+    }
+  }
 }
 
 #info_panel {
