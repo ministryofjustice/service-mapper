@@ -1,6 +1,6 @@
 <%= form_for [@service, @story, @story_stage], :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
-    <%= f.label :from_str, :class => 'control-label' %>
+    <%= f.label :from_str, "From", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :from_str, 
         grouped_options_for_select({
@@ -8,33 +8,39 @@
           "People" => Person.alphabetical.all.collect {|x| [x.name, x.polymorphic_id]}
         }, @story_stage.from_str) %>
     </div>
+    <p class="help-block">The starting point for the story</p>
   </div>
   <div class="control-group">
-    <%= f.label :to_str, :class => 'control-label' %>
+    <%= f.label :to_str, "To", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :to_str, grouped_options_for_select({
           "Systems" => System.alphabetical.all.collect {|x| [x.name, x.polymorphic_id]}, 
           "People" => Person.alphabetical.all.collect {|x| [x.name, x.polymorphic_id]}
         }, @story_stage.to_str) %>
     </div>
+    <p class="help-block">The end point for the story</p>
   </div>
   <div class="control-group">
     <%= f.label :payload, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :payload, :class => 'text_field' %>
     </div>
+    <p class="help-block">What format the information is sent in. E.g. email, JSON, XML</p>
   </div>
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :description, :class => 'text_field' %>
     </div>
+    <p class="help-block">A description of the story stage. E.g. Prison 
+visitor initiated request. </p>
   </div>
   <div class="control-group">
     <%= f.label :average_time, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :chronic_duration_average_time, :class => 'text_field' %>
     </div>
+    <p class="help-block">The average time taken for the stage. E.g. '4 seconds', '3 days 6 hours' 
   </div>
 
   <div class="form-actions">

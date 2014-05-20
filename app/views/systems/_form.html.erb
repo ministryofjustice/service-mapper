@@ -4,66 +4,77 @@
     <div class="controls">
       <%= f.text_field :name, :class => 'text_field' %>
     </div>
+    <p class="help-block">The name of the system, E.g. Quantum Exchange</p>
   </div>
   <div class="control-group">
     <%= f.label :owner, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :owner, :class => 'text_field' %>
     </div>
+    <p class="help-block">The organisation or department that owns the system, E.g Digital Services</p>
   </div>
   <div class="control-group">
     <%= f.label :owner_email, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :owner_email, :class => 'text_field' %>
     </div>
+    <p class="help-block">The relevant owners email contact details</p>
   </div>
   <div class="control-group">
     <%= f.label :supplier, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :supplier, :class => 'text_field' %>
     </div>
+    <p class="help-block">The third party organisation who supplies the platform. e.g. Sendgrid</p>
   </div>
   <div class="control-group">
     <%= f.label :technology, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :technology, :class => 'text_field' %>
     </div>
+    <p class="help-block">The technology or language that enables the system to run. E.g. Ruby on Rails, Microsoft Exchange</p>
   </div>
   <div class="control-group">
     <%= f.label :status, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :status, :class => 'text_field' %>
     </div>
+    <p class="help-block">Whether the service is live, historical or proposed</p>
   </div>
   <div class="control-group">
     <%= f.label :hosting, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :hosting, :class => 'text_field' %>
     </div>
+    <p class="help-block">Who hosts the system, whether internal or external</p>
   </div>
   <div class="control-group">
     <%= f.label :impact_level, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :impact_level, :class => 'text_field' %>
     </div>
+    <p class="help-block">What Impact Level (deprecated) is this service accreddited to?</p>
   </div>
   <div class="control-group">
     <%= f.label :network, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :network, :class => 'text_field' %>
     </div>
+    <p class="help-block">Which MOJ Network is this system on? E.g. DOM1</p>
   </div>
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :description, :class => 'text_field' %>
     </div>
+    <p class="help-block">An optional description of the link</p>
   </div>
   <div class="control-group">
     <%= f.label :contract_id, :class => 'control-label' %>
     <div class="controls">
       <%= f.select :contract_id, Contract.all.collect {|x| [x.name, x.id]}, :include_blank => "None", :class => 'text_field' %>
     </div>
+    <p class="help-block">The contract this service is procured under, if applicable.</p>
   </div>
 
   <div class="form-actions">

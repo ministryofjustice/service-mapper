@@ -4,54 +4,63 @@
     <div class="controls">
       <%= f.text_field :name, :class => 'text_field' %>
     </div>
+    <p class="help-block">The name of the contract</p>
   </div>
   <div class="control-group">
     <%= f.label :annual_cost, :class => 'control-label' %>
     <div class="controls">
       <%= f.number_field :annual_cost, :class => 'text_field' %>
     </div>
+    <p class="help-block">The annual cost of the contract</p>
   </div>
   <div class="control-group">
     <%= f.label :start_date, :class => 'control-label' %>
     <div class="controls">
       <%= f.date_field :start_date, :class => 'text_field' %>
     </div>
+    <p class="help-block">The historical or future start date of the contract</p>
   </div>
   <div class="control-group">
     <%= f.label :expiry_date, :class => 'control-label' %>
     <div class="controls">
       <%= f.date_field :expiry_date, :class => 'text_field' %>
     </div>
+    <p class="help-block">The historical or future end date of the contract</p>
   </div>
   <div class="control-group">
     <%= f.label :renewable, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :renewable, :class => 'text_field' %>
     </div>
+    <p class="help-block">Whether the contract is renewable at the expiry date</p>
   </div>
   <div class="control-group">
     <%= f.label :supplier, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :supplier, :class => 'text_field' %>
     </div>
+    <p class="help-block">The organisation providing the contracted service</p>
   </div>
   <div class="control-group">
     <%= f.label :owner, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :owner, :class => 'text_field' %>
     </div>
+    <p class="help-block">The business unit within MOJ who are responsible for administering the contract</p>
   </div>
   <div class="control-group">
     <%= f.label :owner_email, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :owner_email, :class => 'text_field' %>
     </div>
+    <p class="help-block">The email address for the above</p>
   </div>
   <div class="control-group">
-    <%= f.label :desc, :class => 'control-label' %>
+    <%= f.label :desc, "Description", :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :desc, :class => 'text_field' %>
     </div>
+    <p class="help-block">An optional description of the link</p>
   </div>
 
   <div class="form-actions">

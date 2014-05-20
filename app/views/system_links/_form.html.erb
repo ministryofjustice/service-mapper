@@ -4,36 +4,42 @@
     <div class="controls">
       <%= f.select :system_a_id, System.all.collect{|x| [x.name, x.id]} %>
     </div>
+    <p class="help-block">The first system this system link is connected to</p>
   </div>
   <div class="control-group">
     <%= f.label :system_b_id, :class => 'control-label' %>
     <div class="controls">
       <%= f.select :system_b_id, System.all.collect{|x| [x.name, x.id]} %>
     </div>
+    <p class="help-block">The second system this system link is connected to</p>
   </div>
   <div class="control-group">
     <%= f.label :status, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :status, :class => 'text_field' %>
     </div>
+    <p class="help-block">Whether the system link is live, proposed or another descriptor</p>
   </div>
   <div class="control-group">
     <%= f.label :envelope, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :envelope, :class => 'text_field' %>
     </div>
+    <p class="help-block">The mode of delivery for the system link. Eg email, SMTP or payment</p>
   </div>
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :name, :class => 'text_field' %>
     </div>
+    <p class="help-block">The name of the system link, eg Barclaycard CPI for the link between Barclaycard and the Money Claims Online service</p>
   </div>
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_area :description, :class => 'text_field' %>
     </div>
+    <p class="help-block">An optional description of the link</p>
   </div>
 
   <div class="form-actions">

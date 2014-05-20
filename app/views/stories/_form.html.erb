@@ -10,24 +10,28 @@
     <div class="controls">
       <%= f.text_field :status, :class => 'text_field' %>
     </div>
+    <p class="help-block">Whether the story is live, proposed, historical or other</p>
   </div>
   <div class="control-group">
     <%= f.label :owner, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :owner, :class => 'text_field' %>
     </div>
+    <p class="help-block">The organisation or department that owns the story</p>
   </div>
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :description, :class => 'text_field' %>
     </div>
+    <p class="help-block">An description of the story. E.g. An explanation of a future version of an existing story.</p>
   </div>
   <div class="control-group">
     <%= f.label :replaces_story_id, :class => 'control-label' %>
     <div class="controls">
       <%= f.select :replaces_story_id, Story.all.collect{|x| [x.name, x.id]}, :include_blank => "None", :class => 'text_field' %>
     </div>
+    <p class="help-block">This drop down field allows a new story to replace an existing story. E.g. if a story has been redesigned to use a new service</p>
   </div>
 
   <div class="form-actions">
