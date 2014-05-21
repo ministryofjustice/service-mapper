@@ -79,7 +79,7 @@ Archipelago::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   if ENV['SANDBOX']
-    config.action_mailer.default_url_options = {:host => 'archipelagostaging.herokuapp.com' }
+    config.action_mailer.default_url_options = {:host => 'archipelagosandbox.herokuapp.com' }
   else
     config.action_mailer.default_url_options = {:host => 'archipelago.dsd.io' }
   end
