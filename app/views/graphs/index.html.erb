@@ -30,7 +30,7 @@
         <% @stories.each do |story| %>
           <div class="story_panel">
             <h2><%= story.name %></h2>
-            <p><strong>Average time</strong>: <%= story.average_time %>
+            <p><strong>Average time</strong>: <%= story.average_time_string %>
             <% if story.replaces_story %>
               <p>Replaces <%= link_to story.replaces_story.name, service_story_path(story.replaces_story.service, story.replaces_story) %></p>
             <% end %>

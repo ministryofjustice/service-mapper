@@ -23,4 +23,9 @@ class Story < ActiveRecord::Base
   def average_time
     story_stages.collect(&:average_time).compact.inject{|sum,x| sum + x }
   end
+
+
+  def average_time_string
+    ChronicDuration.output(average_time) if average_time
+  end
 end

@@ -13,6 +13,7 @@
       <th><%= model_class.human_attribute_name(:owner) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:replaces_story) %></th>
+      <th>Duration</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -29,6 +30,9 @@
           <% if story.replaces_story %>
             <%= link_to story.replaces_story.name, service_story_path(story.replaces_story.service, story.replaces_story) %>
           <% end %>
+        </td>
+        <td>
+          <%= story.average_time_string %>
         </td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
