@@ -63,6 +63,14 @@
     </div>
 
     <div class="container">
+        <% if ENV['SANDBOX'] %>
+          <div class="row">
+            <div class="span12">
+              <p class="text-error">You are currently in the sandbox. All data is public and will be regularly deleted.</p>
+            </div>
+          </div>
+        <% end %>
+
         <div class="row">
           <div class="span12">
             <%= breadcrumbs pretext: "You are here: ",
@@ -74,12 +82,9 @@
             <%= bootstrap_flash %>
             <%= yield %>
           </div>
-        </div><!--/row-->
-
+        </div>
       <footer>
       </footer>
-
-    </div> <!-- /container -->
-
+    </div>
   </body>
 </html>
