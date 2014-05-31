@@ -55,7 +55,7 @@
   </tbody>
 </table>
 
-<%= link_to "View as graph", graph_stories_path(@service, :service_id => params[:service_id]) %>
+<%= link_to "View as graph", graph_stories_path(@service, :service_id => params[:service_id], :system_id => params[:system_id]) %>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_story_path,
