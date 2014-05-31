@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140508110437) do
+ActiveRecord::Schema.define(version: 20140531100210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,16 @@ ActiveRecord::Schema.define(version: 20140508110437) do
 
   add_index "stories", ["replaces_story_id"], name: "index_stories_on_replaces_story_id", using: :btree
   add_index "stories", ["service_id"], name: "index_stories_on_service_id", using: :btree
+
+  create_table "story_links", force: true do |t|
+    t.integer  "from_id"
+    t.integer  "to_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "story_links", ["from_id"], name: "index_story_links_on_from_id", using: :btree
+  add_index "story_links", ["to_id"], name: "index_story_links_on_to_id", using: :btree
 
   create_table "story_stages", force: true do |t|
     t.integer  "story_id"
