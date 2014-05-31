@@ -21,7 +21,7 @@ class StoriesController < ApplicationController
 
   # GET /stories/new
   def new
-    @story = @service.stories.build
+    @story = Story.new
   end
 
   # GET /stories/1/edit
@@ -31,12 +31,12 @@ class StoriesController < ApplicationController
   # POST /stories
   # POST /stories.json
   def create
-    @story = @service.stories.build(story_params)
+    @story = Story.new(story_params)
 
     respond_to do |format|
       if @story.save
-        format.html { redirect_to [@service, @story], notice: 'Story was successfully created.' }
-        format.json { render action: 'show', status: :created, location: [@service, @story] }
+        format.html { redirect_to @story, notice: 'Story was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @story }
       else
         format.html { render action: 'new' }
         format.json { render json: @story.errors, status: :unprocessable_entity }
@@ -49,7 +49,7 @@ class StoriesController < ApplicationController
   def update
     respond_to do |format|
       if @story.update(story_params)
-        format.html { redirect_to [@service, @story], notice: 'Story was successfully updated.' }
+        format.html { redirect_to @story, notice: 'Story was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
