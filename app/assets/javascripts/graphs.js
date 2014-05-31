@@ -1,5 +1,5 @@
 $(function() {
-  if($("#graph").length > 0) {
+  if($("#systems_graph").length > 0) {
     var width = 870,
         height = 600,
         circle_radius = 10;
@@ -12,7 +12,7 @@ $(function() {
         .linkDistance(100)
         .size([width, height]);
 
-    var svg = d3.select("#graph").append("svg")
+    var svg = d3.select("#systems_graph").append("svg")
         .attr("width", width)
         .attr("height", height);
 

@@ -5,6 +5,9 @@ Archipelago::Application.routes.draw do
 
   resources :services do
     resources :stories do
+      collection do
+        get :graph
+      end
       resources :story_stages do
         collection do
           post :sort

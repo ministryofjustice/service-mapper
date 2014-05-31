@@ -3,6 +3,9 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
+<p><%= link_to "View as graph", graph_service_stories_path(@service) %></p>
+
 <table class="table table-striped">
   <thead>
     <tr>

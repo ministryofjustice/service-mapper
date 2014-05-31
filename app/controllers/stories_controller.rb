@@ -8,6 +8,14 @@ class StoriesController < ApplicationController
     @stories = @service.stories.order("created_at ASC").all
   end
 
+  def graph
+    @stories = @service.stories.order("created_at ASC").all
+    @story_links = []
+    @stories.each do |story|
+      @story_links += story.story_link_entrances
+    end
+  end
+
   # GET /stories/1
   # GET /stories/1.json
   def show
