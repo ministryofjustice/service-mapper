@@ -28,8 +28,7 @@
       <tr>
         <td><%= link_to story.name, story_path(story) %></td>
         <td>
-          <%= story.story_stages.count %>
-          <%= link_to "Manage", story_story_stages_path(story) %>
+          <%= link_to story.story_stages.count, story_story_stages_path(story) %>
         </td>
         <td><%= story.status %></td>
         <td><%= story.owner %></td>

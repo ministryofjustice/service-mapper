@@ -22,8 +22,7 @@
       <tr>
         <td><%= link_to service.name, service_path(service) %></td>
         <td>
-          <%= service.stories.count %>
-          <%= link_to "Manage", stories_path(:service_id => service.id) %>
+          <%= link_to service.stories.count, stories_path(:service_id => service.id) %>
         </td>
         <td><%= service.status %></td>
         <td><%= service.owner %></td>
