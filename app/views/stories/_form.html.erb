@@ -34,6 +34,13 @@
     <p class="help-block">This drop down field allows a new story to replace an existing story. E.g. if a story has been redesigned to use a new service</p>
   </div>
 
+  <div class="control-group">
+    <%= f.label :parent_ids, "Parent Stories", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :parent_ids, Story.all.collect {|x| [x.name, x.id]}, {}, :multiple => true, :class => "multi_select" %>
+    </div>
+  </div>
+
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
