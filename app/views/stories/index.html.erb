@@ -5,9 +5,9 @@
 </div>
 
 <%= form_tag nil, :method => :get, :class => 'form-inline' do |form| %>
-  <%= select_tag :service_id, options_for_select([["All", nil]] + Service.all.collect{|x| [x.name, x.id]}, params[:service_id]) %>
+  Filter by <%= select_tag :service_id, options_for_select([["All Services", nil]] + Service.all.collect{|x| [x.name, x.id]}, params[:service_id]) %> or 
+  <%= select_tag :system_id, options_for_select([["All Systems", nil]] + System.all.collect{|x| [x.name, x.id]}, params[:system_id]) %>
   <%= submit_tag "Filter", :name => nil, :class => 'btn' %>
-  <%= link_to "View as graph", graph_stories_path(@service, :service_id => params[:service_id]) %>
 <% end %>
 
 <table class="table table-striped">
@@ -54,6 +54,8 @@
     <% end %>
   </tbody>
 </table>
+
+<%= link_to "View as graph", graph_stories_path(@service, :service_id => params[:service_id]) %>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_story_path,

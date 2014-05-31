@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:name) %></th>
+      <th>Stories</th>
       <th><%= model_class.human_attribute_name(:owner) %></th>
       <th><%= model_class.human_attribute_name(:owner_email) %></th>
       <th><%= model_class.human_attribute_name(:supplier) %></th>
@@ -21,6 +22,7 @@
     <% @systems.each do |system| %>
       <tr>
         <td><%= link_to system.name, system_path(system) %></td>
+        <td><%= link_to system.stories.size, stories_path(:system_id => system) %></td>
         <td><%= system.owner %></td>
         <td><%= system.owner_email %></td>
         <td><%= system.supplier %></td>

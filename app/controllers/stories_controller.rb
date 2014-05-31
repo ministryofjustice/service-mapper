@@ -1,5 +1,4 @@
 class StoriesController < ApplicationController
-  before_action :set_service
   before_action :set_story, only: [:show, :edit, :update, :destroy]
   before_action :set_stories, only: [:index, :graph]
 
@@ -76,15 +75,15 @@ class StoriesController < ApplicationController
     end
 
     def set_stories
-      if @service
+      if params[:service_id]
+        @service = Service.find(params[:service_id])
         @stories = @service.stories.order("created_at ASC").all
+      elsif params[:system_id]
+        @system = System.find(params[:system_id])
+        @stories = @system.stories
       else
         @stories = Story.order("created_at ASC").all
       end
-    end
-
-    def set_service
-      @service = Service.find(params[:service_id]) if params[:service_id]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
