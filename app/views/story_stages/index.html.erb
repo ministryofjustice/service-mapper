@@ -6,7 +6,6 @@
 <table class="table table-striped sortable" data-sort-url="<%= sort_service_story_story_stages_path(@service, @story) %>">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:position) %></th>
       <th><%= model_class.human_attribute_name(:from_id) %></th>
       <th><%= model_class.human_attribute_name(:to_id) %></th>
@@ -19,8 +18,7 @@
   <tbody>
     <% @story_stages.each do |story_stage| %>
       <tr id="story_stage_<%= story_stage.id %>" class="item">
-        <td><%= link_to story_stage.id, service_story_story_stage_path(@service, @story, story_stage) %></td>
-        <td><%= story_stage.position %></td>
+        <td><%= link_to story_stage.position, service_story_story_stage_path(@service, @story, story_stage) %></td>
         <td><%= story_stage.from.name %></td>
         <td><%= story_stage.to.name %></td>
         <td><%= story_stage.payload %></td>
