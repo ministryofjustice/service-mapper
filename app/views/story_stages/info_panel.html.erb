@@ -1,5 +1,5 @@
 <h2>
-  <%= link_to @story_stage.description, service_story_story_stage_path(@story_stage.story.service, @story_stage.story, @story_stage) %>
+  <%= link_to @story_stage.description, story_story_stage_path(@story_stage.story, @story_stage) %>
 </h2>
 
 <div class="info_panel_contents">
@@ -11,10 +11,10 @@
     <% end %>
   </div>
 
-  <p><strong>Story:</strong> <%= link_to @story_stage.story.name, service_story_path(@story_stage.story.service, @story_stage.story) %></p>
+  <p><strong>Story:</strong> <%= link_to @story_stage.story.name, story_path(@story_stage.story) %></p>
 </div>
 
 <div class="actions">
-  <%= link_to "Show more", service_story_story_stage_path(@story_stage.story.service, @story_stage.story, @story_stage) %> |
-  <%= link_to "Edit", edit_service_story_story_stage_path(@story_stage.story.service, @story_stage.story, @story_stage) %>
+  <%= link_to "Show more", story_story_stage_path(@story_stage.story, @story_stage) %> |
+  <%= link_to "Edit", edit_story_story_stage_path(@story_stage.story, @story_stage) %>
 </div>

@@ -3,18 +3,18 @@ Archipelago::Application.routes.draw do
   devise_for :users
   resources :contracts
 
-  resources :services do
-    resources :stories do
+  resources :stories do
+    collection do
+      get :graph
+    end
+    resources :story_stages do
       collection do
-        get :graph
-      end
-      resources :story_stages do
-        collection do
-          post :sort
-        end
+        post :sort
       end
     end
   end
+
+  resources :services
 
   resources :people
 

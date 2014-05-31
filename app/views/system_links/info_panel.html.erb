@@ -15,10 +15,10 @@
 
   <ul>
     <% @system_link.story_stages.group_by(&:story).each do |story, story_stages| %>
-      <li><%= link_to story.name, service_story_path(story.service, story) %></li>
+      <li><%= link_to story.name, story_path(story) %></li>
       <ul>
         <% story_stages.each do |story_stage| %>
-          <li><%= link_to story_stage.description, service_story_story_stage_path(story_stage.story.service, story_stage.story, story_stage) %></li>
+          <li><%= link_to story_stage.description, story_story_stage_path(story_stage.story, story_stage) %></li>
         <% end %>
       </ul>
     <% end %>

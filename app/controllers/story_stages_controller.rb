@@ -1,5 +1,4 @@
 class StoryStagesController < ApplicationController
-  before_action :set_service
   before_action :set_story
   before_action :set_story_stage, only: [:show, :edit, :update, :destroy]
 
@@ -61,7 +60,7 @@ class StoryStagesController < ApplicationController
   def destroy
     @story_stage.destroy
     respond_to do |format|
-      format.html { redirect_to service_story_story_stages_url(@service, @story) }
+      format.html { redirect_to story_story_stages_url(@story) }
       format.json { head :no_content }
     end
   end
@@ -80,11 +79,7 @@ class StoryStagesController < ApplicationController
     end
 
     def set_story
-      @story = @service.stories.find(params[:story_id])
-    end
-
-    def set_service
-      @service = Service.find(params[:service_id])
+      @story = Story.find(params[:story_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

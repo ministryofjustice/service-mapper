@@ -6,6 +6,13 @@
     </div>
   </div>
   <div class="control-group">
+    <%= f.label :service_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :service_id, Service.all.collect{|x| [x.name, x.id]}, :include_blank => "None", :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="control-group">
     <%= f.label :status, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :status, :class => 'text_field' %>
@@ -44,6 +51,6 @@
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                service_stories_path(@service), :class => 'btn' %>
+                stories_path, :class => 'btn' %>
   </div>
 <% end %>

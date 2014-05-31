@@ -1,15 +1,14 @@
 class StoriesController < ApplicationController
   before_action :set_service
   before_action :set_story, only: [:show, :edit, :update, :destroy]
+  before_action :set_stories, only: [:index, :graph]
 
   # GET /stories
   # GET /stories.json
   def index
-    @stories = @service.stories.order("created_at ASC").all
   end
 
   def graph
-    @stories = @service.stories.order("created_at ASC").all
     @story_links = []
     @stories.each do |story|
       @story_links += story.story_link_entrances
@@ -65,7 +64,7 @@ class StoriesController < ApplicationController
   def destroy
     @story.destroy
     respond_to do |format|
-      format.html { redirect_to service_stories_url(@service) }
+      format.html { redirect_to stories_url }
       format.json { head :no_content }
     end
   end
@@ -73,11 +72,19 @@ class StoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_story
-      @story = @service.stories.find(params[:id])
+      @story = Story.find(params[:id])
+    end
+
+    def set_stories
+      if @service
+        @stories = @service.stories.order("created_at ASC").all
+      else
+        @stories = Story.order("created_at ASC").all
+      end
     end
 
     def set_service
-      @service = Service.find(params[:service_id])
+      @service = Service.find(params[:service_id]) if params[:service_id]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
