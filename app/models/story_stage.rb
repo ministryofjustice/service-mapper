@@ -1,5 +1,6 @@
 class StoryStage < ActiveRecord::Base
   belongs_to :story
+  counter_culture :story
   belongs_to :from, polymorphic: true
   belongs_to :to, polymorphic: true
 
