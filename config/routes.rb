@@ -29,7 +29,8 @@ Archipelago::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'graphs#index'
-  get ':controller(/:action(/:id))'
+  get '/graphs/index' => 'graphs#index'
+  get '/:action' => 'graphs'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

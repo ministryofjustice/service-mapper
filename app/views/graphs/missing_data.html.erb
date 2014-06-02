@@ -1,0 +1,16 @@
+<h2>Stories with no stages</h2>
+
+<ul>
+  <% Story.no_stages.each do |story| %>
+    <li><%= link_to story.name, story_path(story) %></li>
+  <% end %>
+</ul>
+
+<h2>System Links with no story stages</h2>
+
+<ul>
+  <% SystemLink.all.select {|system_link| system_link.story_stages.size == 0}.each do |system_link| %>
+    <li><%= link_to system_link.name, story_path(system_link) %></li>
+  <% end %>
+</ul>
+

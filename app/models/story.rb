@@ -7,6 +7,8 @@ class Story < ActiveRecord::Base
   has_many :parents, :through => :story_link_entrances, :source => 'from'
   has_many :children, :through => :story_link_exits, :source => 'to'
 
+  scope :no_stages, -> { where("story_stages_count = 0") }
+
   def nodes
     nodes = []
     story_stages.each do |story_stage|

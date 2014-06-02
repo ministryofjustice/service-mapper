@@ -9,6 +9,10 @@ class GraphsController < ApplicationController
     end
   end
 
+  def missing_data
+    
+  end
+
   private
 
   def nodes
