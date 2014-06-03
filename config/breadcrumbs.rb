@@ -12,7 +12,7 @@ crumb :service do |service|
 end
 
 crumb :stories do
-  link "Stories", stories_path
+  link "Transactions", stories_path
 end
 
 crumb :story do |story|
@@ -21,7 +21,7 @@ crumb :story do |story|
 end
 
 crumb :story_stages do |story|
-  link "Story Stages", story_story_stages_path(story)
+  link "Transaction Stages", story_story_stages_path(story)
   parent :story, story
 end
 

@@ -1,4 +1,4 @@
-<h2>Stories with no stages</h2>
+<h2>Transactions with no stages</h2>
 
 <ul>
   <% Story.no_stages.each do |story| %>
@@ -6,7 +6,7 @@
   <% end %>
 </ul>
 
-<h2>System Links with no story stages</h2>
+<h2>System Links with no transaction stages</h2>
 
 <ul>
   <% SystemLink.all.select {|system_link| system_link.story_stages.size == 0}.each do |system_link| %>

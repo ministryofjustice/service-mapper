@@ -8,7 +8,7 @@
           "People" => Person.alphabetical.all.collect {|x| [x.name, x.polymorphic_id]}
         }, @story_stage.from_str) %>
     </div>
-    <p class="help-block">The starting point for the story</p>
+    <p class="help-block">The starting point for the transaction stage</p>
   </div>
   <div class="control-group">
     <%= f.label :to_str, "To", :class => 'control-label' %>
@@ -18,7 +18,7 @@
           "People" => Person.alphabetical.all.collect {|x| [x.name, x.polymorphic_id]}
         }, @story_stage.to_str) %>
     </div>
-    <p class="help-block">The end point for the story</p>
+    <p class="help-block">The end point for the transaction stage</p>
   </div>
   <div class="control-group">
     <%= f.label :payload, :class => 'control-label' %>
@@ -32,7 +32,7 @@
     <div class="controls">
       <%= f.text_field :description, :class => 'text_field' %>
     </div>
-    <p class="help-block">A description of the story stage. E.g. Prison 
+    <p class="help-block">A description of the transaction stage. E.g. Prison 
 visitor initiated request. </p>
   </div>
   <div class="control-group">
@@ -40,7 +40,7 @@ visitor initiated request. </p>
     <div class="controls">
       <%= f.text_field :chronic_duration_average_time, :class => 'text_field' %>
     </div>
-    <p class="help-block">The average time taken for the stage. E.g. '4 seconds', '3 days 6 hours' 
+    <p class="help-block">The average time taken for the transaction stage. E.g. '4 seconds', '3 days 6 hours' 
   </div>
 
   <div class="form-actions">

@@ -17,32 +17,32 @@
     <div class="controls">
       <%= f.text_field :status, :class => 'text_field' %>
     </div>
-    <p class="help-block">Whether the story is live, proposed, historical or other</p>
+    <p class="help-block">Whether the transaction is live, proposed, historical or other</p>
   </div>
   <div class="control-group">
     <%= f.label :owner, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :owner, :class => 'text_field' %>
     </div>
-    <p class="help-block">The organisation or department that owns the story</p>
+    <p class="help-block">The organisation or department that owns the transaction</p>
   </div>
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :description, :class => 'text_field' %>
     </div>
-    <p class="help-block">An description of the story. E.g. An explanation of a future version of an existing story.</p>
+    <p class="help-block">A description of the transaction. E.g. An explanation of a future version of an existing transaction.</p>
   </div>
   <div class="control-group">
     <%= f.label :replaces_story_id, :class => 'control-label' %>
     <div class="controls">
       <%= f.select :replaces_story_id, Story.all.collect{|x| [x.name, x.id]}, :include_blank => "None", :class => 'text_field' %>
     </div>
-    <p class="help-block">This drop down field allows a new story to replace an existing story. E.g. if a story has been redesigned to use a new service</p>
+    <p class="help-block">This drop down field allows a new transaction to replace an existing transaction. E.g. if a transaction has been redesigned to use a new service</p>
   </div>
 
   <div class="control-group">
-    <%= f.label :parent_ids, "Parent Stories", :class => 'control-label' %>
+    <%= f.label :parent_ids, "Parent Transactions", :class => 'control-label' %>
     <div class="controls">
       <%= f.select :parent_ids, Story.all.collect {|x| [x.name, x.id]}, {}, :multiple => true, :class => "multi_select" %>
     </div>

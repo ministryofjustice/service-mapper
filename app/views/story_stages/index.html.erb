@@ -1,7 +1,7 @@
 <% breadcrumb :story_stages, @story %>
 <%- model_class = StoryStage -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1>Transaction Stages</h1>
 </div>
 <table class="table table-striped sortable" data-sort-url="<%= sort_story_story_stages_path(@story) %>">
   <thead>
