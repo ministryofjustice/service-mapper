@@ -15,6 +15,7 @@
     <tr>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th>Stages</th>
+      <th><%= model_class.human_attribute_name(:service) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
       <th><%= model_class.human_attribute_name(:owner) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
@@ -30,6 +31,7 @@
         <td>
           <%= link_to story.story_stages.count, story_story_stages_path(story) %>
         </td>
+        <td><%= story.service.name if story.service %></td>
         <td><%= story.status %></td>
         <td><%= story.owner %></td>
         <td><%= story.description %></td>
