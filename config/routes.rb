@@ -20,7 +20,11 @@ Archipelago::Application.routes.draw do
 
   resources :system_links
 
-  resources :systems
+  resources :systems do
+    collection do
+      get :graph
+    end
+  end
 
   resources :comments
 
@@ -28,9 +32,7 @@ Archipelago::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'graphs#index'
-  get '/graphs/index' => 'graphs#index'
-  get '/:action' => 'graphs'
+  root 'stories#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

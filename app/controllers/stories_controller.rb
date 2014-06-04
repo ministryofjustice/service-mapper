@@ -75,7 +75,9 @@ class StoriesController < ApplicationController
     end
 
     def set_stories
-      if params[:service_id].present?
+      if params[:story_ids].present?
+        @stories = Story.find(params[:story_ids])        
+      elsif params[:service_id].present?
         @service = Service.find(params[:service_id])
         @stories = @service.stories.order("created_at ASC").all
       elsif params[:system_id].present?

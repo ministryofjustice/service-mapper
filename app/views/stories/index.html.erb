@@ -10,6 +10,12 @@
   <%= submit_tag "Filter", :name => nil, :class => 'btn' %>
 <% end %>
 
+<p>
+  Graphs:
+  <%= link_to "View by user journey", graph_stories_path(:story_ids => @stories.collect(&:id)) %>.
+  <%= link_to "View by systems", graph_systems_path(:story_ids => @stories.collect(&:id)) %>
+</p>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -56,8 +62,6 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to "View as graph", graph_stories_path(@service, :service_id => params[:service_id], :system_id => params[:system_id]) %>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_story_path,

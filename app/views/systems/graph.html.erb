@@ -5,26 +5,6 @@
   <div class="span3" id="sidebar">
     <div id="info_panel"></div>
     <p><input type="checkbox" id="hide_stories" /> Hide transaction stages</p>
-    <div class="story_select">
-      <p>
-        <strong>Currently showing transactions</strong>:
-        <% if @stories.blank? %>
-          All.
-        <% else %>
-          <%= @stories.collect(&:name).to_sentence %>.
-        <% end %>
-        <a href="#" class="change_stories">Change</a>
-      </p>
-      <%= form_tag root_path, :method => :get do %>
-        <% Service.all.each do |service| %>
-          <p><%= service.name %></p>
-          <% service.stories.each do |story| %>
-            <p><%= check_box_tag 'story_ids[]', story.id, (@stories && @stories.include?(story)) %><%= story.name %></p>
-          <% end %>
-        <% end %>
-        <%= submit_tag "Update graph", :name => nil %>
-      <% end %>
-    </div>
     <% if @stories %>
       <div id="story_panels">
         <% @stories.each do |story| %>

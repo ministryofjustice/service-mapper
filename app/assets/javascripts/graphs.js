@@ -30,7 +30,7 @@ $(function() {
         .attr("d", "M0,-5L10,0L0,5")
 
 
-    d3.json("/graphs/index.json" + window.location.search, function(error, graph) {
+    d3.json("/systems/graph.json" + window.location.search, function(error, graph) {
       var edges = [];
 
       graph.links.forEach(function(e) { 
