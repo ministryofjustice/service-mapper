@@ -1,20 +1,5 @@
-<% breadcrumb :stories, @service %>
 <%- model_class = Story -%>
-<div class="page-header">
-  <h1>Transactions</h1>
-</div>
-
-<%= form_tag nil, :method => :get, :class => 'form-inline' do |form| %>
-  Filter by <%= select_tag :service_id, options_for_select([["All Services", nil]] + Service.all.collect{|x| [x.name, x.id]}, params[:service_id]) %> or 
-  <%= select_tag :system_id, options_for_select([["All Systems", nil]] + System.all.collect{|x| [x.name, x.id]}, params[:system_id]) %>
-  <%= submit_tag "Filter", :name => nil, :class => 'btn' %>
-<% end %>
-
-<p>
-  Graphs:
-  <%= link_to "View by user journey", graph_stories_path(:story_ids => @stories.collect(&:id)) %>.
-  <%= link_to "View by systems", graph_systems_path(:story_ids => @stories.collect(&:id)) %>
-</p>
+<%= render :partial => 'header' %>
 
 <table class="table table-striped">
   <thead>

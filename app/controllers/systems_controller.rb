@@ -64,16 +64,6 @@ class SystemsController < ApplicationController
     end
   end
 
-  def graph
-    @stories = Story.find(params[:story_ids]) if params[:story_ids]
-    respond_to do |format|
-      format.html
-      format.json do 
-        render :json => { :nodes => nodes.collect(&:graph_json), :links => links.collect(&:graph_json) }
-      end
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
   def set_system
@@ -83,30 +73,5 @@ class SystemsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def system_params
     params.require(:system).permit(:owner, :owner_email, :supplier, :technology, :status, :hosting, :impact_level, :name, :description, :contract_id, :network)
-  end
-
-  def nodes
-    if @stories
-      nodes = []
-      @stories.each do |story|
-        nodes += story.nodes
-      end
-      nodes.uniq
-    else
-      System.all + Person.all
-    end
-  end
-
-  def links
-    if @stories
-      links = []
-      @stories.each do |story|
-        links += story.system_links
-        links += story.story_stages.all
-      end
-      links.uniq
-    else
-      SystemLink.all + StoryStage.all
-    end
   end
 end

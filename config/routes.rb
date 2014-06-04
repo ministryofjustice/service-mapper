@@ -5,7 +5,8 @@ Archipelago::Application.routes.draw do
 
   resources :stories do
     collection do
-      get :graph
+      get :user_journeys_graph
+      get :systems_graph
     end
     resources :story_stages do
       collection do

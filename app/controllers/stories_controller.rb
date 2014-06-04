@@ -1,16 +1,26 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
-  before_action :set_stories, only: [:index, :graph]
+  before_action :set_stories, only: [:index, :user_journeys_graph, :systems_graph]
 
   # GET /stories
   # GET /stories.json
   def index
   end
 
-  def graph
+  def user_journeys_graph
     @story_links = []
     @stories.each do |story|
       @story_links += story.story_link_entrances
+    end
+  end
+
+  def systems_graph
+    @stories = Story.find(params[:story_ids]) if params[:story_ids]
+    respond_to do |format|
+      format.html
+      format.json do 
+        render :json => { :nodes => nodes.collect(&:graph_json), :links => links.collect(&:graph_json) }
+      end
     end
   end
 
@@ -92,4 +102,30 @@ class StoriesController < ApplicationController
     def story_params
       params.require(:story).permit(:name, :service_id, :status, :owner, :description, :replaces_story_id, parent_ids: [])
     end
+
+  def nodes
+    if @stories
+      nodes = []
+      @stories.each do |story|
+        nodes += story.nodes
+      end
+      nodes.uniq
+    else
+      System.all + Person.all
+    end
+  end
+
+  def links
+    if @stories
+      links = []
+      @stories.each do |story|
+        links += story.system_links
+        links += story.story_stages.all
+      end
+      links.uniq
+    else
+      SystemLink.all + StoryStage.all
+    end
+  end
+
 end
