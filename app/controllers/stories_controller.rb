@@ -119,12 +119,11 @@ class StoriesController < ApplicationController
     if @stories
       links = []
       @stories.each do |story|
-        links += story.system_links
         links += story.story_stages.all
       end
       links.uniq
     else
-      SystemLink.all + StoryStage.all
+      StoryStage.all
     end
   end
 
