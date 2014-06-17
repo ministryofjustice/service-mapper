@@ -76,14 +76,14 @@
     </div>
     <p class="help-block">An optional description of the link</p>
   </div>
-  <div class="control-group">
+<!--   <div class="control-group">
     <%= f.label :contract_id, :class => 'control-label' %>
     <div class="controls">
       <%= f.select :contract_id, Contract.all.collect {|x| [x.name, x.id]}, :include_blank => "None", :class => 'text_field' %>
     </div>
     <p class="help-block">The contract this service is procured under, if applicable.</p>
   </div>
-  <div class="control-group">
+ -->  <div class="control-group">
     <%= f.label :decommissioning, :class => 'control-label' %>
     <div class="controls">
       <%= f.check_box :decommissioning, :class => 'text_field' %>

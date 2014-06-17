@@ -24,7 +24,7 @@
   <dd><%= @system.network %></dd>
   <dt><strong><%= model_class.human_attribute_name(:decommissioning) %>:</strong></dt>
   <dd><%= @system.decommissioning %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:contract) %>:</strong></dt>
+<!--   <dt><strong><%= model_class.human_attribute_name(:contract) %>:</strong></dt>
   <dd>
     <% if @system.contract %>
       <%= link_to @system.contract.name, contract_path(@system.contract) %>
@@ -32,7 +32,7 @@
       None
     <% end %>
   </dd>
-</dl>
+ --></dl>
 
 <p>Involved in these transactions:</p>
 
