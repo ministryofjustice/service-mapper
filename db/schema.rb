@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140531213740) do
+ActiveRecord::Schema.define(version: 20140617081317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -125,7 +125,6 @@ ActiveRecord::Schema.define(version: 20140531213740) do
     t.text     "technology"
     t.string   "status"
     t.string   "hosting"
-    t.string   "impact_level"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
@@ -133,6 +132,9 @@ ActiveRecord::Schema.define(version: 20140531213740) do
     t.integer  "contract_id"
     t.string   "owner_email"
     t.string   "network"
+    t.boolean  "decommissioning"
+    t.string   "source_code_url"
+    t.string   "technical_support_contact"
   end
 
   add_index "systems", ["contract_id"], name: "index_systems_on_contract_id", using: :btree

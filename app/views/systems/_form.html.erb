@@ -25,7 +25,7 @@
     <div class="controls">
       <%= f.text_field :supplier, :class => 'text_field' %>
     </div>
-    <p class="help-block">The third party organisation who supplies the platform. e.g. Sendgrid</p>
+    <p class="help-block">The organisation that built it. e.g. gov dept or 3rd party</p>
   </div>
   <div class="control-group">
     <%= f.label :technology, :class => 'control-label' %>
@@ -33,6 +33,20 @@
       <%= f.text_field :technology, :class => 'text_field' %>
     </div>
     <p class="help-block">The technology or language that enables the system to run. E.g. Ruby on Rails, Microsoft Exchange</p>
+  </div>
+  <div class="control-group">
+    <%= f.label :technical_support_contact, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :technical_support_contact, :class => 'text_field' %>
+    </div>
+    <p class="help-block">Who to contact for technical support for this system</p>
+  </div>
+  <div class="control-group">
+    <%= f.label :source_code_url, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :source_code_url, :class => 'text_field' %>
+    </div>
+    <p class="help-block">The URL to view the source code, eg a github repository URL</p>
   </div>
   <div class="control-group">
     <%= f.label :status, :class => 'control-label' %>
@@ -47,13 +61,6 @@
       <%= f.text_field :hosting, :class => 'text_field' %>
     </div>
     <p class="help-block">Who hosts the system, whether internal or external</p>
-  </div>
-  <div class="control-group">
-    <%= f.label :impact_level, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :impact_level, :class => 'text_field' %>
-    </div>
-    <p class="help-block">What Impact Level (deprecated) is this service accreddited to?</p>
   </div>
   <div class="control-group">
     <%= f.label :network, :class => 'control-label' %>
@@ -75,6 +82,13 @@
       <%= f.select :contract_id, Contract.all.collect {|x| [x.name, x.id]}, :include_blank => "None", :class => 'text_field' %>
     </div>
     <p class="help-block">The contract this service is procured under, if applicable.</p>
+  </div>
+  <div class="control-group">
+    <%= f.label :decommissioning, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :decommissioning, :class => 'text_field' %>
+    </div>
+    <p class="help-block">Whether we have plans to decommission this system in the near future.</p>
   </div>
 
   <div class="form-actions">

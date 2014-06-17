@@ -13,8 +13,10 @@
       <th><%= model_class.human_attribute_name(:technology) %></th>
       <th><%= model_class.human_attribute_name(:status) %></th>
       <th><%= model_class.human_attribute_name(:hosting) %></th>
-      <th><%= model_class.human_attribute_name(:impact_level) %></th>
       <th><%= model_class.human_attribute_name(:network) %></th>
+      <th><%= model_class.human_attribute_name(:decommissioning) %></th>
+      <th><%= model_class.human_attribute_name(:source_code_url) %></th>
+      <th><%= model_class.human_attribute_name(:technical_support_contact) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -29,8 +31,10 @@
         <td><%= system.technology %></td>
         <td><%= system.status %></td>
         <td><%= system.hosting %></td>
-        <td><%= system.impact_level %></td>
         <td><%= system.network %></td>
+        <td><%= system.decommissioning %></td>
+        <td><%= system.source_code_url %></td>
+        <td><%= system.technical_support_contact %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_system_path(system), :class => 'btn btn-mini' %>

@@ -12,14 +12,18 @@
   <dd><%= @system.supplier %></dd>
   <dt><strong><%= model_class.human_attribute_name(:technology) %>:</strong></dt>
   <dd><%= @system.technology %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:technical_support_contact) %>:</strong></dt>
+  <dd><%= @system.technical_support_contact %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:source_code_url) %>:</strong></dt>
+  <dd><%= @system.source_code_url %></dd>
   <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
   <dd><%= @system.status %></dd>
   <dt><strong><%= model_class.human_attribute_name(:hosting) %>:</strong></dt>
   <dd><%= @system.hosting %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:impact_level) %>:</strong></dt>
-  <dd><%= @system.impact_level %></dd>
   <dt><strong><%= model_class.human_attribute_name(:network) %>:</strong></dt>
   <dd><%= @system.network %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:decommissioning) %>:</strong></dt>
+  <dd><%= @system.decommissioning %></dd>
   <dt><strong><%= model_class.human_attribute_name(:contract) %>:</strong></dt>
   <dd>
     <% if @system.contract %>
