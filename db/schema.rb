@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140617081317) do
+ActiveRecord::Schema.define(version: 20140624094753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(version: 20140617081317) do
     t.boolean  "decommissioning"
     t.string   "source_code_url"
     t.string   "technical_support_contact"
+    t.string   "link"
   end
 
   add_index "systems", ["contract_id"], name: "index_systems_on_contract_id", using: :btree

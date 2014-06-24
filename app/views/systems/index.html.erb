@@ -17,6 +17,7 @@
       <th><%= model_class.human_attribute_name(:decommissioning) %></th>
       <th><%= model_class.human_attribute_name(:source_code_url) %></th>
       <th><%= model_class.human_attribute_name(:technical_support_contact) %></th>
+      <th><%= model_class.human_attribute_name(:link) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -35,6 +36,7 @@
         <td><%= system.decommissioning %></td>
         <td><%= system.source_code_url %></td>
         <td><%= system.technical_support_contact %></td>
+        <td><%= link_to system.link %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_system_path(system), :class => 'btn btn-mini' %>
