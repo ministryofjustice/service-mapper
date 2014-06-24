@@ -51,9 +51,11 @@ group :doc do
 end
 
 group :test, :development do
+  gem 'cucumber-rails', :require => false
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
   gem 'debugger'
+  gem 'launchy'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
 end
