@@ -25,5 +25,19 @@ module Archipelago
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+    # Application Title (Populates <title>)
+    config.app_title = 'Archipelago'
+    # Proposition Title (Populates proposition header)
+    config.proposition_title = ''
+    # Current Phase (Sets the current phase and the colour of phase tags)
+    # Presumed values: alpha, beta, live
+    config.phase = 'alpha'
+    # Product Type (Adds class to body based on service type)
+    # Presumed values: information, service
+    config.product_type = 'service'
+    # Feedback URL (URL for feedback link in phase banner)
+    config.feedback_url = ''
+    # Google Analytics ID (Tracking ID for the service)
+    config.ga_id = ''
   end
 end

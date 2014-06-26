@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_verified_user!
   before_action :authenticate_admin!, except: [:show, :index]
 
+  # layout 'moj_template'
+
   private
 
   def authenticate_verified_user!

@@ -29,9 +29,9 @@ gem 'devise'
 gem 'counter_culture', '~> 0.1.18'
 
 # bootstrap-rails
-gem "therubyracer"
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-gem "twitter-bootstrap-rails"
+gem 'therubyracer'
+gem 'less'
+gem 'moj_template', '0.12.0'
 
 gem 'chronorails', :git => 'https://github.com/james/chronorails.git', :branch => 'master'
 
