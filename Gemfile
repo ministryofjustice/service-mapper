@@ -31,6 +31,7 @@ gem 'counter_culture', '~> 0.1.18'
 # bootstrap-rails
 gem 'therubyracer'
 gem 'less'
+gem 'govuk_frontend_toolkit', '1.3.0'
 gem 'moj_template', '0.12.0'
 
 gem 'chronorails', :git => 'https://github.com/james/chronorails.git', :branch => 'master'
