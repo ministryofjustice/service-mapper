@@ -21,15 +21,15 @@
     </p>
     <%= f.label :status_live do %>
       <%= f.radio_button :status, "live" %>
-      Live
+      <%= status_flag "Live" %>
     <% end %>
     <%= f.label :status_proposed do %>
       <%= f.radio_button :status, "proposed" %>
-      Proposed
+      <%= status_flag "Proposed" %>
     <% end %>
     <%= f.label :status_deprecated do %>
       <%= f.radio_button :status, "deprecated" %>
-      Deprecated
+      <%= status_flag "Deprecated" %>
     <% end %>
   </div>
 

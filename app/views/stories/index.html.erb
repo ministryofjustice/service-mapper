@@ -7,7 +7,7 @@
   <% @stories.each do |story| %>
     <li>
       <span class="name"><%= link_to story.name, story_path(story) %></span>
-      <span class="status"><%= story.status %></span>
+      <%= status_flag(story.status) %>
       <span class="groups">
         Groups
         <%= story.groups.collect(&:name).join(", ") %>
