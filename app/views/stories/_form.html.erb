@@ -1,4 +1,4 @@
-<%= form_for [@service, @story], :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @story, :html => { :class => 'form-horizontal' } do |f| %>
   <div class="group">
     <%= f.label :name, "Transaction name" %>
     <p class="form-hint">
@@ -8,11 +8,10 @@
   </div>
 
   <div class="group">
-    <%= f.label :service_id, "Groups" %>
     <p class="form-hint">
       Describe the type of grouping that you would like this transcation to sit under. Transactions can live in multiple groups.
     </p>
-    <%= f.select :service_id, Service.all.collect{|x| [x.name, x.id]}, :include_blank => "None" %>
+    TODO
   </div>
 
   <div class="group">

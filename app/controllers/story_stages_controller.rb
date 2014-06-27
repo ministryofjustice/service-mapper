@@ -32,8 +32,8 @@ class StoryStagesController < ApplicationController
 
     respond_to do |format|
       if @story_stage.save
-        format.html { redirect_to [@service, @story, @story_stage], notice: 'Story stage was successfully created.' }
-        format.json { render action: 'show', status: :created, location: [@service, @story, @story_stage] }
+        format.html { redirect_to [@story, @story_stage], notice: 'Story stage was successfully created.' }
+        format.json { render action: 'show', status: :created, location: [@story, @story_stage] }
       else
         format.html { render action: 'new' }
         format.json { render json: @story_stage.errors, status: :unprocessable_entity }
@@ -46,7 +46,7 @@ class StoryStagesController < ApplicationController
   def update
     respond_to do |format|
       if @story_stage.update(story_stage_params)
-        format.html { redirect_to [@service, @story, @story_stage], notice: 'Story stage was successfully updated.' }
+        format.html { redirect_to [@story, @story_stage], notice: 'Story stage was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
