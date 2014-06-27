@@ -8,6 +8,8 @@ Feature: Managing transactions
     When I go to /
     And I follow "Add a transaction"
     And I fill in "Transaction name" with "Test transaction"
+    And I choose "Live"
     And I press "Save"
     Then I should see the text "Transaction added"
     And I should see the text "Test transaction"
+    And I should see the text "live"

@@ -16,11 +16,22 @@
   </div>
 
   <div class="group">
-    <%= f.label :status %>
+    <p>Status</p>
     <p class="form-hint">
       What status is this transaction currently in.
     </p>
-    <%= f.text_field :status %>
+    <%= f.label :status_live do %>
+      <%= f.radio_button :status, "live" %>
+      Live
+    <% end %>
+    <%= f.label :status_proposed do %>
+      <%= f.radio_button :status, "proposed" %>
+      Proposed
+    <% end %>
+    <%= f.label :status_deprecated do %>
+      <%= f.radio_button :status, "deprecated" %>
+      Deprecated
+    <% end %>
   </div>
 
   <div class="group">
