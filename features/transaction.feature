@@ -16,3 +16,14 @@ Feature: Managing transactions
     And I should see the text "Test transaction"
     And I should see the text "live"
     And I should see the text "My Group"
+
+  Scenario: Editing a valid transaction
+    Given I am logged in as editor
+    And I have a transaction called "Test transaction"
+    When I go to /
+    And I follow "Test transaction"
+    And I follow "Edit"
+    And I fill in "Transaction name" with "My Test Transaction"
+    And I press "Save"
+    Then I should see the text "Transaction saved"
+    And I should see the text "My Test Transaction"

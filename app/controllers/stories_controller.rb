@@ -43,7 +43,7 @@ class StoriesController < ApplicationController
 
   def update
     if @story.update(story_params)
-      redirect_to @story, notice: 'Story was successfully updated.'
+      redirect_to @story, notice: 'Transaction saved.'
     else
       render action: 'edit'
     end
