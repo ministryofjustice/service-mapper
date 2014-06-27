@@ -10,7 +10,7 @@
       <span class="status"><%= story.status %></span>
       <span class="groups">
         Groups
-        <%= story.service.name if story.service %>
+        <%= story.groups.collect(&:name).join(", ") %>
       </span>
       <span class="stages">
         Stages

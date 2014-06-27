@@ -3,15 +3,15 @@
 <div class="page-header">
   <h1>
     Transactions
-    <% if @service %>
-      <small>Filtered by service: <%= @service.name %></small>
+    <% if @group %>
+      <small>Filtered by group: <%= @group.name %></small>
     <% elsif @system %>
       <small>Filtered by system: <%= @system.name %></small>
     <% end %>
   </h1>
 </div>
 
-<ul class="nav nav-pills">
+<!-- <ul class="nav nav-pills">
   <li<%= ' class="active"'.html_safe if action_name == 'index' %>>
     <%= link_to "Table View", stories_path(current_filter) %>
   </li>
@@ -21,10 +21,10 @@
   <li<%= ' class="active"'.html_safe if action_name == 'systems_graph' %>>
     <%= link_to "Systems Graph", systems_graph_stories_path(current_filter) %>
   </li>
-</ul>
+</ul> -->
 
 <%= form_tag nil, :method => :get, :class => 'form-inline' do |form| %>
-  Change Filter: <%= select_tag :service_id, options_for_select([["All Services", nil]] + Service.all.collect{|x| [x.name, x.id]}, params[:service_id]) %> or 
+  Change Filter: <%= select_tag :group_id, options_for_select([["All Groups", nil]] + Group.all.collect{|x| [x.name, x.id]}, params[:group_id]) %> or 
   <%= select_tag :system_id, options_for_select([["All Systems", nil]] + System.all.collect{|x| [x.name, x.id]}, params[:system_id]) %>
   <%= submit_tag "Filter", :name => nil, :class => 'btn' %>
 <% end %>

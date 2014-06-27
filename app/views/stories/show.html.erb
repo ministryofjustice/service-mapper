@@ -6,7 +6,7 @@
 
 <%= @story.description %>
 
-<p>Group: <strong><%= @story.service.name if @story.service %></strong></p>
+<p>Group: <strong><%= @story.groups.collect(&:name).join(", ") %></strong></p>
 <p>Owned by: <strong><%= @story.owner %></strong></p>
 <% if @story.replaces_story %>
   <p>Replaces: <strong>%= link_to @story.replaces_story.name, story_path(@story.replaces_story) %></strong></p>
