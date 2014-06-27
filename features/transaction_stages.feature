@@ -9,8 +9,8 @@ Feature: Adding transaction stages
     And I have a person called "Prison Visitor"
     And I have a system called "PVB website"
     When I go to /
-    And I follow "0"
-    And I follow "New"
+    And I follow "Prison visit booking"
+    And I follow "Add a stage"
     And I select "Prison Visitor" from "From"
     And I select "PVB website" from "To"
     And I press "Create Story stage"
