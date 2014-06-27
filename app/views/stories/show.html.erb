@@ -8,7 +8,7 @@
 
 
 <dl class="dl-horizontal">
-  <dt><strong>Group:</strong></dt> <dd><%= @story.service.name %></dd>
+  <dt><strong>Group:</strong></dt> <dd><%= @story.service.name if @story.service %></dd>
   <dt><strong>Owned by:</strong></dt> <dd><%= @story.owner %></dd>
   <% if @story.replaces_story %>
     <dt><strong>Replaces:</strong></dt> <dd><%= link_to @story.replaces_story.name, story_path(@story.replaces_story) %></dd>

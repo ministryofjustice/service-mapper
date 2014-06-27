@@ -18,6 +18,9 @@
       <%= breadcrumbs :style => :ol %>
     </nav>
   </div>
+  <% if notice.present? %>
+    <p><%= notice %></p>
+  <% end %>
 <% end %>
 
 <%= render template: "layouts/moj_template" %>
