@@ -8,10 +8,11 @@
   </div>
 
   <div class="group">
+    <%= f.label :group_ids, "Groups" %>
     <p class="form-hint">
       Describe the type of grouping that you would like this transcation to sit under. Transactions can live in multiple groups.
     </p>
-    TODO
+    <%= f.select :group_ids, Group.all.collect {|x| [x.name, x.id]}, {}, :multiple => true, :class => "multi_select" %>
   </div>
 
   <div class="group">

@@ -9,3 +9,7 @@ end
 Given(/^I have a system called "(.*?)"$/) do |name|
   FactoryGirl.create(:system, :name => name)
 end
+
+Given(/^I have a group called "(.*?)"$/) do |name|
+  FactoryGirl.create(:group, :name => name)
+end

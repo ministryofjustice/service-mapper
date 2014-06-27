@@ -74,7 +74,7 @@ class StoriesController < ApplicationController
   end
 
   def story_params
-    params.require(:story).permit(:name, :status, :owner, :description, :replaces_story_id, parent_ids: [])
+    params.require(:story).permit(:name, :status, :owner, :description, :replaces_story_id, parent_ids: [], group_ids: [])
   end
 
   def nodes
