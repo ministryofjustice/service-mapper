@@ -1,23 +1,10 @@
 crumb :root do
-  link "Home", root_path
-end
-
-crumb :services do
-  link "Services", services_path
-end
-
-crumb :service do |service|
-  link "'#{service.name}'", service_path(service)
-  parent :services
-end
-
-crumb :stories do
-  link "Transactions", stories_path
+  link "Transactions", root_path
 end
 
 crumb :story do |story|
   link "'#{story.name}'", story_path(story)
-  parent :stories
+  parent :root
 end
 
 crumb :story_stages do |story|

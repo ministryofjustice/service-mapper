@@ -4,15 +4,6 @@
 
 
 <% content_for :before_content do %>
-  <p>
-    superfluous links to be removed soon:  
-      <%= link_to "Transactions", stories_path  %>
-      <%= link_to "Services", services_path  %>
-      <%= link_to "Systems", systems_path  %>
-      <%= link_to "People", people_path  %>
-      <%= link_to "Sign Out", destroy_user_session_path, :method => :delete  %>
-  </p>
-
   <div id="global-breadcrumb" class="clearfix">
     <nav>
       <%= breadcrumbs :style => :ol %>
