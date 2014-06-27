@@ -1,34 +1,31 @@
 <% breadcrumb @story %>
-<%- model_class = Story -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
-</div>
+
+<%= @story.status %>
+<%= link_to "Edit", edit_story_path(@story) %>
+<h1><%= @story.name %></h1>
+
+<%= @story.description %>
+
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @story.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
-  <dd><%= @story.status %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:owner) %>:</strong></dt>
-  <dd><%= @story.owner %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @story.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:replaces_story) %>:</strong></dt>
-  <dd>
-    <% if @story.replaces_story %>
-      <%= link_to @story.replaces_story.name, story_path(@story.replaces_story) %>
-    <% end %>
-  </dd>
+  <dt><strong>Group:</strong></dt> <dd><%= @story.service.name %></dd>
+  <dt><strong>Owned by:</strong></dt> <dd><%= @story.owner %></dd>
+  <% if @story.replaces_story %>
+    <dt><strong>Replaces:</strong></dt> <dd><%= link_to @story.replaces_story.name, story_path(@story.replaces_story) %></dd>
+  <% end %>
 </dl>
 
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              stories_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_story_path(@story), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              story_path(@story),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-</div>
+<h2>Stages</h2>
+
+<p>These are the system interactions that happen</p>
+
+<% @story.story_stages.ordered.each do |stage| %>
+  <div class="story_stage">
+    <%= stage.position %>
+    <%= stage.description %>
+    <%= link_to stage.from.name, stage.from %>
+    <%= stage.payload %>
+    <%= link_to stage.to.name, stage.to %>
+    <%= link_to "Edit", edit_story_story_stage_path(@story, stage) %>
+  </div>
+<% end %>
