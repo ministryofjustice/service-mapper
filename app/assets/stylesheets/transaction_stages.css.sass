@@ -1,0 +1,44 @@
+// Place all the styles related to the story_stages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+ol.transaction_stages
+  margin: 0
+  padding: 0
+  list-style: none
+  border-top: 2px solid rgb(228, 229, 230)
+
+  li
+    border-bottom: 2px solid rgb(228, 229, 230)
+    span
+      display: inline-block
+      vertical-align: middle
+      padding: 0.5em 0
+
+    .position
+      font-size: 3em
+      font-weight: bold
+      color: rgb(103, 113, 115)
+      width: 4%
+      text-align: center
+
+    .description
+      padding-right: 3%
+      width: 25%
+
+    .from_to
+      width: 60%
+      .from
+        width: 20%
+      .payload
+        width: 55%
+      .to
+        width: 20%
+
+
+    .edit
+      width: 6%
+      text-align: right
+
+  li:nth-child(odd)
+    background-color: rgb(248, 249, 248)

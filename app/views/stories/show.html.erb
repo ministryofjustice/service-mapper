@@ -6,26 +6,40 @@
 
 <%= @story.description %>
 
-
-<dl class="dl-horizontal">
-  <dt><strong>Group:</strong></dt> <dd><%= @story.service.name if @story.service %></dd>
-  <dt><strong>Owned by:</strong></dt> <dd><%= @story.owner %></dd>
-  <% if @story.replaces_story %>
-    <dt><strong>Replaces:</strong></dt> <dd><%= link_to @story.replaces_story.name, story_path(@story.replaces_story) %></dd>
-  <% end %>
-</dl>
+<p>Group: <strong><%= @story.service.name if @story.service %></strong></p>
+<p>Owned by: <strong><%= @story.owner %></strong></p>
+<% if @story.replaces_story %>
+  <p>Replaces: <strong>%= link_to @story.replaces_story.name, story_path(@story.replaces_story) %></strong></p>
+<% end %>
 
 <h2>Stages</h2>
 
-<p>These are the system interactions that happen</p>
+<p>
+  These are the system interactions that happen to deliver this transaction.<br/>
+  They can be physical interactions or digital ones.
+</p>
 
-<% @story.story_stages.ordered.each do |stage| %>
-  <div class="story_stage">
-    <%= stage.position %>
-    <%= stage.description %>
-    <%= link_to stage.from.name, stage.from %>
-    <%= stage.payload %>
-    <%= link_to stage.to.name, stage.to %>
-    <%= link_to "Edit", edit_story_story_stage_path(@story, stage) %>
-  </div>
-<% end %>
+<p>
+  <%= link_to "Add a stage", new_story_story_stage_path(@story) %>
+</p>
+
+<ol class="transaction_stages">
+  <% @story.story_stages.ordered.each do |stage| %>
+    <li class="story_stage">
+      <span class="position"><%= stage.position %></span>
+      <span class="description"><%= stage.description %></span>
+      <span class="from_to">
+        <span class="from">
+          <%= image_tag '/icons/citizen.png', :width => 40 %><br />
+          <%= link_to stage.from.name, stage.from %>
+        </span>
+        <span class="payload"><%= stage.payload %></span>
+        <span class="to">
+          <%= image_tag '/icons/server.png', :width => 40 %><br />
+          <%= link_to stage.to.name, stage.to %>
+        </span>
+      </span>
+      <span class="edit"><%= link_to "Edit", edit_story_story_stage_path(@story, stage) %></span>
+    </li>
+  <% end %>
+</ol>
