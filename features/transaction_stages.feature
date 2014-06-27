@@ -14,7 +14,6 @@ Feature: Adding transaction stages
     And I select "Prison Visitor" from "From"
     And I select "PVB website" from "To"
     And I press "Create Story stage"
-    Then I should see the text "Story stage was successfully created"
     And "Prison visit booking" should have 1 transaction stages
     And the last transaction stage should have "Prison Visitor" for "from"
     And the last transaction stage should have "PVB website" for "to"
