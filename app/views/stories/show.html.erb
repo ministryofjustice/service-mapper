@@ -23,7 +23,7 @@
   <%= link_to "Add a stage", new_story_story_stage_path(@story) %>
 </p>
 
-<ol class="transaction_stages">
+<ol class="zebra_list transaction_stages">
   <% @story.story_stages.ordered.each do |stage| %>
     <li class="story_stage">
       <span class="position"><%= stage.position %></span>

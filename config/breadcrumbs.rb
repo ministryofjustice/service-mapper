@@ -2,6 +2,11 @@ crumb :root do
   link "Transactions", root_path
 end
 
+crumb :new_transaction do
+  link "New Transaction", new_story_path
+  parent :root
+end
+
 crumb :story do |story|
   link "'#{story.name}'", story_path(story)
   parent :root

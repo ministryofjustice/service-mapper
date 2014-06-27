@@ -6,7 +6,7 @@ Feature: Managing transactions
   Scenario: Adding a valid transaction
     Given I am logged in as editor
     When I go to /
-    And I follow "Add a transaction"
+    And I follow "Add a new transaction"
     And I fill in "Transaction name" with "Test transaction"
     And I choose "Live"
     And I press "Save"
