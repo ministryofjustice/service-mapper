@@ -24,7 +24,9 @@
 </ul> -->
 
 <%= form_tag nil, :method => :get, :class => 'form-inline' do |form| %>
-  Change Filter: <%= select_tag :group_id, options_for_select([["All Groups", nil]] + Group.all.collect{|x| [x.name, x.id]}, params[:group_id]) %> or 
-  <%= select_tag :system_id, options_for_select([["All Systems", nil]] + System.all.collect{|x| [x.name, x.id]}, params[:system_id]) %>
+  <label for="group_id">Filter</label>
+  <%= select_tag :group_id, options_for_select([["All Groups", nil]] + Group.all.collect{|x| [x.name, x.id]}, params[:group_id]) %>
+<!--   <%= select_tag :system_id, options_for_select([["All Systems", nil]] + System.all.collect{|x| [x.name, x.id]}, params[:system_id]) %>
+ -->
   <%= submit_tag "Filter", :name => nil, :class => 'btn' %>
 <% end %>
