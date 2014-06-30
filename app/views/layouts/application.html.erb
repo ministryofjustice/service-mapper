@@ -1,20 +1,26 @@
-<% content_for :stylesheets do %>
+<% content_for :head do %>
   <%= stylesheet_link_tag("application", media: "all") %>
 <% end %>
-<% content_for :javascripts do %>
+<% content_for :body_end do %>
   <%= javascript_include_tag("application") %>
 <% end %>
 
-
-<% content_for :before_content do %>
-  <div id="global-breadcrumb" class="clearfix">
-    <nav>
-      <%= breadcrumbs :style => :ol %>
-    </nav>
+<% content_for :content do %>
+    <div id="wrapper" class="">
+    <div id="global-breadcrumb" class="clearfix">
+      <nav>
+        <%= breadcrumbs :style => :ol %>
+      </nav>
+    </div>
+    <% if notice.present? %>
+      <p><%= notice %></p>
+    <% end %>
+    <main id="content" role="main" class="">
+      <div class="inner-block">
+        <%= yield %>
+      </div>
+    </main>
   </div>
-  <% if notice.present? %>
-    <p><%= notice %></p>
-  <% end %>
 <% end %>
 
-<%= render template: "layouts/moj_template" %>
+<%= render template: "layouts/moj_internal_template" %>

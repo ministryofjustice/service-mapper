@@ -15,10 +15,10 @@ gem 'acts_as_list'
 # styles
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'therubyracer'
-gem 'less'
-gem 'govuk_frontend_toolkit', '1.3.0'
-gem 'moj_template', '0.12.0'
+gem 'govuk_template'
+gem 'govuk_frontend_toolkit'
+gem 'moj_internal_template',
+  git: 'https://github.com/ministryofjustice/moj_internal_template.git', :branch => 'master'
 
 # js
 gem 'jquery-rails'
