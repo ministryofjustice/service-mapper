@@ -11,11 +11,17 @@ Feature: Managing transactions
     And I fill in "Transaction name" with "Test transaction"
     And I choose "LIVE"
     And I select "My Group" from "Groups"
+    And I fill in "Name" with "Contact name"
+    And I fill in "Email" with "Contact email"
+    And I fill in "Department and team" with "Contact Team"
     And I press "Save"
     Then I should see the text "Transaction added"
     And I should see the text "Test transaction"
     And I should see the text "live"
     And I should see the text "My Group"
+    And I should see the text "Contact name"
+    And I should see the text "Contact email"
+    And I should see the text "Contact Team"
 
   Scenario: Editing a valid transaction
     Given I am logged in as editor

@@ -6,7 +6,7 @@
     </p>
     <%= f.text_field :name %>
   </div>
-
+  <hr />
   <div class="group">
     <%= f.label :group_ids, "Groups" %>
     <p class="form-hint">
@@ -14,6 +14,7 @@
     </p>
     <%= f.select :group_ids, Group.all.collect {|x| [x.name, x.id]}, {}, :multiple => true, :class => "multi_select" %>
   </div>
+  <hr />
 
   <div class="group">
     <p>Status</p>
@@ -33,14 +34,31 @@
       <%= status_flag "Deprecated" %>
     <% end %>
   </div>
+  <hr />
 
   <div class="group">
-    <%= f.label :owner, "Service Manager responsible" %>
-    <p class="form-hint">
-      This person is the contact point for this transaction and any enquiries by other teams.
-    </p>
-    <%= f.text_field :owner %>
+    <fieldset>
+      <legend>Service manager responsible</legend>
+      <%= f.label :contact_name, "Name" %>
+      <p class="form-hint">
+        This person is the contact point for this transaction and any enquiries by other teams.
+      </p>
+      <%= f.text_field :contact_name %>
+
+      <%= f.label :contact_email, "Email" %>
+      <p class="form-hint">
+        This person is the contact point for this transaction and any enquiries by other teams.
+      </p>
+      <%= f.text_field :contact_email %>
+
+      <%= f.label :contact_team, "Department and team" %>
+      <p class="form-hint">
+        This person is the contact point for this transaction and any enquiries by other teams.
+      </p>
+      <%= f.text_field :contact_team %>
+    </fieldset>
   </div>
+  <hr />
 
   <div class="group">
     <%= f.label :description %>
