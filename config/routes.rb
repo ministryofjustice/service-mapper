@@ -14,8 +14,6 @@ Archipelago::Application.routes.draw do
     end
   end
 
-  resources :system_links
-
   resources :systems do
     collection do
       get :graph

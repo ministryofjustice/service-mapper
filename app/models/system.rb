@@ -1,5 +1,4 @@
 class System < ActiveRecord::Base
-  has_many :system_links
   has_many :story_stage_entries, :class_name => 'StoryStage', :as => 'to'
   has_many :story_stage_exits, :class_name => 'StoryStage', :as => 'from'
   has_many :comments, :as => :item
@@ -19,10 +18,6 @@ class System < ActiveRecord::Base
 
   def graph_json
     {:id => "System_#{self.id}", :name => self.name, :type => 'system', :url => Rails.application.routes.url_helpers.system_path(self)}
-  end
-
-  def system_links
-    SystemLink.where("system_a_id = ? OR system_b_id = ?", self.id, self.id)
   end
 
   def self.permitted_params
