@@ -4,45 +4,27 @@
     <p class="form-hint">A description of the transaction stage. E.g. Prison visitor initiated request. </p>
     <%= f.text_field :description %>
   </div>
-  <div class="group">
-    <fieldset id="from_system">
-      <label>
-        Select a system from our database
-        <%= radio_button_tag :from_selector, "existing" %>
-      </label>
-      <%= f.select :from_id, 
-          options_for_select(System.alphabetical.all.collect {|x| [x.name, x.id]}, @story_stage.from_id) %>
+  <% ["from", "to"].each do |direction| %>
+    <div class="group">
+      <fieldset id="<%= direction %>_system">
+        <label>
+          Select a system from our database
+          <%= radio_button_tag "#{direction}_selector", "existing" %>
+        </label>
+        <%= f.select "#{direction}_id", 
+            options_for_select(System.alphabetical.all.collect {|x| [x.name, x.id]}, @story_stage.from_id) %>
 
-      <label>
-        Add a new system
-        <%= radio_button_tag :from_selector, "new" %>
-      </label>
-      <%= f.fields_for :from, System.new do |from_form| %>
-        <%= from_form.label :name %>
-        <%= from_form.text_field :name %>
-      <% end %>
-    </fieldset>
-  </div>
-  <div class="group">
-    <fieldset id="to_system">
-      <label>
-        Select a system from our database
-        <%= radio_button_tag :to_selector, "existing" %>
-      </label>
-      <%= f.select :to_id,
-          options_for_select(System.alphabetical.all.collect {|x| [x.name, x.id]}, @story_stage.to_id) %>
-
-      <label>
-        Add a new system
-        <%= radio_button_tag :to_selector, "new" %>
-      </label>
-      <%= f.fields_for :to, System.new do |from_form| %>
-        <%= from_form.label :name %>
-        <%= from_form.text_field :name %>
-      <% end %>
-
-    </fieldset>
-  </div>
+        <label>
+          Add a new system
+          <%= radio_button_tag "#{direction}_selector", "new" %>
+        </label>
+        <%= f.fields_for direction, System.new do |system_form| %>
+          <%= system_form.label :name %>
+          <%= system_form.text_field :name %>
+        <% end %>
+      </fieldset>
+    </div>
+  <% end %>
   <div class="control-group">
     <%= f.label :payload, :class => 'control-label' %>
     <div class="controls">
