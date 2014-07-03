@@ -1,7 +1,6 @@
 Archipelago::Application.routes.draw do
 
   devise_for :users
-  resources :contracts
 
   resources :stories do
     collection do

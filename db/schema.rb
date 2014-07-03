@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701195804) do
+ActiveRecord::Schema.define(version: 20140703155257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,20 +27,6 @@ ActiveRecord::Schema.define(version: 20140701195804) do
 
   add_index "comments", ["item_id", "item_type"], name: "index_comments_on_item_id_and_item_type", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
-
-  create_table "contracts", force: true do |t|
-    t.integer  "annual_cost"
-    t.date     "start_date"
-    t.date     "expiry_date"
-    t.boolean  "renewable"
-    t.string   "supplier"
-    t.string   "owner"
-    t.string   "owner_email"
-    t.text     "desc"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-  end
 
   create_table "group_memberships", force: true do |t|
     t.integer  "group_id"
@@ -123,7 +109,6 @@ ActiveRecord::Schema.define(version: 20140701195804) do
     t.datetime "updated_at"
     t.string   "name"
     t.text     "description"
-    t.integer  "contract_id"
     t.string   "owner_email"
     t.string   "network"
     t.boolean  "decommissioning"
@@ -134,8 +119,6 @@ ActiveRecord::Schema.define(version: 20140701195804) do
     t.string   "location"
     t.string   "type"
   end
-
-  add_index "systems", ["contract_id"], name: "index_systems_on_contract_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",           null: false
