@@ -1,0 +1,40 @@
+<%= form.label :name %>
+<%= form.text_field :name %>
+
+<% System.types.each do |type| %>
+  <label>
+    <%= type %>
+    <%= form.radio_button :type, type %>
+  </label>
+<% end %>
+
+<%= form.label :owner %>
+<%= form.text_field :owner %>
+
+<%= form.label :supplier %>
+<%= form.text_field :supplier %>
+
+<%= form.label :technology %>
+<%= form.text_field :technology %>
+
+<%= form.label :source_code_url %>
+<%= form.text_field :source_code_url %>
+
+<%= form.label :status_live do %>
+  <%= form.radio_button :status, "live" %>
+  <%= status_flag "Live" %>
+<% end %>
+<%= form.label :status_proposed do %>
+  <%= form.radio_button :status, "proposed" %>
+  <%= status_flag "Proposed" %>
+<% end %>
+<%= form.label :status_deprecated do %>
+  <%= form.radio_button :status, "deprecated" %>
+  <%= status_flag "Deprecated" %>
+<% end %>
+
+<%= form.label :hosting %>
+<%= form.text_field :hosting %>
+
+<%= form.label :link %>
+<%= form.text_field :link %>
