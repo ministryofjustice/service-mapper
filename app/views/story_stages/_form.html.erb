@@ -1,22 +1,22 @@
 <%= form_for [@story, @story_stage], :html => { :class => 'form-horizontal' } do |f| %>
   <div class="group">
     <%= f.label :description, "Stage name" %>
-    <p class="form-hint">A description of the transaction stage. E.g. Prison visitor initiated request. </p>
+    <p class="form-hint">This should describe what happens in that stage between the system. eg. 'Request Confirmation sent to citizen'.</p>
     <%= f.text_field :description %>
   </div>
   <% ["from", "to"].each do |direction| %>
     <div class="group">
       <fieldset id="<%= direction %>_system">
         <label>
-          Select a system from our database
           <%= radio_button_tag "#{direction}_selector", "existing" %>
+          Select a system from our database
         </label>
         <%= f.select "#{direction}_id", 
             options_for_select(System.alphabetical.collect {|x| [x.name, x.id]}, @story_stage.from_id) %>
 
         <label>
-          Add a new system
           <%= radio_button_tag "#{direction}_selector", "new" %>
+          Add a new system
         </label>
         <%= f.fields_for direction, System.new do |system_form| %>
           <%= system_form.label :name %>
@@ -25,20 +25,17 @@
       </fieldset>
     </div>
   <% end %>
-  <div class="control-group">
-    <%= f.label :payload, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :payload, :class => 'text_field' %>
-    </div>
-    <p class="help-block">What format the information is sent in. E.g. email, JSON, XML</p>
-  </div>
-  <div class="control-group">
-    <%= f.label :average_time, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :chronic_duration_average_time, :class => 'text_field' %>
-    </div>
-    <p class="help-block">The average time taken for the transaction stage. E.g. '4 seconds', '3 days 6 hours' 
-  </div>
+  <div class="group">
+    <fieldset>
+      <p>Mode</p>
+      <% StoryStage.modes.each do |mode| %>
+        <label>
+          <%= f.radio_button :payload, mode %>
+          <%= mode %>
+        </label>
+      <% end %>
+   </fieldset>
+ </div>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

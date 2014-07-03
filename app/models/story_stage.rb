@@ -16,4 +16,8 @@ class StoryStage < ActiveRecord::Base
   def graph_json
     {:source => self.from_id, :target => self.to_id, :type => 'story_stage', :id => self.id, :url => Rails.application.routes.url_helpers.story_story_stage_path(self.story, self)}
   end
+
+  def self.modes
+    ["API", "Web page", "Phone call", "API", "Paper form", "Face to face", "Application"]
+  end
 end
