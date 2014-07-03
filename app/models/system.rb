@@ -25,4 +25,8 @@ class System < ActiveRecord::Base
   def system_links
     SystemLink.where("system_a_id = ? OR system_b_id = ?", self.id, self.id)
   end
+
+  def self.permitted_params
+    [:owner, :owner_email, :supplier, :technology, :status, :hosting, :name, :description, :contract_id, :network, :decommissioning, :source_code_url, :technical_support_contact, :link]
+  end
 end

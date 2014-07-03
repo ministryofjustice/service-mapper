@@ -8,20 +8,39 @@
     <fieldset id="from_system">
       <label>
         Select a system from our database
-        <%= radio_button_tag :from_selector, :value => "existing" %>
+        <%= radio_button_tag :from_selector, "existing" %>
       </label>
       <%= f.select :from_id, 
           options_for_select(System.alphabetical.all.collect {|x| [x.name, x.id]}, @story_stage.from_id) %>
+
+      <label>
+        Add a new system
+        <%= radio_button_tag :from_selector, "new" %>
+      </label>
+      <%= f.fields_for :from, System.new do |from_form| %>
+        <%= from_form.label :name %>
+        <%= from_form.text_field :name %>
+      <% end %>
     </fieldset>
   </div>
   <div class="group">
     <fieldset id="to_system">
       <label>
         Select a system from our database
-        <%= radio_button_tag :from_selector, :value => "existing" %>
+        <%= radio_button_tag :to_selector, "existing" %>
       </label>
       <%= f.select :to_id,
           options_for_select(System.alphabetical.all.collect {|x| [x.name, x.id]}, @story_stage.to_id) %>
+
+      <label>
+        Add a new system
+        <%= radio_button_tag :to_selector, "new" %>
+      </label>
+      <%= f.fields_for :to, System.new do |from_form| %>
+        <%= from_form.label :name %>
+        <%= from_form.text_field :name %>
+      <% end %>
+
     </fieldset>
   </div>
   <div class="control-group">

@@ -4,6 +4,9 @@ class StoryStage < ActiveRecord::Base
   belongs_to :from, :class_name => "System"
   belongs_to :to, :class_name => "System"
 
+  accepts_nested_attributes_for :from
+  accepts_nested_attributes_for :to
+
   acts_as_list scope: :story
   scope :ordered, -> { order("position ASC") }
 
