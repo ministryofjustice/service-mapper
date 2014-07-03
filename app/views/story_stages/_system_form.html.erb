@@ -7,12 +7,22 @@
     <%= f.select "#{direction}_id", 
         options_for_select(System.alphabetical.collect {|x| [x.name, x.id]}, @story_stage.from_id) %>
 
+    <!--
+      Not sure how to best handle this link. Happy for the form to not be inline
+      if that's easier, but the link will still need to update depending on the
+      above select box. How to do this unobtrusively may be beyond us.
+    -->
+    <%= link_to "Edit details", edit_system_path %>
+
     <label>
       <%= radio_button_tag "#{direction}_selector", "new" %>
       Add a new system
     </label>
-    <%= f.fields_for direction, System.new do |system_form| %>
-      <%= render :partial => 'systems/fields', :locals => {:form => system_form} %>
-    <% end %>
+    <%= link_to "Edit details", "#new_#{direction}_system_fields" %>
+    <div id="new_<%= direction %>_system_fields">
+      <%= f.fields_for direction, System.new do |system_form| %>
+        <%= render :partial => 'systems/fields', :locals => {:form => system_form} %>
+      <% end %>
+    </div>
   </fieldset>
 </div>
