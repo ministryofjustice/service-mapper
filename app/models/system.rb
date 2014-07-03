@@ -27,6 +27,10 @@ class System < ActiveRecord::Base
   end
 
   def self.permitted_params
-    [:owner, :owner_email, :supplier, :technology, :status, :hosting, :name, :description, :contract_id, :network, :decommissioning, :source_code_url, :technical_support_contact, :link]
+    [:owner, :owner_email, :supplier, :technology, :status, :hosting, :name, :description, :contract_id, :network, :decommissioning, :source_code_url, :technical_support_contact, :link, :type, :status]
+  end
+
+  def self.types
+    ["Web service", "Cloud service", "Server", "Staff user", "Citizen user", "Software"]
   end
 end

@@ -9,3 +9,7 @@ Then(/^the last transaction stage should have "(.*?)" for "(.*?)"$/) do |val, at
   end
   val.should == val
 end
+
+When(/^the system "(.*?)" should have "(.*?)" for "(.*?)"$/) do |name, val, att|
+  System.find_by_name(name).send(att).should == val
+end
