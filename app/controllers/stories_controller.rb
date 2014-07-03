@@ -64,12 +64,12 @@ class StoriesController < ApplicationController
       @stories = Story.find(params[:story_ids])        
     elsif params[:group_id].present?
       @group = Group.find(params[:group_id])
-      @stories = @group.stories.order("created_at ASC").all
+      @stories = @group.stories.order("created_at ASC")
     elsif params[:system_id].present?
       @system = System.find(params[:system_id])
       @stories = @system.stories
     else
-      @stories = Story.order("created_at ASC").all
+      @stories = Story.order("created_at ASC")
     end
   end
 

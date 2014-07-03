@@ -12,7 +12,7 @@
           <%= radio_button_tag "#{direction}_selector", "existing" %>
         </label>
         <%= f.select "#{direction}_id", 
-            options_for_select(System.alphabetical.all.collect {|x| [x.name, x.id]}, @story_stage.from_id) %>
+            options_for_select(System.alphabetical.collect {|x| [x.name, x.id]}, @story_stage.from_id) %>
 
         <label>
           Add a new system

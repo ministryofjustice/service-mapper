@@ -5,7 +5,7 @@ class System < ActiveRecord::Base
   has_many :story_stage_exits, :class_name => 'StoryStage', :as => 'from'
   has_many :comments, :as => :item
 
-  scope :alphabetical, order("name ASC")
+  scope :alphabetical, -> { order("name ASC") }
 
   # Allows us to use type column without setting STI
   self.inheritance_column = nil
