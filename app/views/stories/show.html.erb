@@ -24,16 +24,18 @@
   <%= link_to "Add a stage", new_story_story_stage_path(@story) %>
 </p>
 
-<ol class="zebra_list transaction_stages">
+<ol class="transaction_stages">
   <% @story.story_stages.ordered.each do |stage| %>
     <li class="story_stage">
       <span class="position"><%= stage.position %></span>
       <span class="description"><%= stage.description %></span>
       <span class="from_to">
-        <span class="from">
-          <%= image_tag '/icons/citizen.png', :width => 40 %><br />
-          <%= link_to stage.from.name, stage.from %>
-        </span>
+        <% if stage.linked_with_last_stage? %>
+          <span class="from">
+            <%= image_tag '/icons/citizen.png', :width => 40 %><br />
+            <%= link_to stage.from.name, stage.from %>
+          </span>
+        <% end %>
         <span class="payload"><%= stage.payload %></span>
         <span class="to">
           <%= image_tag '/icons/server.png', :width => 40 %><br />

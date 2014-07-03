@@ -20,4 +20,12 @@ class StoryStage < ActiveRecord::Base
   def self.modes
     ["Email", "Web page", "Phone call", "API", "Paper form", "Face to face", "Application"]
   end
+
+  def previous_stage
+    story.story_stages.where("position = ?", self.position - 1).first
+  end
+
+  def linked_with_last_stage?
+    !!previous_stage && self.from == previous_stage.to
+  end
 end
