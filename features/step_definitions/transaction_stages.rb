@@ -3,5 +3,9 @@ Then(/^"(.*?)" should have (\d+) transaction stages$/) do |transaction_name, cou
 end
 
 Then(/^the last transaction stage should have "(.*?)" for "(.*?)"$/) do |val, att|
-  StoryStage.last.send(att).name.should == val
+  val = StoryStage.last.send(att)
+  if val.is_a? ActiveRecord::Base
+    val = val.name
+  end
+  val.should == val
 end

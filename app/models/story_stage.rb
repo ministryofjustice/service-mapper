@@ -18,6 +18,6 @@ class StoryStage < ActiveRecord::Base
   end
 
   def self.modes
-    ["API", "Web page", "Phone call", "API", "Paper form", "Face to face", "Application"]
+    ["Email", "Web page", "Phone call", "API", "Paper form", "Face to face", "Application"]
   end
 end
