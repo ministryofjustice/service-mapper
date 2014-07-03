@@ -1,7 +1,6 @@
 class System < ActiveRecord::Base
   has_many :story_stage_entries, :class_name => 'StoryStage', :foreign_key => 'to_id'
   has_many :story_stage_exits, :class_name => 'StoryStage', :foreign_key => 'to_id'
-  has_many :comments, :as => :item
 
   scope :alphabetical, -> { order("name ASC") }
 

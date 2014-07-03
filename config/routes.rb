@@ -15,7 +15,5 @@ Archipelago::Application.routes.draw do
 
   resources :systems
 
-  resources :comments
-
   root 'stories#index'
 end
