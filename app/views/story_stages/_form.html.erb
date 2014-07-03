@@ -4,65 +4,9 @@
     <p class="form-hint">This should describe what happens in that stage between the system. eg. 'Request Confirmation sent to citizen'.</p>
     <%= f.text_field :description %>
   </div>
-  <% ["from", "to"].each do |direction| %>
-    <div class="group">
-      <fieldset id="<%= direction %>_system">
-        <label>
-          <%= radio_button_tag "#{direction}_selector", "existing" %>
-          Select a system from our database
-        </label>
-        <%= f.select "#{direction}_id", 
-            options_for_select(System.alphabetical.collect {|x| [x.name, x.id]}, @story_stage.from_id) %>
 
-        <label>
-          <%= radio_button_tag "#{direction}_selector", "new" %>
-          Add a new system
-        </label>
-        <%= f.fields_for direction, System.new do |system_form| %>
-          <%= system_form.label :name %>
-          <%= system_form.text_field :name %>
+  <%= render :partial => 'system_form', :locals => {:direction => "from", :f => f} %>
 
-          <% System.types.each do |type| %>
-            <label>
-              <%= type %>
-              <%= system_form.radio_button :type, type %>
-            </label>
-          <% end %>
-
-          <%= system_form.label :owner %>
-          <%= system_form.text_field :owner %>
-
-          <%= system_form.label :supplier %>
-          <%= system_form.text_field :supplier %>
-
-          <%= system_form.label :technology %>
-          <%= system_form.text_field :technology %>
-
-          <%= system_form.label :source_code_url %>
-          <%= system_form.text_field :source_code_url %>
-
-          <%= f.label :status_live do %>
-            <%= system_form.radio_button :status, "live" %>
-            <%= status_flag "Live" %>
-          <% end %>
-          <%= f.label :status_proposed do %>
-            <%= system_form.radio_button :status, "proposed" %>
-            <%= status_flag "Proposed" %>
-          <% end %>
-          <%= f.label :status_deprecated do %>
-            <%= system_form.radio_button :status, "deprecated" %>
-            <%= status_flag "Deprecated" %>
-          <% end %>
-
-          <%= system_form.label :hosting %>
-          <%= system_form.text_field :hosting %>
-
-          <%= system_form.label :link %>
-          <%= system_form.text_field :link %>
-        <% end %>
-      </fieldset>
-    </div>
-  <% end %>
   <div class="group">
     <fieldset>
       <p>Mode</p>
@@ -72,8 +16,10 @@
           <%= mode %>
         </label>
       <% end %>
-   </fieldset>
- </div>
+    </fieldset>
+  </div>
+
+  <%= render :partial => 'system_form', :locals => {:direction => "to", :f => f} %>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
