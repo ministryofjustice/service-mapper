@@ -1,24 +1,28 @@
 <%= form_for [@story, @story_stage], :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :from_str, "From", :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select :from_str, 
-        grouped_options_for_select({
-          "Systems" => System.alphabetical.all.collect {|x| [x.name, x.polymorphic_id]}, 
-          "People" => Person.alphabetical.all.collect {|x| [x.name, x.polymorphic_id]}
-        }, @story_stage.from_str) %>
-    </div>
-    <p class="help-block">The starting point for the transaction stage</p>
+  <div class="group">
+    <%= f.label :description, "Stage name" %>
+    <p class="form-hint">A description of the transaction stage. E.g. Prison visitor initiated request. </p>
+    <%= f.text_field :description %>
   </div>
-  <div class="control-group">
-    <%= f.label :to_str, "To", :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select :to_str, grouped_options_for_select({
-          "Systems" => System.alphabetical.all.collect {|x| [x.name, x.polymorphic_id]}, 
-          "People" => Person.alphabetical.all.collect {|x| [x.name, x.polymorphic_id]}
-        }, @story_stage.to_str) %>
-    </div>
-    <p class="help-block">The end point for the transaction stage</p>
+  <div class="group">
+    <fieldset id="from_system">
+      <label>
+        Select a system from our database
+        <%= radio_button_tag :from_selector, :value => "existing" %>
+      </label>
+      <%= f.select :from_id, 
+          options_for_select(System.alphabetical.all.collect {|x| [x.name, x.id]}, @story_stage.from_id) %>
+    </fieldset>
+  </div>
+  <div class="group">
+    <fieldset id="to_system">
+      <label>
+        Select a system from our database
+        <%= radio_button_tag :from_selector, :value => "existing" %>
+      </label>
+      <%= f.select :to_id,
+          options_for_select(System.alphabetical.all.collect {|x| [x.name, x.id]}, @story_stage.to_id) %>
+    </fieldset>
   </div>
   <div class="control-group">
     <%= f.label :payload, :class => 'control-label' %>
@@ -26,14 +30,6 @@
       <%= f.text_field :payload, :class => 'text_field' %>
     </div>
     <p class="help-block">What format the information is sent in. E.g. email, JSON, XML</p>
-  </div>
-  <div class="control-group">
-    <%= f.label :description, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :description, :class => 'text_field' %>
-    </div>
-    <p class="help-block">A description of the transaction stage. E.g. Prison 
-visitor initiated request. </p>
   </div>
   <div class="control-group">
     <%= f.label :average_time, :class => 'control-label' %>

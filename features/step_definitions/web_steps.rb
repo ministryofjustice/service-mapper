@@ -1,5 +1,9 @@
 require 'uri'
 
+When /^(.*) within "([^:]+)"$/ do |step, parent|
+  within('#' + parent.gsub(" ", "_")) { step step }
+end
+
 Given /^pending$/ do
   pending
 end

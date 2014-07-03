@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701110339) do
+ActiveRecord::Schema.define(version: 20140701195804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,15 +58,6 @@ ActiveRecord::Schema.define(version: 20140701110339) do
     t.datetime "updated_at"
   end
 
-  create_table "people", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "role"
-    t.string   "location"
-  end
-
   create_table "stories", force: true do |t|
     t.string   "name"
     t.string   "status"
@@ -97,9 +88,7 @@ ActiveRecord::Schema.define(version: 20140701110339) do
   create_table "story_stages", force: true do |t|
     t.integer  "story_id"
     t.integer  "from_id"
-    t.string   "from_type"
     t.integer  "to_id"
-    t.string   "to_type"
     t.integer  "position"
     t.string   "payload"
     t.text     "description"
@@ -108,9 +97,7 @@ ActiveRecord::Schema.define(version: 20140701110339) do
     t.integer  "average_time"
   end
 
-  add_index "story_stages", ["from_id", "from_type"], name: "index_story_stages_on_from_id_and_from_type", using: :btree
   add_index "story_stages", ["story_id"], name: "index_story_stages_on_story_id", using: :btree
-  add_index "story_stages", ["to_id", "to_type"], name: "index_story_stages_on_to_id_and_to_type", using: :btree
 
   create_table "system_links", force: true do |t|
     t.integer  "system_a_id"
@@ -143,6 +130,9 @@ ActiveRecord::Schema.define(version: 20140701110339) do
     t.string   "source_code_url"
     t.string   "technical_support_contact"
     t.string   "link"
+    t.string   "role"
+    t.string   "location"
+    t.string   "type"
   end
 
   add_index "systems", ["contract_id"], name: "index_systems_on_contract_id", using: :btree

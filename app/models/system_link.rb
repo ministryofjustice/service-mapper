@@ -7,6 +7,6 @@ class SystemLink < ActiveRecord::Base
   end
 
   def story_stages
-    StoryStage.where("from_type = ? AND to_type = ? AND from_id IN (?) AND to_id IN (?)", "System", "System", [system_a_id, system_b_id], [system_a_id, system_b_id])
+    StoryStage.where("from_id IN (?) AND to_id IN (?)", [system_a_id, system_b_id], [system_a_id, system_b_id])
   end
 end

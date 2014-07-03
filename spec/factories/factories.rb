@@ -9,8 +9,6 @@ FactoryGirl.define do
   end
   factory :system_link do
   end
-  factory :person do
-  end
   factory :group do
   end
 end

@@ -85,7 +85,7 @@ class StoriesController < ApplicationController
       end
       nodes.uniq
     else
-      System.all + Person.all
+      System.all
     end
   end
 

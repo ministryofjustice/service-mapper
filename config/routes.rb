@@ -15,8 +15,6 @@ Archipelago::Application.routes.draw do
     end
   end
 
-  resources :people
-
   resources :system_links
 
   resources :systems do
