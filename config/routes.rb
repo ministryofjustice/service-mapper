@@ -15,5 +15,6 @@ Archipelago::Application.routes.draw do
 
   resources :systems
 
-  root 'stories#index'
+  get ':action', :controller => :pages
+  root 'pages#index'
 end
