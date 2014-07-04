@@ -9,7 +9,7 @@ Feature: Viewing Transactions
     And I have a transaction called "Transaction in group"
     And I have a transaction called "Transaction not in group"
     And "Transaction in group" is in group "My Group"
-    When I go to /
+    When I go to /stories
     Then I should see the text "Transaction in group"
     And I should see the text "Transaction not in group"
     When I select "My Group" from "Filter"

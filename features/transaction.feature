@@ -6,7 +6,7 @@ Feature: Managing transactions
   Scenario: Adding a valid transaction
     Given I am logged in as editor
     And I have a group called "My Group"
-    When I go to /
+    When I go to /stories
     And I follow "Add a new transaction"
     And I fill in "Transaction name" with "Test transaction"
     And I choose "LIVE"
@@ -26,7 +26,7 @@ Feature: Managing transactions
   Scenario: Editing a valid transaction
     Given I am logged in as editor
     And I have a transaction called "Test transaction"
-    When I go to /
+    When I go to /stories
     And I follow "Test transaction"
     And I follow "Edit"
     And I fill in "Transaction name" with "My Test Transaction"

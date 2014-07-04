@@ -10,7 +10,7 @@ Feature: Adding transaction stages
     And I have a system called "PVB website"
 
   Scenario: Choosing systems on each side
-    When I go to /
+    When I go to /stories
     And I follow "Prison visit booking"
     And I follow "Add a stage"
 
@@ -31,7 +31,7 @@ Feature: Adding transaction stages
     And the last transaction stage should have "API" for "payload"
 
   Scenario: Creating systems on each side
-    When I go to /
+    When I go to /stories
     And I follow "Prison visit booking"
     And I follow "Add a stage"
 
