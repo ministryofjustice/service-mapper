@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/ministryofjustice/moj_internal_template.git
-  revision: c4a4e87bfa5ddb75efb5fc4455f506baed55d7ec
+  revision: 9e272b12d1010a3958c3d18380e046d5836e461a
   branch: master
   specs:
     moj_internal_template (0.1.0)
