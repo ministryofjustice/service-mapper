@@ -3,13 +3,15 @@
 <div class="page-header">
   <h1>
     Transactions
-    <% if @group %>
-      <small>Filtered by group: <%= @group.name %></small>
-    <% elsif @system %>
-      <small>Filtered by system: <%= @system.name %></small>
-    <% end %>
   </h1>
+  
+  <p>The home page for transactions allows you to filter and view your transactions.</p>
 </div>
+
+<%= link_to new_story_path, :class => 'add_new' do %>
+  <span class="link">Add a new transaction</span>
+  <small>Would you like to add a another transaction?</small>
+<% end %>
 
 <!-- <ul class="nav nav-pills">
   <li<%= ' class="active"'.html_safe if action_name == 'index' %>>
@@ -23,9 +25,9 @@
   </li>
 </ul> -->
 
-<%= form_tag nil, :method => :get, :class => 'form-inline' do |form| %>
-  <label for="group_id">Filter</label>
-  <%= select_tag :group_id, options_for_select([["All Groups", nil]] + Group.all.collect{|x| [x.name, x.id]}, params[:group_id]) %>
+<%= form_tag nil, :method => :get, :class => 'filter auto_submit' do |form| %>
+  <label for="group_id">Filter by group:</label>
+  <%= select_tag :group_id, options_for_select([["All", nil]] + Group.all.collect{|x| [x.name, x.id]}, params[:group_id]), :class => 'multi_select' %>
 <!--   <%= select_tag :system_id, options_for_select([["All Systems", nil]] + System.all.collect{|x| [x.name, x.id]}, params[:system_id]) %>
  -->
   <%= submit_tag "Filter", :name => nil, :class => 'btn' %>

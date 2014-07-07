@@ -1,19 +1,17 @@
 <%- model_class = Story -%>
 <%= render :partial => 'header' %>
 
-<%= link_to "Add a new transaction", new_story_path %>
-
 <ul class="zebra_list transactions">
   <% @stories.each do |story| %>
     <li>
       <span class="name"><%= link_to story.name, story_path(story) %></span>
       <%= status_flag(story.status) %>
       <span class="groups">
-        Groups
+        <strong>Groups</strong><br />
         <%= story.groups.collect(&:name).join(", ") %>
       </span>
       <span class="stages">
-        Stages
+        <strong class="desc">Stages</strong><br />
         <%= story.story_stages.count %>
       </span>
     </li>

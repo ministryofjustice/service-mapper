@@ -3,3 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
   $('.multi_select').chosen()
+
+  $('form.auto_submit').change(-> this.submit())
+  $('form.auto_submit input[type=submit]').hide()

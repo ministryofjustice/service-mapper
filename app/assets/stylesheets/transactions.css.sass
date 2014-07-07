@@ -1,12 +1,36 @@
+a.add_new
+  display: block
+  background-color: rgb(234, 243, 248)
+  padding: 1em
+  text-decoration: none
+  .link
+    text-decoration: underline
+    margin-right: 3em
+  small
+    color: #6f767c
+
+form.filter
+  margin: 1em 0
+  label
+    font-weight: bold
+    margin: 1em 0
+
+
 .transactions
   li
     position: relative
   span
     display: inline-block
+    vertical-align: middle
     padding: 1em 0
   .name
     width: 48%
     padding: 1%
+  .groups, .stages
+    font-size: 0.8em
+    strong
+      color: rgb(111, 118, 124) 
+      font-weight: normal
   .groups
     width: 30%
   .stages
@@ -16,5 +40,5 @@
     padding: 0
     top: 0
     left: 0
-    padding: 0.2em
-    font-size: 0.4em
+    padding: 0.3em
+    font-size: 0.5em
