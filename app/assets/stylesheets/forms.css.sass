@@ -1,29 +1,3 @@
-.validation-summary,
-.validation-error
-  padding: 1em
-  border: 3px solid #df3034
-  background: #fef7f7
-
-.validation-summary
-  margin-top: 1em
-
-form .validation-summary
-  margin: 0 0 1em
-  & :first-child
-    margin-top: 0
-  & :last-child
-    margin-bottom: 0
-  &.alert-dialog
-    margin-top: 1em
-
-.validation-error
-  border-width: 0 0 0 3px
-
-.validation-message
-  display: block
-  color: #df3034
-
-
 form
   .form-hint
     color: gray
@@ -65,11 +39,26 @@ form
     label
       float: left
       width: 12.5em
+
+  .status_select
+    label
+      width: 28%
+      margin: 1%
+      background-color: rgb(223, 224, 226)
+      float: left
+      padding: 1%
   
 
 label
   @include core-19
   display: block
+
+textarea
+  width: 432px
+  height: 5em
+
+select
+  width: 432px
 
 input,
 select
@@ -80,7 +69,7 @@ select
   &[type=email],
   &[type=tel],
   &[type=date]
-    width: 250px
+    width: 432px
     padding: 5px 4px 2px
     color: $black
     border: 1px solid $grey-2

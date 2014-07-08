@@ -16,7 +16,7 @@
   </div>
   <hr />
 
-  <div class="group">
+  <div class="group status_select">
     <p>Status</p>
     <p class="form-hint">
       What status is this transaction currently in.
@@ -39,21 +39,19 @@
   <div class="group">
     <fieldset>
       <legend>Service manager responsible</legend>
-      <%= f.label :contact_name, "Name" %>
       <p class="form-hint">
         This person is the contact point for this transaction and any enquiries by other teams.
       </p>
+
+      <%= f.label :contact_name, "Name" %>
       <%= f.text_field :contact_name %>
 
       <%= f.label :contact_email, "Email" %>
-      <p class="form-hint">
-        This person is the contact point for this transaction and any enquiries by other teams.
-      </p>
       <%= f.text_field :contact_email %>
 
       <%= f.label :contact_team, "Department and team" %>
       <p class="form-hint">
-        This person is the contact point for this transaction and any enquiries by other teams.
+        E.g. MOJDS, Prison visit bookings
       </p>
       <%= f.text_field :contact_team %>
     </fieldset>
@@ -67,14 +65,21 @@
     </p>
     <%= f.text_area :description %>
   </div>
+  <hr />
 
   <div class="group">
     <%= f.label :replaces_story_id %>
-    <%= f.select :replaces_story_id, Story.all.collect{|x| [x.name, x.id]}, :include_blank => "None" %>
+    <p class="form-hint">
+      Is this transaction going to make another transaction deprecated? In which case state which one.
+    </p>
+    <%= f.select :replaces_story_id, Story.all.collect{|x| [x.name, x.id]}, {:include_blank => "None"}, :class => 'multi_select' %>
   </div>
 
   <div class="group">
-    <%= f.label :parent_ids, "Parent Transactions" %>
+    <%= f.label :parent_ids, "Previous Transactions" %>
+    <p class="form-hint">
+      Do users of this transactions typically come from other transactions? This is used to map user journeys.
+    </p>
     <%= f.select :parent_ids, Story.all.collect {|x| [x.name, x.id]}, {}, :multiple => true, :class => "multi_select" %>
   </div>
 
