@@ -2,34 +2,51 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+a.page_edit
+  float: right
+
 ol.transaction_stages
   li
+    position: relative
+    background-color: rgb(248, 248, 248)
+    margin: 69px 0
+    border: 1px solid rgb(229, 229, 230)
+    border-width: 1px 0
     span
       display: inline-block
       vertical-align: middle
       padding: 0.5em 0
 
     .position
-      font-size: 3em
+      font-size: 2em
       font-weight: bold
       color: rgb(103, 113, 115)
-      width: 4%
+      width: 6%
       text-align: center
 
     .description
       padding-right: 3%
-      width: 50%
+      width: 40%
 
     .from_to
       width: 35%
+      img
+        vertical-align: middle
       .from
         width: 100%
+        position: absolute
+        top: -65px
       .payload
         width: 100%
       .to
         width: 100%
+        position: absolute
+        bottom: -65px
 
 
     .edit
-      width: 6%
-      text-align: right
+      float: right
+      padding: 0.5em 
+
+    &.unlinked
+      margin-top: 140px

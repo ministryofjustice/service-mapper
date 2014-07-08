@@ -1,44 +1,56 @@
 <% breadcrumb @story %>
 
-<%= @story.status %>
-<%= link_to "Edit", edit_story_path(@story) %>
+<%= status_flag(@story.status) %>
+<%= link_to "Edit this transaction", edit_story_path(@story), :class => 'page_edit' %>
 <h1><%= @story.name %></h1>
 
-<%= @story.description %>
+<p class="supportive_text"><%= @story.description %></p>
 
-<p>Group: <strong><%= @story.groups.collect(&:name).join(", ") %></strong></p>
-<p>Owned by: <strong><%= @story.contact_name %> (<%= @story.contact_team %>)</strong></p>
-<p>Contact email: <strong><%= @story.contact_email %></strong></p>
-<% if @story.replaces_story %>
-  <p>Replaces: <strong>%= link_to @story.replaces_story.name, story_path(@story.replaces_story) %></strong></p>
+<% if @story.groups.present? %>
+  <p class="supportive_text">Groups: <strong><%= @story.groups.collect(&:name).join(", ") %></strong></p>
 <% end %>
 
-<h2>Stages</h2>
+<% if @story.contact_name.present? %>
+  <p class="supportive_text">
+    Owned by:
+    <strong><%= @story.contact_name %> 
+    <% if @story.contact_team.present? %>
+      (<%= @story.contact_team %>)
+    <% end %>
+    </strong>
+  </p>
+<% end %>
 
-<p>
+<% if @story.contact_email.present? %>
+  <p class="supportive_text">Contact email: <strong><%= @story.contact_email %></strong></p>
+<% end %>
+
+<% if @story.replaces_story %>
+  <p class="supportive_text">Replaces: <strong><%= link_to @story.replaces_story.name, story_path(@story.replaces_story) %></strong></p>
+<% end %>
+
+<h2>Transaction Stages</h2>
+
+<p class="supportive_text">
   These are the system interactions that happen to deliver this transaction.<br/>
   They can be physical interactions or digital ones.
 </p>
 
-<p>
-  <%= link_to "Add a stage", new_story_story_stage_path(@story) %>
-</p>
-
 <ol class="transaction_stages">
   <% @story.story_stages.ordered.each do |stage| %>
-    <li class="story_stage">
+    <li class="story_stage<%= ' unlinked' unless stage.linked_with_last_stage? %>">
       <span class="position"><%= stage.position %></span>
       <span class="description"><%= stage.description %></span>
       <span class="from_to">
         <% unless stage.linked_with_last_stage? %>
           <span class="from">
-            <%= image_tag '/icons/citizen.png', :width => 40 %><br />
+            <%= image_tag '/icons/citizen.png', :width => 40 %>
             <%= link_to stage.from.name, stage.from %>
           </span>
         <% end %>
         <span class="payload"><%= stage.payload %></span>
         <span class="to">
-          <%= image_tag '/icons/server.png', :width => 40 %><br />
+          <%= image_tag '/icons/server.png', :width => 40 %>
           <%= link_to stage.to.name, stage.to %>
         </span>
       </span>
@@ -46,3 +58,8 @@
     </li>
   <% end %>
 </ol>
+
+<%= link_to new_story_story_stage_path(@story), :class => 'add_new' do %>
+  <span class="link">Add a new stage</span>
+  <small>Would you like to add a another stage to your transaction?</small>
+<% end %>
