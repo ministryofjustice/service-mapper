@@ -10,6 +10,8 @@
   .group
     %fieldset#from_system.system_fieldset
       %legend
+        = image_tag '/icons/system-from.png', :height => 20
+        %br
         'From' system
       %p.form-hint
         This is the first system point in this stage. Either select systems from our databaseor add a new system.
@@ -18,12 +20,15 @@
   %hr
 
   .group
-    %fieldset
+    %fieldset.mode_select
       %p
+        = image_tag '/icons/system-mode.png', :height => 20
+        %br
         Mode
       - StoryStage.modes.each do |mode| 
         %label
           = f.radio_button :payload, mode 
+          = image_tag mode_icon_path(mode), :width => 25
           = mode 
 
   %hr
@@ -31,6 +36,8 @@
   .group
     %fieldset#to_system.system_fieldset
       %legend
+        = image_tag '/icons/system-to.png', :height => 20
+        %br
         'To' system
       = render :partial => 'system_form', :locals => {:direction => "to", :f => f} 
 

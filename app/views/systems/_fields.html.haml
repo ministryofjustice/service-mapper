@@ -8,8 +8,9 @@
     %p Select the type of system this is
     - System.types.each do |type| 
       %label
-        = type 
         = form.radio_button :type, type 
+        = image_tag system_icon_path(type), :width => 25
+        = type 
 
   .group
     = form.label :owner 

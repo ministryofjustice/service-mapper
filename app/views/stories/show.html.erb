@@ -44,13 +44,16 @@
       <span class="from_to">
         <% unless stage.linked_with_last_stage? %>
           <span class="from">
-            <%= image_tag '/icons/citizen.png', :width => 40 %>
+            <%= image_tag system_icon_path(stage.from.type), :width => 40 %>
             <%= link_to stage.from.name, stage.from %>
           </span>
         <% end %>
-        <span class="payload"><%= stage.payload %></span>
+        <span class="payload">
+          <%= image_tag mode_icon_path(stage.payload), :width => 40 %>
+          <%= stage.payload %>
+        </span>
         <span class="to">
-          <%= image_tag '/icons/server.png', :width => 40 %>
+            <%= image_tag system_icon_path(stage.to.type), :width => 40 %>
           <%= link_to stage.to.name, stage.to %>
         </span>
       </span>

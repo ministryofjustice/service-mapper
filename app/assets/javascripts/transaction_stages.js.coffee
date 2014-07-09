@@ -1,8 +1,8 @@
 jQuery ->
-  $('.existing_system_info').hide()
-  $('.new_system_info').hide()
-  $('.system_detailed_info').hide()
-  $('.edit_details_link').click( -> 
+  $('.system_fieldset .existing_system_info').hide()
+  $('.system_fieldset .new_system_info').hide()
+  $('.system_fieldset .system_detailed_info').hide()
+  $('.system_fieldset .edit_details_link').click( -> 
     $(this).parents('.new_existing_system').find('.system_detailed_info').toggle()
     false
   )
