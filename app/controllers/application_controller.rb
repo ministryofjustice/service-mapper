@@ -12,23 +12,19 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate_verified_user!
-    unless ENV['SANDBOX']
-      if current_user
-        unless ["editor", "verified"].include?(current_user.role)
-          render :text => "Your account has not been verified yet"
-          return false
-        end
+    if current_user
+      unless ["editor", "verified"].include?(current_user.role)
+        redirect_to '/unverified'
+        return false
       end
     end
   end
 
   def authenticate_admin!
-    unless ENV['SANDBOX']
-      if current_user
-        unless current_user.role == "editor"
-          render :text => "You can only access this page if you are an admin"
-          return false
-        end
+    if current_user
+      unless current_user.role == "editor"
+        render :text => "Your account is not permitted to view this"        
+        return false
       end
     end
   end
