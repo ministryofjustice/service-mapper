@@ -1,6 +1,7 @@
 class StoryStagesController < ApplicationController
   before_action :set_story
   before_action :set_story_stage, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token, only: [:sort]
 
   def index
     @story_stages = @story.story_stages.ordered.all

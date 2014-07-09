@@ -1,4 +1,19 @@
 jQuery ->
+  $('.transaction_stages_sort').sortable(
+    axis: 'y',
+    update: ->
+      $.ajax({
+        url: location.pathname + '/sort',
+        type: 'post',
+        data: $('.transaction_stages_sort').sortable('serialize'),
+        dataType: 'script',
+        success: ->
+          $('.save_status').html('Changes saved').effect("highlight")
+        error: ->
+          $('.save_status').html('Error').effect("highlight")
+      })
+)
+
   $('.system_fieldset .existing_system_info').hide()
   $('.system_fieldset .new_system_info').hide()
   $('.system_fieldset .system_detailed_info').hide()

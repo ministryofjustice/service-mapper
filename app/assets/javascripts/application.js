@@ -11,7 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery
 //= require jquery_ujs
+//= require jquery-ui/sortable
+//= require jquery-ui/effect-highlight
 //= require transactions
 //= require transaction_stages
 //= require chosen

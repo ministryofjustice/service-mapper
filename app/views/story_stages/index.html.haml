@@ -1,0 +1,8 @@
+%ol.transaction_stages_sort
+  - @story.story_stages.ordered.each do |stage|
+    %li{id: "story_stage_#{stage.id}"}
+      = stage.description
+
+.save_status
+
+= link_to 'Back', story_path(@story)

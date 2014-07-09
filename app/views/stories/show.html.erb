@@ -62,6 +62,8 @@
   <% end %>
 </ol>
 
+<%= link_to "Re-order", story_story_stages_path(@story) %>
+
 <%= link_to new_story_story_stage_path(@story), :class => 'add_new' do %>
   <span class="link">Add a new stage</span>
   <small>Would you like to add a another stage to your transaction?</small>
