@@ -1,5 +1,5 @@
 crumb :root do
-  link "Transactions", root_path
+  link "Transactions", stories_path
 end
 
 crumb :new_transaction do
