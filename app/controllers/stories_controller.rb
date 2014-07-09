@@ -1,6 +1,7 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
   before_action :set_stories, only: [:index, :user_journeys_graph, :systems_graph]
+  before_action :catch_new_groups, only: [:update, :create]
 
   def index
   end
@@ -70,6 +71,19 @@ class StoriesController < ApplicationController
       @stories = @system.stories
     else
       @stories = Story.order("created_at ASC")
+    end
+  end
+
+  def catch_new_groups
+    if params[:story].present? && params[:story][:group_ids].present?
+      params[:story][:group_ids] = params[:story][:group_ids].collect do |group|
+        if group.match(/\D/)
+          new_group = Group.create(:name => group)
+          new_group.id.to_s
+        else
+          group
+        end
+      end
     end
   end
 

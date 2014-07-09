@@ -12,4 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require transactions
+//= require transaction_stages
+//= require chosen
+//= require chosen-create-option

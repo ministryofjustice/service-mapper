@@ -12,7 +12,7 @@
     <p class="form-hint">
       Describe the type of grouping that you would like this transcation to sit under. Transactions can live in multiple groups.
     </p>
-    <%= f.select :group_ids, Group.all.collect {|x| [x.name, x.id]}, {}, :multiple => true, :class => "multi_select" %>
+    <%= f.select :group_ids, Group.all.collect {|x| [x.name, x.id]}, {}, :multiple => true, :class => "multi_select_with_create" %>
   </div>
   <hr />
 
