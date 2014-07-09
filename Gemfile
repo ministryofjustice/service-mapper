@@ -20,6 +20,9 @@ gem 'govuk_frontend_toolkit'
 gem 'moj_internal_template',
   git: 'https://github.com/ministryofjustice/moj_internal_template.git', :branch => 'master'
 
+#haml
+gem 'haml'
+
 # js
 gem 'jquery-rails'
 gem 'jquery-ui-rails'

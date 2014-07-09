@@ -127,6 +127,8 @@ GEM
     guard-rspec (4.2.10)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
+    haml (4.0.5)
+      tilt
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (1.5.3)
@@ -258,6 +260,7 @@ DEPENDENCIES
   govuk_template
   gretel
   guard-rspec
+  haml
   jbuilder (~> 1.2)
   jquery-rails
   jquery-ui-rails

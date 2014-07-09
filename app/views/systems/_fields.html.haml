@@ -1,0 +1,49 @@
+.system_basic_info
+  = form.label :name 
+  = form.text_field :name 
+
+.system_detailed_info
+
+  .group.type_select
+    %p Select the type of system this is
+    - System.types.each do |type| 
+      %label
+        = type 
+        = form.radio_button :type, type 
+
+  .group
+    = form.label :owner 
+    = form.text_field :owner 
+
+  .group
+    = form.label :supplier 
+    = form.text_field :supplier 
+
+  .group
+    = form.label :technology 
+    = form.text_field :technology 
+
+  .group
+    = form.label :source_code_url 
+    = form.text_field :source_code_url 
+
+  .group.status_select
+    %p Status
+    = form.label :status_live do 
+      = form.radio_button :status, "live" 
+      = status_flag "Live" 
+    = form.label :status_proposed do 
+      = form.radio_button :status, "proposed" 
+      = status_flag "Proposed" 
+    = form.label :status_deprecated do 
+      = form.radio_button :status, "deprecated" 
+      = status_flag "Deprecated" 
+
+  .group
+
+    = form.label :hosting 
+    = form.text_field :hosting 
+
+  .group
+    = form.label :link 
+    = form.text_field :link 

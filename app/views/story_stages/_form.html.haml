@@ -1,0 +1,39 @@
+= form_for [@story, @story_stage], :html => { :class => 'form-horizontal' } do |f|
+  .group
+    = f.label :description, "Stage name" 
+    %p.form-hint
+      This should describe what happens in that stage between the system. eg. 'Request Confirmation sent to citizen'.
+    = f.text_field :description 
+
+  %hr
+
+  .group
+    %fieldset#from_system.system_fieldset
+      %legend
+        'From' system
+      %p.form-hint
+        This is the first system point in this stage. Either select systems from our databaseor add a new system.
+      = render :partial => 'system_form', :locals => {:direction => "from", :f => f} 
+
+  %hr
+
+  .group
+    %fieldset
+      %p
+        Mode
+      - StoryStage.modes.each do |mode| 
+        %label
+          = f.radio_button :payload, mode 
+          = mode 
+
+  %hr
+
+  .group
+    %fieldset#to_system.system_fieldset
+      %legend
+        'To' system
+      = render :partial => 'system_form', :locals => {:direction => "to", :f => f} 
+
+    .form-actions
+      = f.submit nil, :class => 'btn btn-primary' 
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), story_story_stages_path(@story), :class => 'btn' 

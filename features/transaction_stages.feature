@@ -12,7 +12,7 @@ Feature: Adding transaction stages
   Scenario: Choosing systems on each side
     When I go to /stories
     And I follow "Prison visit booking"
-    And I follow "Add a stage"
+    And I follow "Add a new stage"
 
     And I fill in "Stage name" with "Test Transaction Stage"
     And I choose "API"
@@ -33,7 +33,7 @@ Feature: Adding transaction stages
   Scenario: Creating systems on each side
     When I go to /stories
     And I follow "Prison visit booking"
-    And I follow "Add a stage"
+    And I follow "Add a new stage"
 
     And I fill in "Stage name" with "Test Transaction Stage"
     And I choose "Email"

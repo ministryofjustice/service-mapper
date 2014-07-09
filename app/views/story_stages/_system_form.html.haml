@@ -1,0 +1,20 @@
+.existing_system.new_existing_system
+  .new_existing_selector
+    %label
+      = radio_button_tag "#{direction}_selector", "existing"
+      Select a system from our database
+  .existing_system_info
+    .system_basic_info
+      = f.select "#{direction}_id", options_for_select(System.alphabetical.collect {|x| [x.name, x.id]}, @story_stage.send("#{direction}_id"))
+    = link_to "Edit details", "#", :class => 'edit_details_link'
+
+.new_system.new_existing_system
+  .new_existing_selector
+    %label
+      = radio_button_tag "#{direction}_selector", "new"
+      Add a new system
+  .new_system_info
+    = link_to "Edit details", "#new_#{direction}_system_fields", :class => 'edit_details_link'
+    %div{:id => "new_#{direction}_system_fields"}
+      = f.fields_for direction, System.new do |system_form|
+        = render :partial => 'systems/fields', :locals => {:form => system_form}
