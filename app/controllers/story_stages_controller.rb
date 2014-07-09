@@ -22,7 +22,7 @@ class StoryStagesController < ApplicationController
   def create
     @story_stage = @story.story_stages.build(story_stage_params)
     if @story_stage.save
-      redirect_to [@story, @story_stage], notice: 'Story stage was successfully created.'
+      redirect_to @story, notice: 'Story stage was successfully created.'
     else
       render action: 'new'
     end
@@ -30,7 +30,7 @@ class StoryStagesController < ApplicationController
 
   def update
     if @story_stage.update(story_stage_params)
-      redirect_to [@story, @story_stage], notice: 'Story stage was successfully updated.'
+      redirect_to @story, notice: 'Story stage was successfully updated.'
     else
       render action: 'edit'
     end
