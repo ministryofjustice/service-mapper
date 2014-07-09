@@ -26,5 +26,10 @@
     </main>
   </div>
 <% end %>
-
+<% content_for :footer_top do %>
+  <% if current_user %>
+    Logged in as <%= current_user.email %>
+    <%= button_to "Sign out", destroy_user_session_path, :method => :delete, :class => 'link_button' %>
+  <% end %>
+<% end %>
 <%= render template: "layouts/moj_internal_template" %>
