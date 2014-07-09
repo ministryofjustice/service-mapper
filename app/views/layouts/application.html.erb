@@ -16,11 +16,11 @@
         <%= breadcrumbs :style => :ol %>
       </nav>
     </div>
-    <% if notice.present? %>
-      <p><%= notice %></p>
-    <% end %>
     <main id="content" role="main" class="">
       <div class="inner-block">
+        <% if notice.present? %>
+          <p class="notice"><%= notice %></p>
+        <% end %>
         <%= yield %>
       </div>
     </main>
