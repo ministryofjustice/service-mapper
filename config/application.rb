@@ -26,12 +26,11 @@ module Archipelago
     # config.i18n.default_locale = :de
     config.action_mailer.default_url_options = { :host => 'localhost:3000' }
     # Application Title (Populates <title>)
-    config.app_title = 'Archipelago'
+    config.app_title = 'Service Mapper'
     # Proposition Title (Populates proposition header)
     config.proposition_title = ''
     # Current Phase (Sets the current phase and the colour of phase tags)
     # Presumed values: alpha, beta, live
-    config.phase = 'alpha'
     # Product Type (Adds class to body based on service type)
     # Presumed values: information, service
     config.product_type = 'service'
