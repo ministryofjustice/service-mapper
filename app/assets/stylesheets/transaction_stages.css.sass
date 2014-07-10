@@ -57,16 +57,33 @@ ol.transaction_stages
       width: 35%
       img
         vertical-align: middle
+      .from, .to
+        z-index: 50
+        width: 100%
+        position: absolute
+        background-repeat: no-repeat
+        background-size: 50px
+        padding-left: 5px
       .from
-        width: 100%
-        position: absolute
-        top: -65px
+        top: -59px
+        background-image: url('/icons/stage-box-top.png')
+        background-position: left bottom
+      .from_previous
+        top: -39px
+        height: 20px
+        z-index: 20
       .payload
+        background-image: url('/icons/stage-arrow.png')
+        background-size: 16px 80px
+        background-repeat: no-repeat
+        background-position: 16px bottom
         width: 100%
+        padding: 10px 5px
+        height: 60px
       .to
-        width: 100%
-        position: absolute
-        bottom: -65px
+        bottom: -59px
+        background-image: url('/icons/stage-box-bottom.png')
+        background-position: left top
 
 
     .edit

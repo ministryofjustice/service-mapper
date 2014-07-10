@@ -47,6 +47,8 @@
             <%= image_tag system_icon_path(stage.from.type), :width => 40 %>
             <%= link_to stage.from.name, stage.from %>
           </span>
+        <% else %>
+          <span class="from from_previous"></span>
         <% end %>
         <span class="payload">
           <%= image_tag mode_icon_path(stage.payload), :width => 40 %>

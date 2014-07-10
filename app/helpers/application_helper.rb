@@ -6,14 +6,14 @@ module ApplicationHelper
     if type.present?
       "/icons/systems/#{type.downcase.gsub(" ", "-")}.png"
     else
-      "/icons/systems/server.png"
+      "/icons/systems/default.png"
     end
   end
   def mode_icon_path(type)
     if type.present?
       "/icons/modes/#{type.downcase.gsub(" ", "-")}.png"
     else
-      "/icons/modes/server.png"
+      "/icons/modes/default.png"
     end
   end
 end
