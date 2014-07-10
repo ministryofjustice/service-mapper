@@ -78,11 +78,7 @@ Archipelago::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  if ENV['SANDBOX']
-    config.action_mailer.default_url_options = {:host => 'archipelagosandbox.herokuapp.com' }
-  else
-    config.action_mailer.default_url_options = {:host => 'archipelago.dsd.io' }
-  end
+  config.action_mailer.default_url_options = {:host => 'service-mapper.dsd.io' }
 
   config.action_mailer.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
