@@ -30,6 +30,10 @@
           = f.radio_button :payload, mode 
           = image_tag mode_icon_path(mode), :width => 25
           = mode 
+      %label
+        = f.radio_button :payload, 'other' 
+        = image_tag mode_icon_path('default'), :width => 25
+        = f.text_field :payload_other, :id => 'other_payload_input'
 
   %hr
 

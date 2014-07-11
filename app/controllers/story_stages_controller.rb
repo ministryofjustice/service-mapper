@@ -59,7 +59,7 @@ class StoryStagesController < ApplicationController
     end
 
     def story_stage_params
-      allowed_params = [:payload, :description, :chronic_duration_average_time]
+      allowed_params = [:payload, :payload_other, :description, :chronic_duration_average_time]
       ["from", "to"].each do |direction|
         if params["#{direction}_selector"] == "existing"
           allowed_params << "#{direction}_id"

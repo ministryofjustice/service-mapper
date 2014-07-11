@@ -10,7 +10,7 @@ module ApplicationHelper
     end
   end
   def mode_icon_path(type)
-    if type.present?
+    if StoryStage.modes.include?(type)
       "/icons/modes/#{type.downcase.gsub(" ", "-")}.png"
     else
       "/icons/modes/default.png"

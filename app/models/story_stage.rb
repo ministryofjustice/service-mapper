@@ -12,6 +12,9 @@ class StoryStage < ActiveRecord::Base
 
   include Chronorails::ChronicAccessors
   chronic_duration_field :average_time
+
+  attr_accessor :payload_other
+  before_save :check_payload_other
  
   def graph_json
     {:source => self.from_id, :target => self.to_id, :type => 'story_stage', :id => self.id, :url => Rails.application.routes.url_helpers.story_story_stage_path(self.story, self)}
@@ -27,5 +30,9 @@ class StoryStage < ActiveRecord::Base
 
   def linked_with_last_stage?
     !!previous_stage && self.from == previous_stage.to
+  end
+
+  def check_payload_other
+    self.payload = self.payload_other if payload == 'other'
   end
 end

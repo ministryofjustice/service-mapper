@@ -30,6 +30,23 @@ Feature: Adding transaction stages
     And the last transaction stage should have "PVB website" for "to"
     And the last transaction stage should have "API" for "payload"
 
+  Scenario: Choosing "other" for mode
+    When I go to /stories
+    And I follow "Prison visit booking"
+    And I follow "Add a new stage"
+
+    And I choose "story_stage_payload_other"
+    And I fill in "story_stage_payload_other" with "Another mode"
+
+    And I fill in "Stage name" with "Test Transaction Stage"
+    And I choose "Select a system from our database" within "from system"
+    And I select "Prison Visitor" from "story_stage_from_id" within "from system"
+    And I choose "Select a system from our database" within "to system"
+    And I select "PVB website" from "story_stage_to_id" within "to system"
+    And I press "Create Story stage"
+
+    And the last transaction stage should have "Another mode" for "payload"
+
   Scenario: Creating systems on each side
     When I go to /stories
     And I follow "Prison visit booking"
