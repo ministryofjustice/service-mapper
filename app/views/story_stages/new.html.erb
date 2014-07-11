@@ -1,6 +1,7 @@
 <% breadcrumb :story_stages, @story %>
-<%- model_class = StoryStage -%>
+
 <div class="page-header">
   <h1>New Transaction Stage</h1>
 </div>
+<p>This will be stage <%= @story.story_stages.count + 1 %>.</p>
 <%= render :partial => 'form' %>
