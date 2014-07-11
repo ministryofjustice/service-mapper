@@ -1,7 +1,7 @@
 .existing_system.new_existing_system
   .new_existing_selector
     %label
-      = radio_button_tag "#{direction}_selector", "existing"
+      = radio_button_tag "#{direction}_selector", "existing", !@story_stage.new_record?
       Select a system from our database
   .existing_system_info
     .system_basic_info
