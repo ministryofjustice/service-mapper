@@ -15,6 +15,8 @@
 //= require jquery_ujs
 //= require jquery-ui/sortable
 //= require jquery-ui/effect-highlight
+//= require d3.min
+//= require dagre
 //= require transactions
 //= require transaction_stages
 //= require chosen

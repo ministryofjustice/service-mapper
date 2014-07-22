@@ -13,22 +13,26 @@
   <small>Would you like to add a another transaction?</small>
 <% end %>
 
-<!-- <ul class="nav nav-pills">
-  <li<%= ' class="active"'.html_safe if action_name == 'index' %>>
-    <%= link_to "Table View", stories_path(current_filter) %>
-  </li>
-  <li<%= ' class="active"'.html_safe if action_name == 'user_journeys_graph' %>>
-    <%= link_to "User Journey Graph", user_journeys_graph_stories_path(current_filter) %>
-  </li>
-  <li<%= ' class="active"'.html_safe if action_name == 'systems_graph' %>>
-    <%= link_to "Systems Graph", systems_graph_stories_path(current_filter) %>
-  </li>
-</ul> -->
+<div class="filter_and_views">
+  <div class="view_switch">
+    View by:
+    <p class="list <%= " active" if action_name == 'index' %>">
+      <%= link_to "List", stories_path(current_filter) %>
+    </p>
+    <p class="journey <%= " active" if action_name == 'user_journeys_graph' %>">
+      <%= link_to "Journey", user_journeys_graph_stories_path(current_filter) %>
+    </p>
+  <!--   <li<%= ' class="active"'.html_safe if action_name == 'systems_graph' %>>
+      <%= link_to "Systems Graph", systems_graph_stories_path(current_filter) %>
+    </li>
+   -->
+  </div>
 
-<%= form_tag nil, :method => :get, :class => 'filter auto_submit' do |form| %>
-  <label for="group_id">Filter by group:</label>
-  <%= select_tag :group_id, options_for_select([["All", nil]] + Group.all.collect{|x| [x.name, x.id]}, params[:group_id]), :class => 'multi_select' %>
-<!--   <%= select_tag :system_id, options_for_select([["All Systems", nil]] + System.all.collect{|x| [x.name, x.id]}, params[:system_id]) %>
- -->
-  <%= submit_tag "Filter", :name => nil, :class => 'btn' %>
-<% end %>
+  <%= form_tag nil, :method => :get, :class => 'filter auto_submit' do |form| %>
+    <label for="group_id">Filter by group:</label>
+    <%= select_tag :group_id, options_for_select([["All", nil]] + Group.all.collect{|x| [x.name, x.id]}, params[:group_id]), :class => 'multi_select' %>
+  <!--   <%= select_tag :system_id, options_for_select([["All Systems", nil]] + System.all.collect{|x| [x.name, x.id]}, params[:system_id]) %>
+   -->
+    <%= submit_tag "Filter", :name => nil, :class => 'btn' %>
+  <% end %>
+</div>

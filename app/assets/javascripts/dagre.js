@@ -450,10 +450,15 @@ function defaultPostRender(graph, root) {
 function addLabel(node, root, marginX, marginY) {
   // Add the rect first so that it appears behind the label
   var label = node.label;
+  var html = node.html;
   var rect = root.append('rect');
   var labelSvg = root.append('g');
 
-  if (label[0] === '<') {
+  if (html) {
+    addForeignObjectLabel(html, labelSvg);
+    // No margin for HTML elements
+    marginX = marginY = 0;
+  } else if (label[0] === '<') {
     addForeignObjectLabel(label, labelSvg);
     // No margin for HTML elements
     marginX = marginY = 0;
@@ -467,15 +472,17 @@ function addLabel(node, root, marginX, marginY) {
   var bbox = root.node().getBBox();
 
   labelSvg.attr('transform',
-             'translate(' + (-bbox.width / 2) + ',' + (-bbox.height / 2) + ')');
+             'translate(' + (-bbox.width / 2) + ',' + (-bbox.height / 2) + ')').attr('class', 'node_label');
 
-  rect
-    .attr('rx', 5)
-    .attr('ry', 5)
-    .attr('x', -(bbox.width / 2 + marginX))
-    .attr('y', -(bbox.height / 2 + marginY))
-    .attr('width', bbox.width + 2 * marginX)
-    .attr('height', bbox.height + 2 * marginY);
+  if (!html) {
+    rect
+      .attr('rx', 5)
+      .attr('ry', 5)
+      .attr('x', -(bbox.width / 2 + marginX))
+      .attr('y', -(bbox.height / 2 + marginY))
+      .attr('width', bbox.width + 2 * marginX)
+      .attr('height', bbox.height + 2 * marginY);
+  }
 }
 
 function addForeignObjectLabel(label, root) {

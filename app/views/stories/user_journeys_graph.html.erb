@@ -8,18 +8,20 @@
 </div>
 
 <script>
-  var g = new dagreD3.Digraph();
-  <% @stories.each do |story| %>
-    g.addNode(<%= story.id %>, { label: "<%= story.name.html_safe %>"})
-  <% end %>
-  <% @story_links.each do |story_link| %>
-    g.addEdge(null, <%= story_link.from_id %>, <%= story_link.to_id %>, { });
-  <% end %>
-  var layout = dagreD3.layout()
-                      .nodeSep(20)
-                      .rankDir("LR");
-  var renderer = new dagreD3.Renderer();
-  renderer.layout(layout).run(g, d3.select("svg g"));
+  $(function() {
+    var g = new dagreD3.Digraph();
+    <% @stories.each do |story| %>
+      g.addNode(<%= story.id %>, { label: "<%= story.name.html_safe %>"})
+    <% end %>
+    <% @story_links.each do |story_link| %>
+      g.addEdge(null, <%= story_link.from_id %>, <%= story_link.to_id %>, { });
+    <% end %>
+    var layout = dagreD3.layout()
+                        .nodeSep(20)
+                        .rankDir("LR");
+    var renderer = new dagreD3.Renderer();
+    renderer.layout(layout).run(g, d3.select("svg g"));
+  })
 </script>
 
 <style>
