@@ -15,6 +15,7 @@ Archipelago::Application.routes.draw do
 
   resources :systems
 
+  match '/audit_trail', to: 'audits#index', via: [:get]
   get ':action', :controller => :pages
   root 'pages#index'
 end

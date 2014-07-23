@@ -1,4 +1,6 @@
 class StoryStage < ActiveRecord::Base
+  has_paper_trail ignore: [:updated_at, :created_at, :id]
+
   belongs_to :story
   counter_culture :story
   belongs_to :from, :class_name => "System"

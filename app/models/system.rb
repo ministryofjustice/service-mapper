@@ -1,4 +1,6 @@
 class System < ActiveRecord::Base
+  has_paper_trail ignore: [:updated_at, :created_at, :id]
+
   has_many :story_stage_entries, :class_name => 'StoryStage', :foreign_key => 'to_id'
   has_many :story_stage_exits, :class_name => 'StoryStage', :foreign_key => 'to_id'
 

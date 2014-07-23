@@ -11,6 +11,8 @@ gem 'devise'
 gem 'counter_culture', '~> 0.1.18'
 gem 'chronorails', :git => 'https://github.com/james/chronorails.git', :branch => 'master'
 gem 'acts_as_list'
+gem 'paper_trail', '~> 3.0.3'
+gem 'will_paginate', '~> 3.0'
 
 # styles
 gem 'sass-rails', '~> 4.0.0'
@@ -30,7 +32,6 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # heroku
 gem 'rails_12factor'
-
 
 group :test, :development do
   gem 'cucumber-rails', :require => false

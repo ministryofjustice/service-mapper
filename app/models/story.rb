@@ -11,6 +11,8 @@ class Story < ActiveRecord::Base
 
   scope :no_stages, -> { where("story_stages_count = 0") }
 
+  has_paper_trail ignore: [:updated_at, :created_at, :id]
+
   def nodes
     nodes = []
     story_stages.each do |story_stage|
