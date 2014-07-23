@@ -13,6 +13,7 @@ gem 'chronorails', :git => 'https://github.com/james/chronorails.git', :branch =
 gem 'acts_as_list'
 gem 'paper_trail', '~> 3.0.3'
 gem 'will_paginate', '~> 3.0'
+gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
 
 # styles
 gem 'sass-rails', '~> 4.0.0'
