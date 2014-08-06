@@ -36,7 +36,7 @@ Feature: Adding transaction stages
     And I follow "Add a new stage"
 
     And I choose "story_stage_payload_other"
-    And I fill in "story_stage_payload_other" with "Another mode"
+    And I fill in "other_payload_input" with "Another mode"
 
     And I fill in "Stage name" with "Test Transaction Stage"
     And I choose "Select a system from our database" within "from system"
