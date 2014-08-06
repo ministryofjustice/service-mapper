@@ -33,3 +33,13 @@ Feature: Managing transactions
     And I press "Save"
     Then I should see the text "Transaction saved"
     And I should see the text "My Test Transaction"
+
+  Scenario: Adding a valid transaction
+    Given I am logged in as editor
+    And I have a transaction called "Test transaction"
+    When I go to /stories
+    And I follow "Test transaction"
+    And I follow "Edit"
+    And I press "Delete"
+    Then I should see the text "Transaction deleted"
+    And I should not see the text "Test Transaction"

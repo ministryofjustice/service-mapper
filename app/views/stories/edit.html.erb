@@ -1,6 +1,7 @@
 <% breadcrumb @story %>
-<%- model_class = Story -%>
+
 <div class="page-header">
   <h1>Edit Transaction</h1>
 </div>
 <%= render :partial => 'form' %>
+<%= button_to 'Delete', story_path(@story), :method => :delete, :class => 'button button-destructive' %>

@@ -52,7 +52,7 @@ class StoriesController < ApplicationController
 
   def destroy
     @story.destroy
-    redirect_to stories_url
+    redirect_to stories_url, notice: 'Transaction deleted'
   end
 
   private
